@@ -43,6 +43,9 @@ This is my Public repository.
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
   - [Active Directory](#Active-Directory)
     - [Active Directory Commands](#Active-Directory-Commands)
+      - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
+      - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
+      - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
     - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
   - [Windows Server Commands](#Windows-Server-Commands)
 - [Microsoft Exchange](#Microsoft-Exchange)
@@ -402,17 +405,17 @@ DISM /online /cleanup /restorehealth
 ## Active Directory
 ### Active Directory Commands
 
-Manually import the module into the PowerShell
+### Manually import the module into the PowerShell
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
-Active Directory Domain Password Policy
+### Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
-Active Directory Group Memberships
+### Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
 Get-ADPrincipalGroupMembership -Identity "ad.username" | select name | sort name
