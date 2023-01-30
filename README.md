@@ -174,7 +174,7 @@ net use z: /delete
 
 ## Network Commands
 
-### Ping <br />
+### Ping
 The ping command tests network connectivity between two devices by sending ICMP echo requests. 
 
 ```Powershell
