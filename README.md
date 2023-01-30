@@ -376,6 +376,12 @@ DISM /online /cleanup /restorehealth
 
 ## Active Directory
 ### Active Directory Commands
+
+Manually import the module into the PowerShell
+```Powershell
+#Manually import the module into the PowerShell session with the command
+Import-Module activedirectory
+```
 Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
