@@ -193,7 +193,7 @@ ping 10.250.177.46 -a
 #-t switch will do a continuous ping. A very popular command for testing network connectivity.
 ping 192.168.5.1 -t
 ```
-**ipconfig** <br />
+### ipconfig
 The ipconfig command is used to display a computers TCP/IP configuration. You can display the IP info for a single or all network cards installed on a computer.
 This command can also display the DNS cache on the local machine, flush DNS, release and renew the DHCP address on all network cards.
 
@@ -221,7 +221,7 @@ ipconfig /renew
 #/displaydns switch will display the DNS client cache.
 ipconfig /displaydns
 ```
-**nslookup** <br />
+### nslookup
 The nslookup command is used to check DNS records and troubleshoot DNS. This is a must-have command for any sysadmin or network engineer. You can do all kinds of tests to verify DNS is working correctly, you can check PTR, A, MX, SOA, and many other types of DNS records. It’s another one of my favorite windows commands for network troubleshooting.
 
 ```Powershell
@@ -232,13 +232,13 @@ nslookup domainname
 #nslookup pointer recored
 nslookup -type=ptr domainname
 ```
-**tracert** <br />
+### tracert
 The tracert command is used to track the pathway a packet takes from a source IP to the destination address.
 ```Powershell
 #trace route and hops of packets
 tracert ipaddress
 ```
-**netstat** <br />
+### netstat
 The netstat command displays TCP/IP connection information, ethernet stats, and the computer’s routing table. As a sysadmin I use this command on Windows servers and clients when troubleshooting connection issues. I can verify application servers are working correctly by checking that the service is running and listening for connections on the port.
 
 ```Powershell
@@ -274,7 +274,7 @@ netstat -r
 netstat -af
 ```
 
-**telnet** <br />
+### telnet
 Use the windows telnet client to test if a remote host is allowing connection on a specific port. I typically use this when someone says your firewall is blocking a program from working.
 <br />
 
@@ -285,7 +285,7 @@ If you know the port number the application runs on you can use the command belo
 telnet srv01 21
 ```
 
-**Stop and Start Printer Spooler** <br />
+### Stop and Start Printer Spooler
 ```Powershell
 #Stop the printer spooler service
 net stop spooler
@@ -295,7 +295,7 @@ net stop spooler
 net start spooler
 ```
 
-**dcdiag** <br />
+### dcdiag
 This command will analyze the state of your domain controllers, it has over 30 built in tests.
 ```Powershell
 #run dcdiag on a specific domain controller use this command
