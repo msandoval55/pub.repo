@@ -322,6 +322,8 @@ gpresult /r /scope:computer
 ```Powershell
 #Display GPOs for a remote computer
 gpresult /s pcname
+Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:user}
+Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:computer}
 ```
 ```Powershell
 #Generate an HTML report
