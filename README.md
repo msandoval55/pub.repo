@@ -385,12 +385,12 @@ Import-Module activedirectory
 Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
-get-ADDefaultDomainPasswordPolicy
+Get-ADDefaultDomainPasswordPolicy
 ```
 Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
-get-ADprincipalGlobalMembership -Identity "ad.username" | select name | sort name
+Get-ADprincipalGlobalMembership -Identity "ad.username" | select name | sort name
 ```
 ```Powershell
 #Get active directory user groups
