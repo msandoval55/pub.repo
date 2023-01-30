@@ -1,7 +1,5 @@
 # pub.repo
 
-# priv.repo
-
 This is my private repository.
 
 
