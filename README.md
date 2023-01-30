@@ -14,6 +14,13 @@ This is my Public repository.
 
 - [Microsoft Windows 10 and 11 Commands](#Microsoft-Windows-10-and-11-Commands)
   - [Windows Commands](#Windows-Commands)
+    - [Get System Info](#Get-System-Info)
+    - [Get Windows System Info](#Get-Windows-System-Info)
+    - [Get Host Name of local computer](#Get-Host-Name-of-local-computer)
+    - [Get MAC Address of local computer](#Get-MAC-Address-of-local-computer)
+    - [Get MAC Address of remote computer](#Get-MAC-Address-of-remote-computer)
+    - [Whoami commands](#Whoami-commands)
+    - [Shutdown Commands](#Shutdown-Commands)
   - [File Directory Commands](#File-Directory-Commands)
   - [Network Commands](#Network-Commands)
     - [Ping](#Ping)
@@ -52,7 +59,7 @@ This is my Public repository.
 # Microsoft Windows 10 and 11 Commands
 
 ## Windows Commands
-Get System Info
+### Get System Info
 ```Powershell
 #Get System Information
 systeminfo
@@ -61,17 +68,17 @@ systeminfo
 #Get System Information from a remote computer
 system info /s computername
 ```
-Get Windows System Info
+### Get Windows System Info
 ```Powershell
 #Get Windows Product Name, Windows Version, OS Hardware Version
 Get-ComputerInfo | select WindowsProductName, WindowsVersion, OsHardwareAbstractionLayer
 ```
-Get Host Name of local computer
+### Get Host Name of local computer
 ```Powershell
 #Get hostname of local computer
 hostname
 ```
-Get MAC Address of local computer
+### Get MAC Address of local computer
 ```Powershell
 #Get MAC Address
 getmac
@@ -80,12 +87,12 @@ getmac
 #Get MAC Address Verbose
 getmac /v
 ```
-Get MAC Address of remote computer
+### Get MAC Address of remote computer
 ```Powershell
 #Get MAC Address from remote computer
 getmac /s computername
 ```
-Whoami commands
+### Whoami commands
 ```Powershell
 #Get the current logged on user
 whoami
@@ -106,7 +113,7 @@ whoami /user
 #Displays all information for the current user
 whoami /all
 ```
-Shutdown Commands
+### Shutdown Commands
 ```Powershell
 #This command will restart computer
 shutdown /r /m \\computer name
