@@ -363,10 +363,6 @@ Assoc
 Assoc .mp4=vlc.vlc
 ```
 ```Powershell
-#Check sys files
-Sfc /scannow
-```
-```Powershell
 #Check sys image issues
 DISM /online /cleanup /checkhealth
 ```
@@ -783,7 +779,7 @@ Get-DatabaseAvailabilityGroup DAG01 -status |fl name, Primaryactivemanager
 Move Exchange Database BACK
 
 ```Powershell
-#Move Database back to Hybrid1
+#Move Database back to Server1
 Move-ActiveMailboxDatabase DB1 -ActivateOnServer Server1
 ```
 ```Powershell
