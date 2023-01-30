@@ -46,6 +46,7 @@ This is my Public repository.
       - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
       - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
       - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
+      - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
       - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
     - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
   - [Windows Server Commands](#Windows-Server-Commands)
@@ -421,6 +422,24 @@ Get-ADDefaultDomainPasswordPolicy
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -LockedOut | Select Name
+```
+```Powershell
+#Search for all locked out users with table
+Search-ADAccount -LockedOut -UsersOnly | Select-Object Name,Lockedout,SamAccountName,UserPrincipalName
+```
+
+### Active Directory Expiring Accounts
+```Powershell
+#Search for all locked out users
+Search-ADAccount -AccountExpiring -TimeSpan "30" | Get-Memeber
+```
+```Powershell
+#Search for all locked out users with table
+Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
+```
+```Powershell
+#Search for all locked out users
+Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
 ```Powershell
 #Search for all locked out users with table
