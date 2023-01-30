@@ -929,6 +929,10 @@ Test-ApplicationAccessPolicy -Identity user.name@test.edu -AppId 60ee7495-2592-4
 
 View the deleted Microsoft 365 groups that are available to restore using PowerShell
 ```Powershell
+#Connect to Azure AD with your admin account
+Connect-AzureAD
+```
+```Powershell
 #Run the following cmdlet to display all deleted Microsoft 365 groups in your Azure AD organization that are still available to restore
 Get-AzureADMSDeletedGroup
 ```
