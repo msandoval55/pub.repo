@@ -375,6 +375,7 @@ DISM /online /cleanup /restorehealth
 # Microsoft Windows Server
 
 ## Active Directory
+### Active Directory Commands
 Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
@@ -385,7 +386,22 @@ Active Directory Group Memberships
 #Find what groups a user is a member of
 get-ADprincipalGlobalMembership -Identity "ad.username" | select name | sort name
 ```
-
+```Powershell
+#Get active directory user groups
+(Get-ADUser ad.username -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
+```
+```Powershell
+#Get active directory group members
+Get-ADGroupMember -Identity ad.groupname -Recursive | Get-ADObject -Properties Name, Title, Department | Format Table Name, Title, Department
+```
+```Powershell
+#Find Groups in a OU
+Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or..com | Get-ADObject -Properties Name, Title, Department | Format Table Name, Title, Department
+```
+```Powershell
+#Find Groups in a OU with Name Only
+Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or..com | Get-ADObject -Properties Name | Format Table Name
+```
 
 
 ### Active Directory Group Audit Script
