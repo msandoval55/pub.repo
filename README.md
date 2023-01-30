@@ -22,6 +22,11 @@ This is my Public repository.
     - [Whoami commands](#Whoami-commands)
     - [Shutdown Commands](#Shutdown-Commands)
   - [File Directory Commands](#File-Directory-Commands)
+    - [Change Directory](#Change-Directory)
+    - [Make Directory](#Make-Directory)
+    - [System File Checker](#System-File-Checker)
+    - [Check Disk](#Check-Disk)
+    - [Connect and Remove Network Resources](#Connect-and-Remove-Network-Resources)
   - [Network Commands](#Network-Commands)
     - [Ping](#Ping)
     - [ipconfig](#ipconfig)
@@ -145,18 +150,18 @@ shutdown /a
 
 ## File Directory Commands
 
-Change Directory
+### Change Directory
 ```Powershell
 #The cd command allows you to change to another directory on your computer
 cd windows 
 cd c:\temp example
 ```
-Make Directory
+### Make Directory
 ```Powershell
 #The mkdir command will create a directory or subdirectory. It creates the directory in the current directory
 mkdir folder1
 ```
-System File Checker
+### System File Checker
 ```Powershell
 #The sfc command can be used to verify and replace important windows system files. 
 #If you experience a blue screen or other crashes the sfc command may fix the issue
@@ -166,12 +171,12 @@ sfc /scannow
 #You can also run a test only without repairing it.
 sfc /verifyonly
 ```
-Check Disk
+### Check Disk
 ```Powershell
 #The chkdsk command scans the file system on the disk and checks the integrity of the files and metadata
 chkdsk
 ```
-Connect and Remove Network Resources
+### Connect and Remove Network Resources
 ```Powershell
 #Map a network drive
 net use \\srv-vm1\share
