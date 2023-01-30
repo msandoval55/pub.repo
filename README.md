@@ -1,6 +1,6 @@
 # pub.repo
 
-This is my private repository.
+This is my Public repository.
 
 
 | Subjects | Syntax |
