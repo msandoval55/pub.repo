@@ -441,10 +441,6 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 #Search for all locked out users
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
-```Powershell
-#Search for all locked out users with table
-Search-ADAccount -LockedOut -UsersOnly | Select-Object Name,Lockedout,SamAccountName,UserPrincipalName
-```
 
 ### Active Directory Group Memberships
 ```Powershell
