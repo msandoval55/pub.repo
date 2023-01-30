@@ -390,15 +390,15 @@ Get-ADDefaultDomainPasswordPolicy
 Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
-Get-ADprincipalGlobalMembership -Identity "ad.username" | select name | sort name
+Get-ADPrincipalGroupMembership -Identity "ad.username" | select name | sort name
 ```
 ```Powershell
 #Get active directory user groups
-(Get-ADUser ad.username -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
+(Get-ADUser "ad.username" -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
 ```
 ```Powershell
 #Get active directory group members
-Get-ADGroupMember -Identity ad.groupname -Recursive | Get-ADObject -Properties Name, Title, Department | Format Table Name, Title, Department
+Get-ADGroupMember -Identity "ad.groupname" -Recursive | select name | sort Name, Title, Department
 ```
 ```Powershell
 #Find Groups in a OU
