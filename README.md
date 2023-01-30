@@ -45,6 +45,7 @@ This is my Public repository.
     - [Active Directory Commands](#Active-Directory-Commands)
       - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
       - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
+      - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
       - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
     - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
   - [Windows Server Commands](#Windows-Server-Commands)
@@ -415,6 +416,17 @@ Import-Module activedirectory
 #Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
+
+### Active Directory Locked Out Users
+```Powershell
+#Search for all locked out users
+Search-ADAccount -LockedOut | Select Name
+```
+```Powershell
+#Search for all locked out users with table
+Search-ADAccount -LockedOut -UsersOnly | Select-Object Name,Lockedout,SamAccountName,UserPrincipalName
+```
+
 ### Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
