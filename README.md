@@ -33,6 +33,7 @@ This is my Public repository.
 - [Microsoft Azure](#Microsoft-Azure)
   - [Microsoft Azure Active Directory](#Microsoft-Azure-Active-Directory)
     - [App Registration API Permission](#App-Registration-API-Permission)
+    - [Restore a deleted Microsoft 365 group in Azure Active Directory](#Restore-a-deleted-Microsoft-365-group-in-Azure-Active-Directory)
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
 
@@ -921,6 +922,30 @@ Test-ApplicationAccessPolicy -Identity test.testscores@test.edu -AppId 60ee7495-
 #Test connection with non-allowed mailbox "Will state Granted or Denied" 
 Test-ApplicationAccessPolicy -Identity user.name@test.edu -AppId 60ee7495-2592-4c3e-b74a-8da266d34567
 ```
+
+### Restore a deleted Microsoft 365 group in Azure Active Directory
+
+[Restore a deleted Microsoft 365 group in Azure Active Directory](https://learn.microsoft.com/en-us/azure/active-directory/enterprise-users/groups-restore-deleted)
+
+View the deleted Microsoft 365 groups that are available to restore using PowerShell
+```Powershell
+#Run the following cmdlet to display all deleted Microsoft 365 groups in your Azure AD organization that are still available to restore
+Get-AzureADMSDeletedGroup
+```
+```Powershell
+#Alternately, if you know the objectID of a specific group (and you can get it from the cmdlet in step 1), run the following cmdlet to verify that the specific deleted group has not yet been permanently purged
+Get-AzureADMSDeletedGroup –Id <objectId>
+```
+How to restore your deleted Microsoft 365 group
+```Powershell
+#Run the following cmdlet to restore the group and its contents
+Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
+```
+```Powershell
+#Alternatively, the following cmdlet can be run to permanently remove the deleted group
+Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
+```
+
 ## Microsoft Defender for Identity
 
 ### Install Microsoft Defender for Identity sensor
