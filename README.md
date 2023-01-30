@@ -25,6 +25,8 @@ This is my Public repository.
     - [Stop and Start Printer Spooler](#Stop-and-Start-Printer-Spooler)
     - [dcdiag](#dcdiag)
   - [Group Policy Commands](#Group-Policy-Commands)
+    - [Group policy update](#Group-policy-update)
+    - [Group policy Results](#Group-policy-Results)
   - [Remote Powershell Commands](#Remote-Powershell-Commands)
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
   - [Active Directory](#Active-Directory)
@@ -304,7 +306,7 @@ dcdiag /s:DC1
 
 ## Group Policy Commands
 
-Group policy update
+### Group policy update
 ```Powershell
 #This command will pull down any GPO changes to the computer
 gpupdate
@@ -313,7 +315,7 @@ gpupdate
 #Use /force to reapply all the GPOs on the computer
 gpupdate /force
 ```
-Group policy Results
+### Group policy Results
 ```Powershell
 #Display all applied GPOs run this command
 #Note: You need to run the command prompt in administrator mode or it will not generate a full report.
