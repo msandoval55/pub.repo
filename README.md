@@ -417,6 +417,27 @@ Import-Module activedirectory
 #Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
+### Active Directory User
+```Powershell
+#Get AD user
+Get-ADUser -Identity username
+```
+```Powershell
+#Get-AdUser All Properties
+Get-ADUser -Identity username -Properties *
+```
+```Powershell
+#Get list of adusers passwords last set older than 90 days
+Get-ADUser -Filter 'Enabled -eq $True' -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).adddays(-90)} | select Name,SamAccountName,PasswordLastSet
+```
+```Powershell
+#Get aduser manager name in an active directory, run the following command
+get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Manager';Expression={(Get-ADUser ($_.Manager)).SAMAccountname}}
+```
+```Powershell
+#Get AdUser BadPwdCount
+get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
+```
 
 ### Active Directory Locked Out Users
 ```Powershell
