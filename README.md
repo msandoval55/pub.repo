@@ -419,12 +419,16 @@ Get-ADDefaultDomainPasswordPolicy
 ```
 ### Active Directory User
 ```Powershell
-#Get AD user
+#Get ADUser
 Get-ADUser -Identity username
 ```
 ```Powershell
 #Get-AdUser All Properties
 Get-ADUser -Identity username -Properties *
+```
+```Powershell
+#Get-AdUser search by Title
+Get-ADUser -Filter "title -eq 'Systems Administrator II'" | Select Name,Enabled | ft
 ```
 ```Powershell
 #Get list of adusers passwords last set older than 90 days
