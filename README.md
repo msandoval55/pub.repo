@@ -57,9 +57,9 @@ This is my Public repository.
   - [Windows Server Commands](#Windows-Server-Commands)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
-    - [Updating Server3](#Updating-Hybrid3)
-    - [Updating Server2](#Updating-Hybrid2)
-    - [Updating Server1](#Updating-Hybrid1)
+    - [Updating Server3](#Updating-Server3)
+    - [Updating Server2](#Updating-Server2)
+    - [Updating Server1](#Updating-Server1)
   - [Exchange PowerShell Error Moving PAM](#Exchange-PowerShell-Error-Moving-PAM)
   - [Exchange Misc Powershell CMDs](#Exchange-Misc-Powershell-CMDs)
 - [Microsoft Azure](#Microsoft-Azure)
@@ -727,6 +727,7 @@ notepad
 
 # Microsoft Exchange
 ## Exchange Patching Servers Windows Server Core
+
 ### Updating Server3
 
 ```Powershell
