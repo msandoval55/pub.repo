@@ -1129,3 +1129,23 @@ c:\temp\azure atp sensor setup>dir
 ```Powershell
 c:\temp\azure atp sensor setup>"azure atp sensor setup.exe" /quite netframeworkcommandlinearguments="/q" AccessKey="ENTER AZURE ATP KEY"
 ```
+
+
+# WinDirStat
+
+## Running WinDirStat on Remote Server
+
+1. Select File > Select Open.
+2. Under A Folder enter the UNC path to the server and the drive.
+3. Once path has been entered, press enter and wait for drive info to populate.
+
+Example: 
+
+```
+\\pir.ad.lazyadmin.edu\c$
+\\pir.ad.lazyadmin.edu\d$
+\\pir.ad.lazyadmin.edu\e$
+\\pir.ad.lazyadmin.edu\l$
+```
+![image](https://user-images.githubusercontent.com/116230991/216710577-b1311744-c48c-4638-bde3-d7c161e52db3.png)
+
