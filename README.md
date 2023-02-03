@@ -45,6 +45,7 @@ This is my Public repository.
     - [Active Directory Commands](#Active-Directory-Commands)
       - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
       - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
+      - [Active Directory User](#Active-Directory-User)
       - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
       - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
       - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
@@ -425,6 +426,14 @@ Get-ADUser -Identity username
 ```Powershell
 #Get-AdUser All Properties
 Get-ADUser -Identity username -Properties *
+```
+```Powershell
+#Get-AdUser search by first name (givenname), sort and formated table added
+Get-ADUser -Filter "Givenname -eq 'Martin'" | sort givenname,surname,SamAccountName,UserPrincipalName | Format-Table givenname,surname,SamAccountName,UserPrincipalName
+```
+```Powershell
+#Get-AdUser search by last name (surname), sort and formated table added
+Get-ADUser -Filter "Surname -eq 'Sandoval'" | sort givenname,surname,SamAccountName,UserPrincipalName | Format-Table givenname,surname,SamAccountName,UserPrincipalName
 ```
 ```Powershell
 #Get-AdUser search by Title
