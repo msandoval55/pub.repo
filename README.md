@@ -11,7 +11,6 @@ This is my Public repository.
 | Microsoft Azure | Powershell  |
 | WinDirStat | Disk Usage Analyzer |
 
-
 ## Summary
 
 - [Microsoft Windows 10 and 11 Commands](#Microsoft-Windows-10-and-11-Commands)
@@ -68,7 +67,6 @@ This is my Public repository.
     - [Restore a deleted Microsoft 365 group in Azure Active Directory](#Restore-a-deleted-Microsoft-365-group-in-Azure-Active-Directory)
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
-
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
