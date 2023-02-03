@@ -49,7 +49,9 @@ This is my Public repository.
       - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
       - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
       - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
-    - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
+      - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
+      - [Active Directory Search Base](#Active-Directory-Search-Base)
+      - [Active Directory Servers List](#Active-Directory-Servers-List)
   - [Windows Server Commands](#Windows-Server-Commands)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
@@ -497,31 +499,6 @@ Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.nam
 #Find Groups in a OU with Name Only
 Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or.com" | Get-ADObject -Properties Name | Format Table Name
 ```
-### Active Directory Search Base
-
-SearchBase Example
-![image](https://user-images.githubusercontent.com/116230991/216633375-2a9718d8-775b-4cff-98f8-adfea1d341d5.png)
-
-AD Levels
-```powershell
-1: IT
-2: Amsterdam
-3: Sites
-4: Lazyadmin
-5: NL
-
-#If you have . between your domain name you may need to separate with additional DC=, example DC=ad,DC=lazyadmin,DC=nl
-"OU=IT,OU=Amsterdam,OU=Sites,DC=Lazyadmin,DC=edu"
-
-#By default, the -SearchBase parameter will return all users from the specified OU and nested OU’s.
-```
-
-```Powershell
-#Search for user in a OU
-#ft = format table
-Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft 
-Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft Name,Givenname,SamAccountName,ObjectGUID
-```
 
 ### Active Directory Group Audit Script
 
@@ -641,6 +618,37 @@ function Red
 process { Write-Host $_-ForegroundColor Red }
 }
 Write-Output
+```
+### Active Directory Search Base
+
+SearchBase Example
+![image](https://user-images.githubusercontent.com/116230991/216633375-2a9718d8-775b-4cff-98f8-adfea1d341d5.png)
+
+AD Levels
+```powershell
+1: IT
+2: Amsterdam
+3: Sites
+4: Lazyadmin
+5: NL
+
+#If you have . between your domain name you may need to separate with additional DC=, example DC=ad,DC=lazyadmin,DC=nl
+"OU=IT,OU=Amsterdam,OU=Sites,DC=Lazyadmin,DC=edu"
+
+#By default, the -SearchBase parameter will return all users from the specified OU and nested OU’s.
+```
+
+```Powershell
+#Search for user in a OU
+#ft = format table
+Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft 
+Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft Name,Givenname,SamAccountName,ObjectGUID
+```
+
+### Active Directory Servers List
+
+```Powershell
+Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
 
 ## Windows Server Commands
