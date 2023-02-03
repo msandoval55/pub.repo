@@ -81,6 +81,11 @@ systeminfo
 #Get System Information from a remote computer
 system info /s computername
 ```
+```Powershell
+#Get infomation about your Windows version and Edition
+systeminfo | findstr OS
+```
+
 ### Get Windows System Info
 ```Powershell
 #Get Windows Product Name, Windows Version, OS Hardware Version
