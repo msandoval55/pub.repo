@@ -424,35 +424,35 @@ Get-ADDefaultDomainPasswordPolicy
 Get-ADUser -Identity username
 ```
 ```Powershell
-#Get-AdUser All Properties
+#Get-ADUser All Properties
 Get-ADUser -Identity username -Properties *
 ```
 ```Powershell
-#Get-AdUser search by first name (givenname), sort and formated table added
+#Get-ADUser search by first name (givenname), sort and formated table added
 Get-ADUser -Filter "Givenname -eq 'Martin'" | sort givenname,surname,SamAccountName,UserPrincipalName | Format-Table givenname,surname,SamAccountName,UserPrincipalName
 ```
 ```Powershell
-#Get-AdUser search by last name (surname), sort and formated table added
+#Get-ADUser search by last name (surname), sort and formated table added
 Get-ADUser -Filter "Surname -eq 'Sandoval'" | sort givenname,surname,SamAccountName,UserPrincipalName | Format-Table givenname,surname,SamAccountName,UserPrincipalName
 ```
 ```Powershell
-#Get-AdUser search by Title
+#Get-ADUser search by Title
 Get-ADUser -Filter "title -eq 'Systems Administrator II'" | Select Name,Enabled | ft
 ```
 ```Powershell
-#Get ADUser groups (memberof)
+#Get-ADUser groups (memberof)
 (Get-ADUser "ad.username" -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
 ```
 ```Powershell
-#Get list of adusers passwords last set older than 90 days
+#Get-ADUsers passwords last set older than 90 days
 Get-ADUser -Filter 'Enabled -eq $True' -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).adddays(-90)} | select Name,SamAccountName,PasswordLastSet
 ```
 ```Powershell
-#Get aduser manager name in an active directory, run the following command
+#Get-ADUser manager name in an active directory, run the following command
 get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Manager';Expression={(Get-ADUser ($_.Manager)).SAMAccountname}}
 ```
 ```Powershell
-#Get AdUser BadPwdCount
+#Get-ADUser BadPwdCount
 get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
 ```
 
