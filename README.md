@@ -440,6 +440,10 @@ Get-ADUser -Filter "Surname -eq 'Sandoval'" | sort givenname,surname,SamAccountN
 Get-ADUser -Filter "title -eq 'Systems Administrator II'" | Select Name,Enabled | ft
 ```
 ```Powershell
+#Get ADUser groups (memberof)
+(Get-ADUser "ad.username" -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
+```
+```Powershell
 #Get list of adusers passwords last set older than 90 days
 Get-ADUser -Filter 'Enabled -eq $True' -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).adddays(-90)} | select Name,SamAccountName,PasswordLastSet
 ```
@@ -480,10 +484,6 @@ Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```Powershell
 #Find what groups a user is a member of
 Get-ADPrincipalGroupMembership -Identity "ad.username" | select name | sort name
-```
-```Powershell
-#Get active directory user groups
-(Get-ADUser "ad.username" -Properties MemberOf).MemberOf | Get-ADObject -Properties Name | Sort Name | Format-Table Name
 ```
 ```Powershell
 #Get active directory group members
