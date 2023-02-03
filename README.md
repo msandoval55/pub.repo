@@ -449,11 +449,11 @@ Get-ADUser -Filter 'Enabled -eq $True' -Properties PasswordLastSet | Where-Objec
 ```
 ```Powershell
 #Get-ADUser manager name in an active directory, run the following command
-get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Manager';Expression={(Get-ADUser ($_.Manager)).SAMAccountname}}
+Get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Manager';Expression={(Get-ADUser ($_.Manager)).SAMAccountname}}
 ```
 ```Powershell
 #Get-ADUser BadPwdCount
-get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
+Get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
 ```
 
 ### Active Directory Locked Out Users
