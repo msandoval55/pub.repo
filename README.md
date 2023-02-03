@@ -23,6 +23,7 @@ This is my Public repository.
     - [Whoami commands](#Whoami-commands)
     - [Shutdown Commands](#Shutdown-Commands)
   - [File Directory Commands](#File-Directory-Commands)
+    - [UNC to Machines File Directory](#UNC-to-Machines-File-Directory)
     - [Change Directory](#Change-Directory)
     - [Make Directory](#Make-Directory)
     - [System File Checker](#System-File-Checker)
@@ -162,6 +163,15 @@ shutdown /a
 ```
 
 ## File Directory Commands
+
+### UNC to Machines File Directory
+
+```Powershell
+#Use Run or File Explorer to UNC to machines file directory
+#You will need to be in a domain. If you are not in a domain: UAC will prevent remote access to administrative shares.
+\\machinename\c$ 
+\\IPAddress\c$
+```
 
 ### Change Directory
 ```Powershell
