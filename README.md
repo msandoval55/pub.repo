@@ -9,6 +9,8 @@ This is my Public repository.
 | Microsoft Windows Server | CMD, Powershell  |
 | Microsoft Exchange Server | Powershell  |
 | Microsoft Azure | Powershell  |
+| WinDirStat | Disk Usage Analyzer |
+
 
 ## Summary
 
@@ -67,7 +69,7 @@ This is my Public repository.
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
 
-
+- [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
 
