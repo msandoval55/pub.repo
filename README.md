@@ -1,6 +1,6 @@
-# pub.repo
+# My Sys Admin Repo
 
-This is my public repository.
+This is a collection of commands and scripts I have gathered or written throughout my career in the information technology field. Please keep in mind that not all commands will work with a standard account and may need administrator permissions to execute commands. 
 
 
 | Subjects | Syntax |
