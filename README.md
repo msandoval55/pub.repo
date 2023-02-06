@@ -499,7 +499,7 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
 
-### Group Managed Service Accounts gMSA
+### Active Directory Group Managed Service Accounts gMSA
 
 **Basic concepts**
 
