@@ -54,6 +54,7 @@ This is my Public repository.
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
+   - [RSAT Tools](#RSAT-Tools)
   - [Windows Server Commands](#Windows-Server-Commands)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
@@ -723,6 +724,19 @@ Open Notepad with CMD or Powershell
 notepad
 ```
 
+## RSAT Tools
+
+You can use the following one line of PowerShell to easily install all of the available Remote Server Administration Tools (RSAT) in one go. I end up running this after every Windows feature update., Saves wasting time with a GUI.
+
+```Powershell
+#Open an admin PowerShell prompt
+#Install all rsat tools
+Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
+```
+```Powershell
+#Checking the install status
+Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
+```
 
 
 # Microsoft Exchange
