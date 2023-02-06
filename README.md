@@ -50,7 +50,7 @@ This is my public repository.
       - [Active Directory User](#Active-Directory-User)
       - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
       - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
-      - [Active Directory Group Managed Service Accounts (gMSA)](#Active-Directory-Group-Managed-Service-Accounts-(gMSA))
+      - [Active Directory Group Managed Service Accounts gMSA](#Active-Directory-Group-Managed-Service-Accounts-gMSA)
       - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
@@ -499,7 +499,7 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
 
-### Group Managed Service Accounts (gMSA)
+### Group Managed Service Accounts gMSA
 
 **Basic concepts**
 
