@@ -730,8 +730,12 @@ You can use the following one line of PowerShell to easily install all of the av
 
 ```Powershell
 #Open an admin PowerShell prompt
-#Install all rsat tools
+#To install all the RSAT tools at once, type the command 
 Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
+```
+```Powershell
+#To install RSAT components individually, execute the command
+Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
 ```
 ```Powershell
 #Checking the install status
