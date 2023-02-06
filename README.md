@@ -1,6 +1,6 @@
 # pub.repo
 
-This is my Public repository.
+This is my public repository.
 
 
 | Subjects | Syntax |
@@ -54,8 +54,8 @@ This is my Public repository.
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
-   - [RSAT Tools](#RSAT-Tools)
   - [Windows Server Commands](#Windows-Server-Commands)
+  - [RSAT Tools](#RSAT-Tools)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
     - [Updating Server3](#Updating-Server3)
