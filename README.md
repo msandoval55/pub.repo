@@ -54,7 +54,7 @@ This is my public repository.
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
-  - [Windows Server Commands](#Windows-Server-Commands)
+  - [Windows Server Core Commands](#Windows-Server-Core-Commands)
   - [RSAT Tools](#RSAT-Tools)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
@@ -677,7 +677,7 @@ Obtain list of servers in AD using PowerShell:
 Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
 
-## Windows Server Commands
+## Windows Server Core Commands
 
 Uninstalling KB Updates with Server Core
 ```Powershell
