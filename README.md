@@ -1282,6 +1282,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 3. Create a temp folder on the c: drive.
 4. Download and store the stream classic report script in the c:\temp folder you made. 
 5. Create a token.txt file with the token from the stream site using f-12 dev tools and save in the the temp folder.
+![image](https://user-images.githubusercontent.com/116230991/218159215-15f0dc85-64fe-47b8-bd63-91f9a6aefe5a.png)
 6. Run the ps cmds below.
 ```Powershell
 #Change directory to where you have the stream report script
