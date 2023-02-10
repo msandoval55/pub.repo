@@ -70,6 +70,8 @@ This is a collection of commands and scripts I have gathered or written througho
     - [Restore a deleted Microsoft 365 group in Azure Active Directory](#Restore-a-deleted-Microsoft-365-group-in-Azure-Active-Directory)
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
+ - [Microsoft 365](#Microsoft-365)
+   - [Microsoft Stream Classic Reports](#Microsoft-Stream-Classic-Reports)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
@@ -1232,6 +1234,31 @@ c:\temp\azure atp sensor setup>dir
 c:\temp\azure atp sensor setup>"azure atp sensor setup.exe" /quite netframeworkcommandlinearguments="/q" AccessKey="ENTER AZURE ATP KEY"
 ```
 
+# Microsoft 365
+
+## Microsoft Stream Classic Reports
+
+1. Make sure you logon to powershell ISE as an administrator
+2. Make sure you have unrestriced access
+```Powershell
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+3. Create a temp folder on the c: drive.
+4. Download and store the stream classic report script in the c:\temp folder you made. 
+5. Create a token.txt file with the token from the stream site using f-12 dev tools and save in the the temp folder.
+![image](https://user-images.githubusercontent.com/116230991/218159215-15f0dc85-64fe-47b8-bd63-91f9a6aefe5a.png)
+6. Run the ps cmds below.
+```Powershell
+#Change directory to where you have the stream report script
+cd C:\temp\StreamClassicVideoReport
+#Enter the the following ps cmd. Provide the tenantid and token location. Remember to refresh your token if the script fails.
+.\StreamClassicVideoReportGenerator.ps1 -aadtenantid tenantid -inputfile token.txt -outdir "C:\temp\StreamClassicVideoReport\2-10-2023"
+```
+7. Tip!: You can use powerBi to organize the raw data from the excel.cvs file. 
+
+Documentation from Microsoft if needed.
+https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
+
 
 # WinDirStat
 
@@ -1270,27 +1297,4 @@ Example:
 ```
 ![image](https://user-images.githubusercontent.com/116230991/216710577-b1311744-c48c-4638-bde3-d7c161e52db3.png)
 
-# Microsoft 365
 
-## Microsoft Stream Classic Reports
-
-1. Make sure you logon to powershell ISE as an administrator
-2. Make sure you have unrestriced access
-```Powershell
-Set-ExecutionPolicy Unrestricted -Scope CurrentUser
-```
-3. Create a temp folder on the c: drive.
-4. Download and store the stream classic report script in the c:\temp folder you made. 
-5. Create a token.txt file with the token from the stream site using f-12 dev tools and save in the the temp folder.
-![image](https://user-images.githubusercontent.com/116230991/218159215-15f0dc85-64fe-47b8-bd63-91f9a6aefe5a.png)
-6. Run the ps cmds below.
-```Powershell
-#Change directory to where you have the stream report script
-cd C:\temp\StreamClassicVideoReport
-#Enter the the following ps cmd. Provide the tenantid and token location. Remember to refresh your token if the script fails.
-.\StreamClassicVideoReportGenerator.ps1 -aadtenantid tenantid -inputfile token.txt -outdir "C:\temp\StreamClassicVideoReport\2-10-2023"
-```
-7. Tip!: You can use powerBi to organize the raw data from the excel.cvs file. 
-
-Documentation from Microsoft if needed.
-https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
