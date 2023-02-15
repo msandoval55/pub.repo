@@ -427,19 +427,19 @@ DISM /online /cleanup /restorehealth
 # Microsoft Windows Server
 
 ## Active Directory
-### Active Directory Commands
+## Active Directory Commands
 
-### Manually import the module into the PowerShell
+## Manually import the module into the PowerShell
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
-### Active Directory Domain Password Policy
+## Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
-### Active Directory User
+## Active Directory User
 ```Powershell
 #Get ADUser
 Get-ADUser -Identity username
@@ -477,7 +477,7 @@ Get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Man
 Get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
 ```
 
-### Active Directory Locked Out Users
+## Active Directory Locked Out Users
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -LockedOut | Select Name
@@ -487,7 +487,7 @@ Search-ADAccount -LockedOut | Select Name
 Search-ADAccount -LockedOut -UsersOnly | Select-Object Name,Lockedout,SamAccountName,UserPrincipalName
 ```
 
-### Active Directory Expiring Accounts
+## Active Directory Expiring Accounts
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -AccountExpiring -TimeSpan "30" | Get-Memeber
@@ -501,7 +501,7 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
 
-### Active Directory Group Managed Service Accounts gMSA
+## Active Directory Group Managed Service Accounts gMSA
 
 **Basic concepts**
 
@@ -573,7 +573,7 @@ You can now use the gMSA for a service, a group of IIS applications, or schedule
 
 
 
-### Active Directory Group Memberships
+## Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
 Get-ADPrincipalGroupMembership -Identity "ad.username" | select name | sort name
@@ -591,7 +591,7 @@ Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.nam
 Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or.com" | Get-ADObject -Properties Name | Format Table Name
 ```
 
-### Active Directory Group Audit Script
+## Active Directory Group Audit Script
 
 ```Powershell
 function Green
@@ -710,7 +710,7 @@ process { Write-Host $_-ForegroundColor Red }
 }
 Write-Output
 ```
-### Active Directory Search Base
+## Active Directory Search Base
 
 SearchBase Example
 ![image](https://user-images.githubusercontent.com/116230991/216633375-2a9718d8-775b-4cff-98f8-adfea1d341d5.png)
@@ -736,7 +736,7 @@ Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft
 Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft Name,Givenname,SamAccountName,ObjectGUID
 ```
 
-### Active Directory Servers List
+## Active Directory Servers List
 
 Obtain list of servers in AD using PowerShell:
 
@@ -1165,9 +1165,9 @@ Move-ActiveMailboxDatabase DB1 -SkipMoveSuppressionChecks -ActivateOnServer Serv
 
 
 # Microsoft Azure
-## Microsoft Azure Active Directory
+# Microsoft Azure Active Directory
 
-### App Registration API Permission
+## App Registration API Permission
 ```Powershell
 #Open Powershell and import exchange online management module
 Import-Module ExchangeOnlineManagement
@@ -1185,7 +1185,44 @@ Test-ApplicationAccessPolicy -Identity test.testscores@test.edu -AppId 60ee7495-
 Test-ApplicationAccessPolicy -Identity user.name@test.edu -AppId 60ee7495-2592-4c3e-b74a-8da266d34567
 ```
 
-### Restore a deleted Microsoft 365 group in Azure Active Directory
+## Report Microsoft 365 Groups Expiration Policy
+
+From https://office365itpros.com/2022/02/09/microsoft-groups-expiration-policy/
+
+```Powershell
+#Pre reqs
+Install-Module AzureAD 
+Install-Module ExchangeOnline
+Import-Module AzureAD 
+Import-Module ExchangeOnline
+Connect-AzureAD
+Connect-ExchangeOnline
+```
+```Powershell
+Write-Host "Finding Microsoft 365 Groups to check…"
+[array]$ExpirationPolicyGroups  = (Get-UnifiedGroup -ResultSize Unlimited | ? {$_.ExpirationTime -ne $Null} | Select DisplayName, ExternalDirectoryObjectId, WhenCreated, ExpirationTime )
+If (!($ExpirationPolicyGroups)) { Write-Host "No groups found subject to the expiration policy - exiting" ; break }
+Write-Host $ExpirationPolicyGroups.Count “groups found. Now checking expiration status.”
+$Report = [System.Collections.Generic.List[Object]]::new(); $Today = (Get-Date)
+ForEach ($G in $ExpirationPolicyGroups) {
+        $Days = (New-TimeSpan -Start $G.WhenCreated -End $Today).Days  # Age of group
+        $LastRenewed = (Get-AzureADMSGroup -Id $G.ExternalDirectoryObjectId).RenewedDateTime
+        $DaysLeft = (New-TimeSpan -Start $Today -End $G.ExpirationTime).Days
+        $ReportLine = [PSCustomObject]@{
+           Group       = $G.DisplayName
+           Created     = Get-Date($G.WhenCreated) -format g
+           AgeinDays   = $Days
+           LastRenewed = Get-Date($LastRenewed) -format g
+           NextRenewal = Get-Date($G.ExpirationTime) -format g
+           DaysLeft    = $DaysLeft}
+          $Report.Add($ReportLine)
+} # End Foreach
+CLS;Write-Host "Total Microsoft 365 Groups covered by expiration policy:" $ExpirationPolicyGroups.Count
+Write-Host “”
+$Report | Sort DaysLeft | Select Group, @{n="Last Renewed"; e= {$_.LastRenewed}}, @{n="Next Renewal Due"; e={$_.NextRenewal}}, @{n="Days before Expiration"; e={$_.DaysLeft}}
+```
+
+## Restore a deleted Microsoft 365 group in Azure Active Directory
 
 [Restore a deleted Microsoft 365 group in Azure Active Directory](https://learn.microsoft.com/en-us/azure/active-directory/enterprise-users/groups-restore-deleted)
 
