@@ -1,6 +1,7 @@
 # My Sys Admin Repo
 
-This is a collection of commands and scripts I have gathered or written throughout my career in the information technology field. Please keep in mind that not all commands will work with a standard account and may need administrator permissions to execute commands. 
+
+This is a collection of commands and scripts I have gathered or written throughout my career in the information technology field. Please keep in mind that not all commands will work with a standard account and may need administrator or domain permissions to execute commands. 
 
 
 | Subjects | Syntax |
@@ -70,6 +71,8 @@ This is a collection of commands and scripts I have gathered or written througho
     - [Restore a deleted Microsoft 365 group in Azure Active Directory](#Restore-a-deleted-Microsoft-365-group-in-Azure-Active-Directory)
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
+ - [Microsoft 365](#Microsoft-365)
+   - [Microsoft Stream Classic Reports](#Microsoft-Stream-Classic-Reports)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
@@ -425,19 +428,19 @@ DISM /online /cleanup /restorehealth
 # Microsoft Windows Server
 
 ## Active Directory
-### Active Directory Commands
+## Active Directory Commands
 
-### Manually import the module into the PowerShell
+## Manually import the module into the PowerShell
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
-### Active Directory Domain Password Policy
+## Active Directory Domain Password Policy
 ```Powershell
 #Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
-### Active Directory User
+## Active Directory User
 ```Powershell
 #Get ADUser
 Get-ADUser -Identity username
@@ -475,7 +478,7 @@ Get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Man
 Get-ADUser -Identity username -Properties *  | Select-Object badpwdcount
 ```
 
-### Active Directory Locked Out Users
+## Active Directory Locked Out Users
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -LockedOut | Select Name
@@ -485,7 +488,7 @@ Search-ADAccount -LockedOut | Select Name
 Search-ADAccount -LockedOut -UsersOnly | Select-Object Name,Lockedout,SamAccountName,UserPrincipalName
 ```
 
-### Active Directory Expiring Accounts
+## Active Directory Expiring Accounts
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -AccountExpiring -TimeSpan "30" | Get-Memeber
@@ -499,7 +502,7 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
 ```
 
-### Active Directory Group Managed Service Accounts gMSA
+## Active Directory Group Managed Service Accounts gMSA
 
 **Basic concepts**
 
@@ -571,7 +574,7 @@ You can now use the gMSA for a service, a group of IIS applications, or schedule
 
 
 
-### Active Directory Group Memberships
+## Active Directory Group Memberships
 ```Powershell
 #Find what groups a user is a member of
 Get-ADPrincipalGroupMembership -Identity "ad.username" | select name | sort name
@@ -589,7 +592,7 @@ Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.nam
 Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or.com" | Get-ADObject -Properties Name | Format Table Name
 ```
 
-### Active Directory Group Audit Script
+## Active Directory Group Audit Script
 
 ```Powershell
 function Green
@@ -708,7 +711,7 @@ process { Write-Host $_-ForegroundColor Red }
 }
 Write-Output
 ```
-### Active Directory Search Base
+## Active Directory Search Base
 
 SearchBase Example
 ![image](https://user-images.githubusercontent.com/116230991/216633375-2a9718d8-775b-4cff-98f8-adfea1d341d5.png)
@@ -734,7 +737,7 @@ Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft
 Get-ADUser -Filter * -SearchBase "OU=Amsterdam,OU=Sites,DC=lazyadmin,DC=nl" | ft Name,Givenname,SamAccountName,ObjectGUID
 ```
 
-### Active Directory Servers List
+## Active Directory Servers List
 
 Obtain list of servers in AD using PowerShell:
 
@@ -1163,9 +1166,9 @@ Move-ActiveMailboxDatabase DB1 -SkipMoveSuppressionChecks -ActivateOnServer Serv
 
 
 # Microsoft Azure
-## Microsoft Azure Active Directory
+# Microsoft Azure Active Directory
 
-### App Registration API Permission
+## App Registration API Permission
 ```Powershell
 #Open Powershell and import exchange online management module
 Import-Module ExchangeOnlineManagement
@@ -1183,7 +1186,44 @@ Test-ApplicationAccessPolicy -Identity test.testscores@test.edu -AppId 60ee7495-
 Test-ApplicationAccessPolicy -Identity user.name@test.edu -AppId 60ee7495-2592-4c3e-b74a-8da266d34567
 ```
 
-### Restore a deleted Microsoft 365 group in Azure Active Directory
+## Report Microsoft 365 Groups Expiration Policy
+
+From https://office365itpros.com/2022/02/09/microsoft-groups-expiration-policy/
+
+```Powershell
+#Pre reqs
+Install-Module AzureAD 
+Install-Module ExchangeOnline
+Import-Module AzureAD 
+Import-Module ExchangeOnline
+Connect-AzureAD
+Connect-ExchangeOnline
+```
+```Powershell
+Write-Host "Finding Microsoft 365 Groups to check…"
+[array]$ExpirationPolicyGroups  = (Get-UnifiedGroup -ResultSize Unlimited | ? {$_.ExpirationTime -ne $Null} | Select DisplayName, ExternalDirectoryObjectId, WhenCreated, ExpirationTime )
+If (!($ExpirationPolicyGroups)) { Write-Host "No groups found subject to the expiration policy - exiting" ; break }
+Write-Host $ExpirationPolicyGroups.Count “groups found. Now checking expiration status.”
+$Report = [System.Collections.Generic.List[Object]]::new(); $Today = (Get-Date)
+ForEach ($G in $ExpirationPolicyGroups) {
+        $Days = (New-TimeSpan -Start $G.WhenCreated -End $Today).Days  # Age of group
+        $LastRenewed = (Get-AzureADMSGroup -Id $G.ExternalDirectoryObjectId).RenewedDateTime
+        $DaysLeft = (New-TimeSpan -Start $Today -End $G.ExpirationTime).Days
+        $ReportLine = [PSCustomObject]@{
+           Group       = $G.DisplayName
+           Created     = Get-Date($G.WhenCreated) -format g
+           AgeinDays   = $Days
+           LastRenewed = Get-Date($LastRenewed) -format g
+           NextRenewal = Get-Date($G.ExpirationTime) -format g
+           DaysLeft    = $DaysLeft}
+          $Report.Add($ReportLine)
+} # End Foreach
+CLS;Write-Host "Total Microsoft 365 Groups covered by expiration policy:" $ExpirationPolicyGroups.Count
+Write-Host “”
+$Report | Sort DaysLeft | Select Group, @{n="Last Renewed"; e= {$_.LastRenewed}}, @{n="Next Renewal Due"; e={$_.NextRenewal}}, @{n="Days before Expiration"; e={$_.DaysLeft}}
+```
+
+## Restore a deleted Microsoft 365 group in Azure Active Directory
 
 [Restore a deleted Microsoft 365 group in Azure Active Directory](https://learn.microsoft.com/en-us/azure/active-directory/enterprise-users/groups-restore-deleted)
 
@@ -1232,6 +1272,31 @@ c:\temp\azure atp sensor setup>dir
 c:\temp\azure atp sensor setup>"azure atp sensor setup.exe" /quite netframeworkcommandlinearguments="/q" AccessKey="ENTER AZURE ATP KEY"
 ```
 
+# Microsoft 365
+
+## Microsoft Stream Classic Reports
+
+1. Make sure you logon to powershell ISE as an administrator
+2. Make sure you have unrestriced access
+```Powershell
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+3. Create a temp folder on the c: drive.
+4. Download and store the stream classic report script in the c:\temp folder you made. 
+5. Create a token.txt file with the token from the stream site using f-12 dev tools and save in the the temp folder.
+![image](https://user-images.githubusercontent.com/116230991/218159215-15f0dc85-64fe-47b8-bd63-91f9a6aefe5a.png)
+6. Run the ps cmds below.
+```Powershell
+#Change directory to where you have the stream report script
+cd C:\temp\StreamClassicVideoReport
+#Enter the the following ps cmd. Provide the tenantid and token location. Remember to refresh your token if the script fails.
+.\StreamClassicVideoReportGenerator.ps1 -aadtenantid tenantid -inputfile token.txt -outdir "C:\temp\StreamClassicVideoReport\2-10-2023"
+```
+7. Tip!: You can use powerBi to organize the raw data from the excel.cvs file. 
+
+Documentation from Microsoft if needed.
+https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
+
 
 # WinDirStat
 
@@ -1269,4 +1334,5 @@ Example:
 \\pir.ad.lazyadmin.edu\l$
 ```
 ![image](https://user-images.githubusercontent.com/116230991/216710577-b1311744-c48c-4638-bde3-d7c161e52db3.png)
+
 
