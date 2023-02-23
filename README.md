@@ -1300,6 +1300,9 @@ cd C:\temp\StreamClassicVideoReport
 Documentation from Microsoft if needed.
 https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
 
+Step-by Step guide to run the Stream migration tool
+https://learn.microsoft.com/en-US/stream/streamnew/step-by-step-guide?WT.mc_id=365AdminCSH_spo#during-migration
+
 # SharePoint
 ## Restore a Deleted OneDrive
 
