@@ -72,7 +72,10 @@ This is a collection of commands and scripts I have gathered or written througho
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
  - [Microsoft 365](#Microsoft-365)
-   - [Download Microsoft Stream Classic Reports](#Download-Microsoft-Stream-Classic-Reports)
+   - [Stream Classic](#Stream-Classic)
+     - [Download Microsoft Stream Classic Reports](#Download-Microsoft-Stream-Classic-Reports)
+   - [SharePoint](#SharePoint)
+     - [Recover a Deleted One Drive](#Recover-a-Deleted-One-Drive)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
@@ -1273,7 +1276,7 @@ c:\temp\azure atp sensor setup>"azure atp sensor setup.exe" /quite netframeworkc
 ```
 
 # Microsoft 365
-
+# Stream Classic
 ## Download Microsoft Stream Classic Reports
 
 1. Make sure you logon to powershell ISE as an administrator
@@ -1296,6 +1299,38 @@ cd C:\temp\StreamClassicVideoReport
 
 Documentation from Microsoft if needed.
 https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
+
+# SharePoint
+## Restore a Deleted OneDrive
+
+Microsoft Doc: https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
+
+If you know the URL of the OneDrive, run the following command:
+```powershell
+Get-SPODeletedSite -Identity <URL>
+```
+If you don't know the URL of the deleted OneDrive, run the following command:
+If the OneDrive appears in the results, it can be restored.
+```powershell
+Get-SPODeletedSite -IncludeOnlyPersonalSite | FT url
+```
+Restore the OneDrive to an active state:
+```powershell
+Restore-SPODeletedSite -Identity <URL>
+```
+Assign an administrator to the OneDrive to access the needed data:
+```powershell
+Set-SPOUser -Site <URL> -LoginName <UPNofDesiredAdmin> -IsSiteCollectionAdmin $True
+```
+Note: When a OneDrive is restored, it will continue to remain available until it's explicitly deleted.
+
+Permanently delete a OneDrive
+```powershell
+Remove-SPOSite -Identity <URL>
+Remove-SPODeletedSite -Identity <URL>
+```
+**Caution**
+When you permanently delete a OneDrive, you will not be able to restore it.
 
 
 # WinDirStat
