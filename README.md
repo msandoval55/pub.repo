@@ -75,7 +75,7 @@ This is a collection of commands and scripts I have gathered or written througho
    - [Stream Classic](#Stream-Classic)
      - [Download Microsoft Stream Classic Reports](#Download-Microsoft-Stream-Classic-Reports)
    - [SharePoint](#SharePoint)
-     - [Recover a Deleted One Drive](#Recover-a-Deleted-One-Drive)
+     - [Recover a Deleted OneDrive](#Recover-a-Deleted-OneDrive)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
