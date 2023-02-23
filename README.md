@@ -75,7 +75,7 @@ This is a collection of commands and scripts I have gathered or written througho
    - [Stream Classic](#Stream-Classic)
      - [Download Microsoft Stream Classic Reports](#Download-Microsoft-Stream-Classic-Reports)
    - [SharePoint](#SharePoint)
-     - [Recover a Deleted OneDrive](#Recover-a-Deleted-OneDrive)
+     - [Restore a Deleted OneDrive](#Restore-a-Deleted-OneDrive)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
@@ -1329,8 +1329,7 @@ Permanently delete a OneDrive
 Remove-SPOSite -Identity <URL>
 Remove-SPODeletedSite -Identity <URL>
 ```
-**Caution**
-When you permanently delete a OneDrive, you will not be able to restore it.
+**Caution**: When you permanently delete a OneDrive, you will not be able to restore it.
 
 
 # WinDirStat
