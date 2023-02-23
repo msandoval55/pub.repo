@@ -1305,6 +1305,15 @@ https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-clas
 
 Microsoft Doc: https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
+Connect to SharePoint Service
+```powershell
+Connect-SPOService
+```
+```powershell
+Supply values for the following parameters:
+Url: https://tamucc-admin.sharepoint.com/
+```
+
 If you know the URL of the OneDrive, run the following command:
 ```powershell
 Get-SPODeletedSite -Identity <URL>
@@ -1312,7 +1321,7 @@ Get-SPODeletedSite -Identity <URL>
 If you don't know the URL of the deleted OneDrive, run the following command:
 If the OneDrive appears in the results, it can be restored.
 ```powershell
-Get-SPODeletedSite -IncludeOnlyPersonalSite | FT url
+Get-SPODeletedSite -IncludeOnlyPersonalSite | sort url | FT url
 ```
 Restore the OneDrive to an active state:
 ```powershell
