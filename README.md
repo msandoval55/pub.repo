@@ -1311,7 +1311,7 @@ Connect-SPOService
 ```
 ```powershell
 Supply values for the following parameters:
-Url: https://tamucc-admin.sharepoint.com/
+Url: https://domainname-admin.sharepoint.com/
 ```
 
 If you know the URL of the OneDrive, run the following command:
