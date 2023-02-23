@@ -72,7 +72,7 @@ This is a collection of commands and scripts I have gathered or written througho
   - [Microsoft Defender for Identity](#Microsoft-Defender-for-Identity)
     - [Install Microsoft Defender for Identity sensor](#Install-Microsoft-Defender-for-Identity-sensor)
  - [Microsoft 365](#Microsoft-365)
-   - [Microsoft Stream Classic Reports](#Microsoft-Stream-Classic-Reports)
+   - [Download Microsoft Stream Classic Reports](#Download-Microsoft-Stream-Classic-Reports)
 - [WinDirStat](#WinDirStat)
 
 # Microsoft Windows 10 and 11 Commands
@@ -1274,7 +1274,7 @@ c:\temp\azure atp sensor setup>"azure atp sensor setup.exe" /quite netframeworkc
 
 # Microsoft 365
 
-## Microsoft Stream Classic Reports
+## Download Microsoft Stream Classic Reports
 
 1. Make sure you logon to powershell ISE as an administrator
 2. Make sure you have unrestriced access
