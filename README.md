@@ -1297,7 +1297,7 @@ cd C:\temp\StreamClassicVideoReport
 ```
 7. Tip!: You can use powerBi to organize the raw data from the excel.cvs file. 
 
-Documentation from Microsoft if needed.
+Documentation from Microsoft if needed
 https://learn.microsoft.com/en-us/stream/streamnew/migration-details#stream-classic-usage-report
 
 Step-by Step guide to run the Stream migration tool
