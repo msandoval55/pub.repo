@@ -56,7 +56,8 @@ This is a collection of commands and scripts I have gathered or written througho
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
-  - [Windows Server Core Commands](#Windows-Server-Core-Commands)
+ - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
+ - [Windows Server Core Commands](#Windows-Server-Core-Commands)
   - [RSAT Tools](#RSAT-Tools)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
@@ -754,6 +755,23 @@ Obtain list of servers in AD using PowerShell:
 ```Powershell
 #Obtain list of servers in AD using Powershell
 Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
+```
+
+## Windows Server Remote Commands
+
+### Remote Commands Restart Services
+
+#Get all services running from remote server
+```Powershell
+Get-Service -ComputerName hybrid3
+```
+#Get specific service running status from remote server
+```Powershell
+Get-Service XymonPSClient -ComputerName hybrid3
+```
+#Restart specific service running from remote server
+```Powershell
+Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
 ## Windows Server Core Commands
