@@ -774,6 +774,40 @@ Get-Service XymonPSClient -ComputerName hybrid3
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
+### Remote Commands To Free Up Disk Space
+
+#Enter a remote powershell session with the server
+```Powershell
+Enter-PSSession -ComputerName servername
+```
+
+#Clear up ccmcache from SCCM old update packages
+```Powershell
+$resman= New-Object -ComObject "UIResource.UIResourceMgr"
+$cacheInfo=$resman.GetCacheInfo()
+$cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
+```
+
+#Verify the disk space has been cleaned up.
+```Powershell
+fsutil volume diskfree c:
+```
+
+Optional
+
+#Clear up WinSxS files
+```Powershell
+dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+```
+
+Optional
+
+#Run Windows Clean-up
+```Powershell
+schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
+
+```
+
 ## Windows Server Core Commands
 
 Uninstalling KB Updates with Server Core
