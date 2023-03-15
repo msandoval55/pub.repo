@@ -758,9 +758,9 @@ Obtain list of servers in AD using PowerShell:
 Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
 
-## Windows Server Remote Commands
+# Windows Server Remote Commands
 
-### Remote Commands Restart Services
+## Remote Commands Restart Services
 
 #Get all services running from remote server
 ```Powershell
@@ -775,7 +775,7 @@ Get-Service XymonPSClient -ComputerName hybrid3
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
-### Remote Commands To Free Up Disk Space
+## Remote Commands To Free Up Disk Space
 
 #Enter a remote powershell session with the server
 ```Powershell
