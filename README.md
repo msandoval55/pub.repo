@@ -56,9 +56,10 @@ This is a collection of commands and scripts I have gathered or written througho
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
- - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
- - [Windows Server Core Commands](#Windows-Server-Core-Commands)
-  - [RSAT Tools](#RSAT-Tools)
+   - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
+     - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
+   - [Windows Server Core Commands](#Windows-Server-Core-Commands)
+   - [RSAT Tools](#RSAT-Tools)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
     - [Updating Server3](#Updating-Server3)
@@ -780,26 +781,21 @@ Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```Powershell
 Enter-PSSession -ComputerName servername
 ```
-
 #Clear up ccmcache from SCCM old update packages
 ```Powershell
 $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
 ```
-
 #Verify the disk space has been cleaned up.
 ```Powershell
 fsutil volume diskfree c:
 ```
-
 Optional
-
 #Clear up WinSxS files
 ```Powershell
 dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 ```
-
 Optional
 
 #Run Windows Clean-up
