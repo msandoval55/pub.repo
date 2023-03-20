@@ -442,25 +442,25 @@ gpresult /r > c:\result.txt
 
 
 # Microsoft Windows Server
-## Active Directory 
+# Active Directory 
 ## Active Directory Commands
 ## Manually import the module into the PowerShell
-```Powershell
 #Manually import the module into the PowerShell session with the command
+```Powershell
 Import-Module activedirectory
 ```
 ## Active Directory Domain Password Policy
-```Powershell
 #Get AD default domain password policy
+```Powershell
 Get-ADDefaultDomainPasswordPolicy
 ```
 ## Active Directory User
-```Powershell
 #Get ADUser
+```Powershell
 Get-ADUser -Identity username
 ```
-```Powershell
 #Get-ADUser All Properties
+```Powershell
 Get-ADUser -Identity username -Properties *
 ```
 ```Powershell
