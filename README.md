@@ -753,8 +753,9 @@ Obtain list of servers in AD using PowerShell:
 5. The report will be exported in the given format.
 6. To obtain the report in a different format, modify the script accordingly to the needs of the user.
 
-```Powershell
+
 #Obtain list of servers in AD using Powershell
+```Powershell
 Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
 
