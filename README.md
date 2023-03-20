@@ -756,7 +756,7 @@ Obtain list of servers in AD using PowerShell:
 
 #Obtain list of servers in AD using Powershell
 ```Powershell
-Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
+Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
 #Export cmd that can be added to the windows server list script
 ```Powershell
