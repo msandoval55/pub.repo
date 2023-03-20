@@ -42,6 +42,7 @@ This is a collection of commands and scripts I have gathered or written througho
   - [Group Policy Commands](#Group-Policy-Commands)
     - [Group policy update](#Group-policy-update)
     - [Group policy Results](#Group-policy-Results)
+  - [PowerShell Commands](#PowerShell-Commands)
   - [Remote Powershell Commands](#Remote-Powershell-Commands)
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
   - [Active Directory](#Active-Directory)
@@ -390,7 +391,16 @@ gpresult /h c:\report.html
 gpresult /r > c:\result.txt
 ```
 
+## PowerShell Commands
 
+#Start transcript log of your powershell session
+```powershell
+Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
+```
+#Export cmd that can be added to the windows server list script
+```powershell
+Export-Csv "C:\Temp\WinSrvlist2023.csv"
+```
 
 ## Remote Powershell Commands
 ```Powershell
