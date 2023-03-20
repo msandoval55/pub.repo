@@ -758,6 +758,10 @@ Obtain list of servers in AD using PowerShell:
 ```Powershell
 Get-ADComputer -Filter 'operatingsystem -like "*server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
+#Export cmd that can be added to the windows server list script
+```Powershell
+Export-Csv "C:\Temp\WinSrvlist2023.csv"
+```
 
 # Windows Server Remote Commands
 
