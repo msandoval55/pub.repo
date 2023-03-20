@@ -39,11 +39,11 @@ This is a collection of commands and scripts I have gathered or written througho
     - [telnet](#telnet)
     - [Stop and Start Printer Spooler](#Stop-and-Start-Printer-Spooler)
     - [dcdiag](#dcdiag)
+  - [PowerShell Commands](#PowerShell-Commands)
+  - [Remote Powershell Commands](#Remote-Powershell-Commands)
   - [Group Policy Commands](#Group-Policy-Commands)
     - [Group policy update](#Group-policy-update)
     - [Group policy Results](#Group-policy-Results)
-  - [PowerShell Commands](#PowerShell-Commands)
-  - [Remote Powershell Commands](#Remote-Powershell-Commands)
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
   - [Active Directory](#Active-Directory)
     - [Active Directory Commands](#Active-Directory-Commands)
@@ -350,47 +350,6 @@ This command will analyze the state of your domain controllers, it has over 30 b
 dcdiag /s:DC1
 ```
 
-## Group Policy Commands
-
-### Group policy update
-```Powershell
-#This command will pull down any GPO changes to the computer
-gpupdate
-```
-```Powershell
-#Use /force to reapply all the GPOs on the computer
-gpupdate /force
-```
-### Group policy Results
-```Powershell
-#Display all applied GPOs run this command
-#Note: You need to run the command prompt in administrator mode or it will not generate a full report.
-gpresult /r
-```
-```Powershell
-#Display GPOs applied to the user
-gpresult /r /scope:user
-```
-```Powershell
-#Display GPOs applied to the computer
-gpresult /r /scope:computer
-```
-```Powershell
-#Display GPOs for a remote computer
-gpresult /s computername
-gpresult /S 10.0.49.42 /SCOPE COMPUTER /X output.xml
-Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:user}
-Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:computer}
-```
-```Powershell
-#Generate an HTML report
-gpresult /h c:\report.html
-```
-```Powershell
-#Send command output to a text file
-gpresult /r > c:\result.txt
-```
-
 ## PowerShell Commands
 
 #Start transcript log of your powershell session
@@ -440,11 +399,51 @@ DISM /online /cleanup /checkhealth
 DISM /online /cleanup /restorehealth
 ```
 
+# Group Policy Commands
+
+## Group policy update
+```Powershell
+#This command will pull down any GPO changes to the computer
+gpupdate
+```
+```Powershell
+#Use /force to reapply all the GPOs on the computer
+gpupdate /force
+```
+## Group policy Results
+```Powershell
+#Display all applied GPOs run this command
+#Note: You need to run the command prompt in administrator mode or it will not generate a full report.
+gpresult /r
+```
+```Powershell
+#Display GPOs applied to the user
+gpresult /r /scope:user
+```
+```Powershell
+#Display GPOs applied to the computer
+gpresult /r /scope:computer
+```
+```Powershell
+#Display GPOs for a remote computer
+gpresult /s computername
+gpresult /S 10.0.49.42 /SCOPE COMPUTER /X output.xml
+Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:user}
+Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:computer}
+```
+```Powershell
+#Generate an HTML report
+gpresult /h c:\report.html
+```
+```Powershell
+#Send command output to a text file
+gpresult /r > c:\result.txt
+```
+
+
 # Microsoft Windows Server
-
-## Active Directory
+## Active Directory 
 ## Active Directory Commands
-
 ## Manually import the module into the PowerShell
 ```Powershell
 #Manually import the module into the PowerShell session with the command
