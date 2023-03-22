@@ -450,17 +450,18 @@ gpresult /r > c:\result.txt
 Import-Module activedirectory
 ```
 ## Active Directory Domain Password Policy
-#Get AD default domain password policy
+
 ```Powershell
+#Get AD default domain password policy
 Get-ADDefaultDomainPasswordPolicy
 ```
 ## Active Directory User
-#Get ADUser
 ```Powershell
+#Get ADUser
 Get-ADUser -Identity username
 ```
-#Get-ADUser All Properties
 ```Powershell
+#Get-ADUser All Properties
 Get-ADUser -Identity username -Properties *
 ```
 ```Powershell
@@ -776,46 +777,47 @@ Export-Csv "C:\Temp\WinSrvlist2023.csv"
 
 ## Remote Commands Restart Services
 
-#Get all services running from remote server
 ```Powershell
+#Get all services running from remote server
 Get-Service -ComputerName hybrid3
 ```
-#Get specific service running status from remote server
 ```Powershell
+#Get specific service running status from remote server
 Get-Service XymonPSClient -ComputerName hybrid3
 ```
-#Restart specific service running from remote server
 ```Powershell
+#Restart specific service running from remote server
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
 ## Remote Commands To Free Up Disk Space
 
-#Enter a remote powershell session with the server
 ```Powershell
+#Enter a remote powershell session with the server
 Enter-PSSession -ComputerName servername
 ```
-#Clear up ccmcache from SCCM old update packages
 ```Powershell
+#Clear up ccmcache from SCCM old update packages
 $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
 ```
-#Verify the disk space has been cleaned up.
 ```Powershell
+#Verify the disk space has been cleaned up.
 fsutil volume diskfree c:
 ```
 Optional
-#Clear up WinSxS files
+
 ```Powershell
+#Clear up WinSxS files
 dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 ```
 Optional
 
 #Run Windows Clean-up
 ```Powershell
+#Run Windows Clean-up
 schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
-
 ```
 
 ## Windows Server Core Commands
