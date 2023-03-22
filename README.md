@@ -58,6 +58,7 @@ This is a collection of commands and scripts I have gathered or written througho
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
+     - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
      - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
    - [Windows Server Core Commands](#Windows-Server-Core-Commands)
    - [RSAT Tools](#RSAT-Tools)
@@ -775,16 +776,28 @@ Export-Csv "C:\Temp\WinSrvlist2023.csv"
 
 # Windows Server Remote Commands
 
+## Retrieve Folder Size from Remote Server
+
+Get all services running from remote server
+Invoke folder size from remote server
+```Powershell
+#Get folder size from remote server
+Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
+```
+
 ## Remote Commands Restart Services
 
+Get all services running from remote server
 ```Powershell
 #Get all services running from remote server
 Get-Service -ComputerName hybrid3
 ```
+Get specific service running status from remote server
 ```Powershell
 #Get specific service running status from remote server
 Get-Service XymonPSClient -ComputerName hybrid3
 ```
+Restart specific service running from remote server
 ```Powershell
 #Restart specific service running from remote server
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
