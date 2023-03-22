@@ -791,25 +791,31 @@ Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
 ## Remote Commands To Free Up Disk Space
-
+Enter a remote powershell session with the server
 ```Powershell
 #Enter a remote powershell session with the server
 Enter-PSSession -ComputerName servername
 ```
+Clear SCCM Cache from old downloaded update packages
 ```Powershell
 #Clear up ccmcache from SCCM old update packages
 $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
 ```
+View DiskSpace on C: Drive
 ```Powershell
 #Verify the disk space has been cleaned up.
 fsutil volume diskfree c:
 ```
 Optional
-
 ```Powershell
 #Clear up WinSxS files
+dism.exe /Online /Cleanup-Image /StartComponentCleanup 
+```
+Optional
+```Powershell
+#Clear up WinSxS files with resetbase
 dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 ```
 Optional
