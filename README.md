@@ -778,11 +778,16 @@ Export-Csv "C:\Temp\WinSrvlist2023.csv"
 
 ## Retrieve Folder Size from Remote Server
 
-Get all services running from remote server
 Invoke folder size from remote server
 ```Powershell
 #Get folder size from remote server
 Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
+```
+Optional: Enter PSSession to the remote server to retrieve folder size
+```Powershell
+#Get folder size from remote server
+Enter-PSSession servername
+Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
 ```
 
 ## Remote Commands Restart Services
