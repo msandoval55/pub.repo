@@ -1381,7 +1381,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 #Change directory to where you have the stream report script
 cd C:\temp\StreamClassicVideoReport
 #Enter the the following ps cmd. Provide the tenantid and token location. Remember to refresh your token if the script fails.
-.\StreamClassicVideoReportGenerator.ps1 -aadtenantid tenantid -inputfile token.txt -outdir "C:\temp\StreamClassicVideoReport\2-10-2023"
+.\StreamClassicVideoReportGenerator.ps1 -AadTenantId "00000000-0000-0000-0000-00000000000" -InputFile "C:\temp\StreamClassicVideoReport\token.txt" -OutDir "C:\temp\StreamClassicVideoReport"
 ```
 7. Tip!: You can use powerBi to organize the raw data from the excel.cvs file. 
 
