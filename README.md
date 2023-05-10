@@ -98,7 +98,6 @@ system info /s computername
 #Get infomation about your Windows version and Edition
 systeminfo | findstr OS
 ```
-
 ### Get Windows System Info
 ```Powershell
 #Get Windows Product Name, Windows Version, OS Hardware Version
@@ -143,6 +142,11 @@ whoami /user
 ```Powershell
 #Displays all information for the current user
 whoami /all
+```
+### Certificates Local Machine
+```Powershell
+#Takes you to the certificate management store mmc
+certlm.msc
 ```
 ### Shutdown Commands
 ```Powershell
