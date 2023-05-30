@@ -55,7 +55,7 @@ This is a collection of commands and scripts I have gathered or written througho
      - [Active Directory Servers List](#Active-Directory-Servers-List)
    - [Active Directory Federation Services](#Active-Directory-Federation-Services)
      - [AD FS Troubleshooting Commands](#AD-FS-Troubleshooting-Commands)
-- [Group Policy Commands](#Group-Policy-Commands)
+   - [Group Policy Commands](#Group-Policy-Commands)
      - [Group policy update](#Group-policy-update)
      - [Group policy Results](#Group-policy-Results)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
