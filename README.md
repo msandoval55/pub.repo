@@ -57,7 +57,7 @@ This is a collection of commands and scripts I have gathered or written througho
       - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
-   - [Active Directory Federation Services](#Active-Directory-Federation Services)
+   - [Active Directory Federation Services](#Active-Directory-Federation-Services)
      - [ADFS Troubleshooting Commands](#ADFS-Troubleshooting-Commands)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
      - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
@@ -780,7 +780,7 @@ Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -e
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
 # Active Directory Federation Services
-## Active Directory Troubleshooting Commands
+## AD FS Troubleshooting Commands
 
 AD FS will authenticate your cloud or synchronized identities on premises. Many large organizations prefer this federated model because they are authenticating "in-house".
 
