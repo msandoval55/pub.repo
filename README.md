@@ -6,10 +6,10 @@ This is a collection of commands and scripts I have gathered or written througho
 
 | Subjects | Syntax |
 | ------------- | ------------- |
-| Microsoft Windows 10, 11 | CMD, Powershell |
-| Microsoft Windows Server | CMD, Powershell  |
-| Microsoft Exchange Server | Powershell  |
-| Microsoft Azure | Powershell  |
+| Microsoft Windows 10, 11 | Win CMDs, File Directory CMDs, Network CMDs |
+| Microsoft Windows Server| AD, AD FS |
+| Microsoft Exchange Server | Exchange Server Patching |
+| Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
 | WinDirStat | Disk Usage Analyzer |
 
 ## Summary
