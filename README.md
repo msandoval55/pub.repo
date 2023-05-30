@@ -7,7 +7,7 @@ This is a collection of commands and scripts I have gathered or written througho
 | Subjects | Syntax |
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Win CMDs, File Directory CMDs, Network CMDs |
-| Microsoft Windows Server| AD, AD FS |
+| Microsoft Windows Server| AD, AD FS, Server Core CMDs, Remote Server Cmds |
 | Microsoft Exchange Server | Exchange Server Patching |
 | Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
 | WinDirStat | Disk Usage Analyzer |
