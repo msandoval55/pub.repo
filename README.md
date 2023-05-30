@@ -450,7 +450,7 @@ gpresult /r > c:\result.txt
 
 # Microsoft Windows Server
 # Active Directory 
-## Active Directory Commands
+# Active Directory Commands
 ## Manually import the module into the PowerShell
 #Manually import the module into the PowerShell session with the command
 ```Powershell
