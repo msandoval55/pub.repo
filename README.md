@@ -779,7 +779,7 @@ Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -e
 ```Powershell
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
-
+# Active Directory Federation Services
 ## Active Directory Federation Services Commands
 
 AD FS will authenticate your cloud or synchronized identities on premises. Many large organizations prefer this federated model because they are authenticating "in-house".
