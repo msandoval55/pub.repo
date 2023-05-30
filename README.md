@@ -46,17 +46,16 @@ This is a collection of commands and scripts I have gathered or written througho
     - [Group policy Results](#Group-policy-Results)
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
   - [Active Directory](#Active-Directory)
-    - [Active Directory Commands](#Active-Directory-Commands)
-      - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
-      - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
-      - [Active Directory User](#Active-Directory-User)
-      - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
-      - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
-      - [Active Directory Group Managed Service Accounts gMSA](#Active-Directory-Group-Managed-Service-Accounts-gMSA)
-      - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
-      - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
-      - [Active Directory Search Base](#Active-Directory-Search-Base)
-      - [Active Directory Servers List](#Active-Directory-Servers-List)
+     - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
+     - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
+     - [Active Directory User](#Active-Directory-User)
+     - [Active Directory Locked Out Users](#Active-Directory-Locked-Out-Users)
+     - [Active Directory Expiring Accounts](#Active-Directory-Expiring-Accounts)
+     - [Active Directory Group Managed Service Accounts gMSA](#Active-Directory-Group-Managed-Service-Accounts-gMSA)
+     - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
+     - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
+     - [Active Directory Search Base](#Active-Directory-Search-Base)
+     - [Active Directory Servers List](#Active-Directory-Servers-List)
    - [Active Directory Federation Services](#Active-Directory-Federation-Services)
      - [AD FS Troubleshooting Commands](#AD-FS-Troubleshooting-Commands)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
@@ -450,7 +449,6 @@ gpresult /r > c:\result.txt
 
 # Microsoft Windows Server
 # Active Directory 
-# Active Directory Commands
 ## Manually import the module into the PowerShell
 #Manually import the module into the PowerShell session with the command
 ```Powershell
