@@ -58,7 +58,7 @@ This is a collection of commands and scripts I have gathered or written througho
       - [Active Directory Search Base](#Active-Directory-Search-Base)
       - [Active Directory Servers List](#Active-Directory-Servers-List)
    - [Active Directory Federation Services](#Active-Directory-Federation-Services)
-     - [ADFS Troubleshooting Commands](#ADFS-Troubleshooting-Commands)
+     - [AD FS Troubleshooting Commands](#ADFS-Troubleshooting-Commands)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
      - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
      - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
