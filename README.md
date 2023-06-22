@@ -809,15 +809,16 @@ AD FS Performance Diagnostics
 These comnands can be ran with powershell or ise with admin credentials 
 
 Test Azure AD Connect Health Connectivity 
-```ps 
+```powershell
 Test-AzureADConnectHealthConnectivity -Role ADFS
 ```
 Get AD FS Relying Party Trusts (AD FS Apps)
-```ps
+```powershell
+#Run this cmd on the adfs server or use a remote ps-session. 
 Get-AdfsRelyingPartyTrust | Select-Object enabled, name, Identifier | sort enabled, name
 ```
 Get AD FS Properties
-```ps
+```powershell
 Get-AdfsProperties
 ```
 # Group Policy Commands
