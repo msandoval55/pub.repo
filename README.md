@@ -300,6 +300,14 @@ The netstat command displays TCP/IP connection information, ethernet stats, and 
 netstat -a
 ```
 ```Powershell
+#Display specific active and listening port number
+netstat -an |find "443"
+```
+```Powershell
+#Test connection with port number on local server
+Test-NetConnection -ComputerName localhost -Port 5671
+```
+```Powershell
 #Display all connections in numerical order
 netstat -a -n
 ```
