@@ -51,7 +51,7 @@ This is a collection of commands and scripts I have gathered or written througho
      - [Active Directory Group Managed Service Accounts gMSA](#Active-Directory-Group-Managed-Service-Accounts-gMSA)
      - [Active Directory Group Memberships](#Active-Directory-Group-Memberships)
      - [Active Directory Group Audit Script](#Active-Directory-Group-Audit-Script)
-     - [Active Directory Change Computer Ojects Ownership](#Active-Directory-Change-Computer-Ojects-Ownership)
+     - [Active Directory Change Computer Objects Ownership](#Active-Directory-Change-Computer-Objects-Ownership)
      - [Active Directory Search Base](#Active-Directory-Search-Base)
      - [Active Directory Servers List](#Active-Directory-Servers-List)
    - [Active Directory Federation Services](#Active-Directory-Federation-Services)
@@ -699,7 +699,7 @@ process { Write-Host $_-ForegroundColor Red }
 Write-Output
 ```
 
-## Active Directory Change Computer Ojects Ownership
+## Active Directory Change Computer Objects Ownership
 
 **Display Owner with PowerShell**
 For bulk operations, it is therefore recommended to use PowerShell. If you first want to get an overview of multiple objects' ownership, there are several options available.
