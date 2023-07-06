@@ -707,12 +707,12 @@ For bulk operations, it is therefore recommended to use PowerShell. If you first
 One approach is to generate a list of computer names and owners by expanding the nTSecurityDescriptor attribute using Select-Object:
 
 ```powershell
-Get-ADComputer -Filter 'name -like "CI228*"' -properties ntSecurityDescriptor -PipelineVariable p | 
+Get-ADComputer -Filter 'name -like "CI229*"' -properties ntSecurityDescriptor -PipelineVariable p | 
 select -ExpandProperty ntSecurityDescriptor |
 select @{n="Computer";e={ $p.name }}, @{n="Owner";e={ $_.owner }}
 ```
 
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/6df3e86b-00c6-4296-814b-115496e8c69b)
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/0ce41f24-4ef8-46e3-88ed-6707d63a4813)
 
 Alternatively, you can use Get-ACL to retrieve the owner for each computer individually. When outputting the results using Format-List, you can use Trimstart() to remove the leading "CN=" from PSChildName:
 
