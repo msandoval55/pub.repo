@@ -701,6 +701,8 @@ Write-Output
 
 ## Active Directory Change Computer Objects Ownership
 
+You will need domain admin credentials to run these powershell commands. 
+
 **Display Owner with PowerShell**
 For bulk operations, it is therefore recommended to use PowerShell. If you first want to get an overview of multiple objects' ownership, there are several options available.
 
