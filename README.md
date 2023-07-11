@@ -1617,18 +1617,3 @@ https://npcap.com/
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/598243b8-4c2f-4268-8f20-21ef32fbb1be)
 
 
-Filtering Packets (Display Filters)
-OPERATOR	    DESCRIPTION	            EXAMPLE
-```ruby
-eq or ==	    Equal	                  ip.dest  ==  192.168.1.1
-```ruby
-ne or !=	    Not equal	              ip.dest  !=   192.168.1.1
-```ruby
-gt or >	      Greater than	          frame.len   >   10
-```ruby
-it or <	      less than	              frame.len  <   10
-```ruby
-ge or >=	    Greater than or equal  	frame.len  >=   10
-```ruby
-le or <=	    Less than or equal	    frame.len  <=   10
-```
