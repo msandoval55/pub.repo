@@ -1620,425 +1620,228 @@ Wireshark Capturing Modes
 Wireshark Capturing Modes
 
 
-Promiscuous mode
+## Promiscuous mode
 
-
+```ruby
 Sets interface to capture all packets on a network segment to which it is associated to
+```
 
+## Monitor mode
 
-Monitor mode
-
-
+```ruby
 setup the Wireless interface to capture all traffic it can receive (Unix/Linux only)
-
-
-Filter Types
-Filter Types
-
-
-Capture filter
-
-
-Filter packets during capture
-
-
-Display Filter
-
-
-Hide Packets from a capture display
-
-
-Capture Filter Syntax
-Capture filter Syntax
-
-
-Syntax
-
-
-protocol
-
-
-direction
-
-
-hosts
-
-
-value
-
-
-Logical operator
-
-
-Expressions
-
-
-Example
-
-
-tcp
-
-
-src
-
-
-192.168.1.1
-
-
-80
-
-
-and
-
-
-tcp dst 202.164.30.1
-
-
-Display Filter Syntax
-Display Filter Syntax
-
-
-Syntax
-
-
-protocol
-
-
-String 1
-
-
-String 2
-
-
-Comparison Operator
-
-
-value
-
-
-logical operator
-
-
-Expressions
-
-
-Example
-
-
-http
-
-
-dest
-
-
+```
+
+## Filter Types
+
+```ruby
+Capture filter = Filter packets during capture
+```
+```ruby
+Display Filter = Hide Packets from a capture display
+```
+
+## Capture Filter Syntax
+
+Expressions Example
+```ruby
+tcp src 192.168.1.1 80 and tcp dst 202.164.30.1
+```
+
+## Display Filter Syntax
+
+Expressions Example
+```ruby
+http dest IP == 192.168.1.1 and tcp port
+```
+
+## Protocols – Values
+```ruby
+ether
+fddi
 ip
+arp
+rarp
+decnet
+lat
+sca
+moprc
+mopdl
+tcp
+udp
+```
 
-
-==
-
-
-192.168.1.1
-
-
-and
-
-
-tcp port
-
-
-Protocols – Values
-Protocols - Values
-
-
-ether, fddi, ip, arp, rarp, decnet, lat, sca, moprc, mopdl, tcp and udp
-
-
-Filtering packets (Display Filters)
-Filtering packets (Display Filters)
-
-
-Operator
-
-
-Description
-
-
-Example
-
+## Filtering packets (Display Filters)
 
 eq or ==
-
-
+```ruby
 Equal
-
-
+```
+```ruby
 ip.dest == 192.168.1.1
-
+```
 
 ne or !=
-
-
+```ruby
 Not Equal
-
-
+```
+```ruby
 ip.dest != 192.168.1.1
-
+```
 
 gt or >
-
-
+```ruby
 Greater than
-
-
+```
+```ruby
 frame.len > 10
-
+```
 
 lt or <
-
-
+```ruby
 Less than
-
-
+```
+```ruby
 frame.len <10
-
+```
 
 ge or >=
-
-
+```ruby
 Greater than or Equal
-
-
+```
+```ruby
 frame.len >= 10
-
+```
 
 le or <=
-
-
+```ruby
 Less than or Equal
-
-
+```
+```ruby
 frame.len<=10
+```
 
 
-Miscellaneous Items
-Miscellaneous
-
+## Miscellaneous Items
 
 Slice Operator
-
-
+```ruby
 […] - Range of values
-
+```
 
 Membership Operator
-
-
+```ruby
 {} - In
-
+```
 
 CTRL+E -
-
-
+```ruby
 Start/Stop Capturing
+```
 
-
-Logical Operators
-Logical Operators
-
-
-Operator
-
-
-Description
-
-
-Example
-
-
-and or &&
-
-
-Logical AND
-
-
-All the conditions should match
-
-
-or or ||
-
-
-Logical OR
-
-
-Either all or one of the condition should match
-
-
-xor or ^^
-
-
-Logical XOR
-
-
-exclusive alternation – Only one of the two conditions should match not both
-
-
-not or !
-
-
-NOT(Negation)
-
-
-Not equal to
-
-
-[n] […]
-
-
-Substring operator
-
-
-Filter a specific word or text
-
-
-Default columns in a packet capture output
-Default columns in a packet capture output
-
+## Default columns in a packet capture output
 
 No.
-
-
+```ruby
 Frame number from the beginning of the packet capture
-
+```
 
 Time
-
-
+```ruby
 Seconds from the first frame
-
+```
 
 Source (src)
-
-
+```ruby
 Source address, commonly an IPv4, IPv6 or Ethernet address
-
+```
 
 Destination (dst)
-
-
+```ruby
 Destination address
-
+```
 
 Protocol
-
-
+```ruby
 Protocol used in the Ethernet frame, IP packet, or TCP segment
-
+```
 
 Length
-
-
+```ruby
 Length of the frame in bytes
+```
 
-
-Keyboard Shortcuts
-Keyboard Shortcuts – main display window
-
-
-Accelerator
-
-
-Description
-
-
-Accelerator
-
-
-Description
-
+## Keyboard Shortcuts
 
 Tab or Shift+Tab
-
-
+```ruby
 Move between screen elements, e.g. from the toolbars to the packet list to the packet detail.
-
+```
 
 Alt+→ or Option+→
-
-
+```ruby
 Move to the next packet in the selection history.
-
+```
 
 ↓
-
-
+```ruby
 Move to the next packet or detail item.
-
+```
 
 →
-
-
+```ruby
 In the packet detail, opens the selected tree item.
-
+```
 
 ↑
-
-
+```ruby
 Move to the previous packet or detail item.
-
+```
 
 Shift+→
-
-
+```ruby
 In the packet detail, opens the selected tree item and all of its subtrees.
-
+```
 
 Ctrl+ ↓ or F8
-
-
+```ruby
 Move to the next packet, even if the packet list isn’t focused.
-
+```
 
 Ctrl+→
-
-
+```ruby
 In the packet detail, opens all tree items.
-
+```
 
 Ctrl+ ↑ or F7
-
-
+```ruby
 Move to the previous packet, even if the packet list isn’t focused.
-
+```
 
 Ctrl+←
-
-
+```ruby
 In the packet detail, closes all tree items.
-
+```
 
 Ctrl+.
-
-
+```ruby
 Move to the next packet of the conversation (TCP, UDP or IP).
-
+```
 
 Backspace
-
-
+```ruby
 In the packet detail, jumps to the parent node.
-
+```
 
 Ctrl+,
-
-
+```ruby
 Move to the previous packet of the conversation (TCP, UDP or IP).
-
+```
 
 Return or Enter
-
-
+```ruby
 In the packet detail, toggles the selected tree item.
-
+```
 
 ## Common Filtering Commands
 
