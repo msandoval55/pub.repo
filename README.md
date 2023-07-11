@@ -10,7 +10,8 @@ This is a collection of commands and scripts I have gathered or written througho
 | Microsoft Windows Server| AD, AD FS, Group Policy, Server Core, Remote Servers |
 | Microsoft Exchange Server | Exchange Server Patching |
 | Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
-| WinDirStat | Disk Usage Analyzer |
+| WinDirStat | Free Disk Usage Analyzer |
+| Wireshark | Free and open-source packet analyzer |
 
 ## Summary
 
@@ -83,6 +84,7 @@ This is a collection of commands and scripts I have gathered or written througho
    - [SharePoint](#SharePoint)
      - [Restore a Deleted OneDrive](#Restore-a-Deleted-OneDrive)
 - [WinDirStat](#WinDirStat)
+- [Wireshark](#Wireshark)
 
 # Microsoft Windows 10 and 11 Commands
 
@@ -1604,4 +1606,23 @@ Example:
 ```
 ![image](https://user-images.githubusercontent.com/116230991/216710577-b1311744-c48c-4638-bde3-d7c161e52db3.png)
 
+# Wireshark
 
+Wireshark Download link
+https://www.wireshark.org/download.html
+
+Npcap Download link
+https://npcap.com/
+
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/598243b8-4c2f-4268-8f20-21ef32fbb1be)
+
+```ruby
+Filtering Packets (Display Filters)
+OPERATOR	    DESCRIPTION	            EXAMPLE
+eq or ==	    Equal	                  ip.dest  ==  192.168.1.1
+ne or !=	    Not equal	              ip.dest  !=   192.168.1.1
+gt or >	      Greater than	          frame.len   >   10
+it or <	      less than	              frame.len  <   10
+ge or >=	    Greater than or equal  	frame.len  >=   10
+le or <=	    Less than or equal	    frame.len  <=   10
+```
