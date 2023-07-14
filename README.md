@@ -1019,7 +1019,7 @@ Open the Active Directory Sites and Services console (dssite.msc) and find this 
 Right-click on NTDS Settings and then click Properties;
 Check/Uncheck the Global Catalog option on the General tab.
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/9195d4b2-73c7-4a96-9e5e-bb2444f5a27f)
-Wait a while for AD changes to replicate and then revert back to the previous value;
+<br />Wait a while for AD changes to replicate and then revert back to the previous value;
 Reboot the domain controller.
 
 
