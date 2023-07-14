@@ -1022,10 +1022,13 @@ Check/Uncheck the Global Catalog option on the General tab.
 <br />Wait a while for AD changes to replicate and then revert back to the previous value;
 Reboot the domain controller.
 
-Retrive 5 newest ADWS errors
-```ps
+Retrive the 5 newest Active Directory Wec Services errors
+```powershell
 Get-EventLog –Logname ‘Active Directory Web Services’ –EntryType Error –Newest 5 | Select-Object –Property EventID, Message | Format-Table –AutoSize -wrap
 ```
+Result example:
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/c818fb58-e77b-4500-aad6-6a98230c636b)
+
 
 # Active Directory Federation Services
 ## AD FS Troubleshooting Commands
