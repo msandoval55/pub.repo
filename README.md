@@ -1560,28 +1560,28 @@ Creating CER with MMC:
 12. Under the General tab enter your desired friendly name.
 13. Select the "Subject" tab to continue.
 14. Select the "Subject" tab.
-</br>
-Enter Subject name, Common name
-</br>
+
+Enter Subject name, Common name:
+if any
 Enter DNS SAN names
-webmail.consoto.com
-ad.consoto.com
-autodiscover.consoto.com
-autodiscover.obe.consoto.com
-autodiscover.landslide.consoto.com
-autodiscover.pci.consoto.com
-cas.consoto.com
-exchange.consoto.com
-exchserver1.consoto.com
-exchserver2.consoto.com
-exchserver3.consoto.com
-imap.consoto.com
-lander.consoto.com
-outlook.consoto.com
-owa.consoto.com
-smtp.consoto.com
-consoto.com
-webmail.lb.consoto.com
+webmail.consoto.com </br>
+ad.consoto.com </br>
+autodiscover.consoto.com </br>
+autodiscover.obe.consoto.com </br>
+autodiscover.landslide.consoto.com </br>
+autodiscover.pci.consoto.com </br>
+cas.consoto.com </br>
+exchange.consoto.com </br>
+exchserver1.consoto.com </br>
+exchserver2.consoto.com </br>
+exchserver3.consoto.com </br>
+imap.consoto.com </br>
+lander.consoto.com </br>
+outlook.consoto.com </br>
+owa.consoto.com </br>
+smtp.consoto.com </br>
+consoto.com </br>
+webmail.lb.consoto.com </br>
 
 15. Under "Private Key" select the following.
 
