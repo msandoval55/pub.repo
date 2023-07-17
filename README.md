@@ -8,7 +8,7 @@ This is a collection of commands and scripts I have gathered or written througho
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows, File Directory, Networking |
 | Microsoft Windows Server| AD, AD FS, Group Policy, Server Core, Remote Servers |
-| Microsoft Exchange Server | Exchange Server Patching |
+| Microsoft Exchange Server | Exchange Server |
 | Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
 | WinDirStat | Free Disk Usage Analyzer |
 | Wireshark | Free and open-source packet analyzer |
@@ -72,6 +72,7 @@ This is a collection of commands and scripts I have gathered or written througho
     - [Updating Server3](#Updating-Server3)
     - [Updating Server2](#Updating-Server2)
     - [Updating Server1](#Updating-Server1)
+  - [Exchange SSL Certificate Renewal](#Exchange-SSL-Certificate-Renewal)
   - [Exchange PowerShell Error Moving PAM](#Exchange-PowerShell-Error-Moving-PAM)
   - [Exchange Misc Powershell CMDs](#Exchange-Misc-Powershell-CMDs)
 - [Microsoft Azure](#Microsoft-Azure)
@@ -1540,6 +1541,121 @@ Get-MailboxDatabaseCopyStatus * | sort name | ft -auto
 Get-DAGDatabaseInformation
 ```
 
+# Exchange SSL Certificate Renewal
+
+Using InCommon Sectigo
+Creating CER with MMC:
+
+1. Use your laptop and open mmc to create the CSR.
+2. Use mmc certificate store for create a custom request.
+3. Right click > All Task > Advanced Options > Create Custom Request.
+4. Select "Next" to continue creating a custom request.
+5. Select "Proceed without enrollment policy"
+6. Select "Next".
+7. keep existing selections.
+8. Select "Next".
+9. Click the "Details" button.
+10. Select "Properties".
+11. Select "Next".
+12. Under the General tab enter your desired friendly name.
+13. Select the "Subject" tab to continue.
+14. Select the "Subject" tab.
+</br>
+Enter Subject name, Common name
+</br>
+Enter DNS SAN names
+webmail.consoto.com
+ad.consoto.com
+autodiscover.consoto.com
+autodiscover.obe.consoto.com
+autodiscover.landslide.consoto.com
+autodiscover.pci.consoto.com
+cas.consoto.com
+exchange.consoto.com
+exchserver1.consoto.com
+exchserver2.consoto.com
+exchserver3.consoto.com
+imap.consoto.com
+lander.consoto.com
+outlook.consoto.com
+owa.consoto.com
+smtp.consoto.com
+consoto.com
+webmail.lb.consoto.com
+
+15. Under "Private Key" select the following.
+
+Key options:
+
+Key size: 2048
+Check: Mark private key exportable
+
+Select Hash Algorithm:
+
+Hash Algorithm: sha256
+16. Select "Next".
+17. Select "Browse..." and name your file and location.
+18. Keep "Base 64" selected.
+19. Select "Finish".
+20. Open the .txt file and use the key to create the CSR in InCommon.
+
+InCommon: Creating CSR
+
+1. Login to InCommon and add a new CSR. Use you @tamucc.edu account.
+2. Next Select the green + button in the top right corner of the InCommon site.
+3. Next Select "Using a Certificate Signing Request" (CSR)
+a. Leave Organization and Department as it is.
+b. Order info will be set to InCommon Multi Domain SSL (SHA-2)
+c. Certificate Term set to 398 Days.
+4. Next under CSR paste the KEY from the .txt file you created.
+5. Next under Domains add all additional domain names that you would like.
+6. Next under Auto-Renewal leave it as no, do not allow auto renewal.
+7. Select OK and wait for the cert to be created in InCommon.
+
+Import CSR Certificate:
+
+Import the newly created CSR from InCommon into your certificate store on your laptop.
+1. Right click and select All Tasks > Import...
+2. Select "Local Machine"
+3. Select "Next" to continue.
+4. Browse and select the .CSR file you just created and saved from InCommon.
+5. Select "Next" to continue.
+6. Select "Place all certificates in the following store".
+7. Certificate store: "Personal".
+8. Select "Next" to continue.
+9. Select "Next" to continue.
+10. The import will show as successful.
+
+Export Certificate as a .PFX file:
+
+1. Right click the certificate and select > All Tasks > Export.
+2. Select "Yes, export the private key"
+3. Select "Next" to continue.
+4. Select "Personal Information Exchange - PKCS #12 (.PFX)
+    a.Check "Include all certificates in the certification path if possible
+5. Select "Next" to continue.
+6. Enter a password and confirm password.
+7. Set Encryption: TripleDES-SHA1
+    a. This is due to server 2016 not liking AES256 encrypted passwords. Use SHA1 for the Private Key.
+8. Select "Next" to continue.
+9. Select where you want to save the .PFX file.
+10. Select "Next" to continue.
+11. Select "Finish"
+
+Importing .PFX File:
+
+Import the .PFX file to the Domain Controller.
+Place the .PFX file in the domain controller UNCing to the c drive.
+Example:
+\\sa-dc02\c$\temp\certs
+
+Remote to the domain controller and login with your domain account
+Next switch CLI to PowerShell and enter the following command to import the .PFX file.
+Certutil -f -p password -importpfx "nameofcert.pfx"
+
+You have successfully updated the cert for the domain controller.
+You will now see Xymon update shortly.
+Once you confirm that the cert is active. Make sure you have a copy of the old .PFX cert and then remove the old cert.
 
 # Exchange PowerShell Error Moving PAM
 ```Powershell
