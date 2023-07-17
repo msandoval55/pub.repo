@@ -1563,6 +1563,7 @@ Creating CER with MMC:
 
 Enter Subject name, Common name: </br>
 if any </br>
+
 Enter DNS SAN names: </br>
 webmail.consoto.com </br>
 ad.consoto.com </br>
