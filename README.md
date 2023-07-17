@@ -1585,10 +1585,9 @@ webmail.lb.consoto.com </br>
 
 15. Under "Private Key" select the following.
 
-Key options:
-
-Key size: 2048
-Check: Mark private key exportable
+Key options: </br>
+Key size: 2048 </br>
+Check: Mark private key exportable </br>
 
 Select Hash Algorithm:
 
@@ -1641,8 +1640,6 @@ Export Certificate as a .PFX file:
 9. Select where you want to save the .PFX file.
 10. Select "Next" to continue.
 11. Select "Finish"
-
-Importing .PFX File:
 
 Importing .PFX File:
 
