@@ -1562,6 +1562,7 @@ Creating CER with MMC:
 14. Select the "Subject" tab.
 
 Enter Subject name, Common name: </br>
+
 if any </br>
 
 Enter DNS SAN names: </br>
