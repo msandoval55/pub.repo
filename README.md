@@ -1592,12 +1592,12 @@ Check: Mark private key exportable
 
 Select Hash Algorithm:
 
-Hash Algorithm: sha256
-16. Select "Next".
-17. Select "Browse..." and name your file and location.
-18. Keep "Base 64" selected.
-19. Select "Finish".
-20. Open the .txt file and use the key to create the CSR in InCommon.
+Hash Algorithm: sha256 </br>
+16. Select "Next". </br>
+17. Select "Browse..." and name your file and location. </br>
+18. Keep "Base 64" selected. </br>
+19. Select "Finish". </br>
+20. Open the .txt file and use the key to create the CSR in InCommon. </br>
 
 InCommon: Creating CSR
 
@@ -1658,7 +1658,8 @@ Find what cert is currently is in use.
 ```powershell
 get-transportservice -identity exchserver3 | fl identity,internaltransport*thumbprint
 ```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/5c52d326-1272-48f8-976e-140627f6120c)
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/1b04ccfe-399a-4114-aecf-a0b9948aa378)
+
 
 Change directory to where pfx is located. In our case, the pfx file was placed in the following path
 ```powershell
