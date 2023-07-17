@@ -1019,6 +1019,7 @@ If you found this error in the DC’s Event log, you need to enable and then dis
 Open the Active Directory Sites and Services console (dssite.msc) and find this domain controller in one of the AD sites;
 Right-click on NTDS Settings and then click Properties;
 Check/Uncheck the Global Catalog option on the General tab. </br>
+
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/9195d4b2-73c7-4a96-9e5e-bb2444f5a27f) </br>
 
 Wait a while for AD changes to replicate and then revert back to the previous value;
