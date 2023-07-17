@@ -1601,7 +1601,7 @@ Hash Algorithm: sha256
 
 InCommon: Creating CSR
 
-1. Login to InCommon and add a new CSR. Use you @tamucc.edu account.
+1. Login to InCommon and add a new CSR.
 2. Next Select the green + button in the top right corner of the InCommon site.
 3. Next Select "Using a Certificate Signing Request" (CSR)
 a. Leave Organization and Department as it is.
@@ -1693,7 +1693,7 @@ You will be asked if you are sure you want to replace this. Enter (y) for Yes.
 
 Find what cert is currently is in use. Takes some time to refresh.
 ```powershell
-get-transportservice -identity hybrid3 | fl identity,internaltransport*thumbprint
+get-transportservice -identity exchserver3 | fl identity,internaltransport*thumbprint
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/7b813b87-17c9-4212-8c5a-06f373489baf)
 
@@ -1709,13 +1709,13 @@ $tlscertificatename = "<i>$($cert.Issuer)<s>$($cert.Subject)"
 Set-SendConnector "Outbound to Office 365*" -TlsCertificateName $tlscertificatename
 ```
 ```powershell
-Set-ReceiveConnector "exchserver1\Default Frontend Hybrid1" -TlsCertificateName $tlscertificatename
+Set-ReceiveConnector "exchserver1\Default Frontend exchserver1" -TlsCertificateName $tlscertificatename
 ```
 ```powershell
-Set-ReceiveConnector "exchserver2\Default Frontend Hybrid2" -TlsCertificateName $tlscertificatename
+Set-ReceiveConnector "exchserver2\Default Frontend exchserver2" -TlsCertificateName $tlscertificatename
 ```
 ```powershell
-Set-ReceiveConnector "exchserver3\Default Frontend Hybrid3" -TlsCertificateName $tlscertificatename
+Set-ReceiveConnector "exchserver3\Default Frontend exchserver3" -TlsCertificateName $tlscertificatename
 ```
 
 Restart Transport service on each server:
