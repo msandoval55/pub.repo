@@ -1696,7 +1696,7 @@ Find what cert is currently is in use. Takes some time to refresh.
 ```powershell
 get-transportservice -identity exchserver3 | fl identity,internaltransport*thumbprint
 ```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/7b813b87-17c9-4212-8c5a-06f373489baf)
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/30b9e705-e563-4a09-8cc1-9a1162d6275c)
 
 Run these commands on the primary exhchange server!
 To set TLSCertificateName for send and receive connector:
