@@ -404,12 +404,7 @@ DISM /online /cleanup /restorehealth
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
-## Active Directory Domain Password Policy
 
-```Powershell
-#Get AD default domain password policy
-Get-ADDefaultDomainPasswordPolicy
-```
 ## Active Directory User
 ```Powershell
 #Get ADUser
@@ -470,6 +465,13 @@ Search-ADAccount -AccountExpiring -TimeSpan "30" | FL *
 ```Powershell
 #Search for all locked out users
 Search-ADAccount -AccountExpiring -DateTime "2022/05/24"
+```
+
+## Active Directory Domain Password Policy
+
+```Powershell
+#Get AD default domain password policy
+Get-ADDefaultDomainPasswordPolicy
 ```
 
 ## Active Directory Group Managed Service Accounts gMSA
