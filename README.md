@@ -1729,12 +1729,14 @@ Import .pfx to the exchange server using \\exchserver3\c$. Move the .pfx where y
 
 Commands will need to be ran in Exchange PowerShell. Use the following command to enter into Exchange PowerShell.
 ```powershell
+#Commands will need to be ran in Exchange PowerShell. Use the following command to enter into Exchange PowerShell.
 exshell.psc1
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/5035ea2d-dbca-4111-bf84-7b113bc5d40f)
 
 Find what cert is currently is in use. 
 ```powershell
+#Find what cert is currently is in use. 
 get-transportservice -identity exchserver3 | fl identity,internaltransport*thumbprint
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/1b04ccfe-399a-4114-aecf-a0b9948aa378)
@@ -1742,12 +1744,14 @@ get-transportservice -identity exchserver3 | fl identity,internaltransport*thumb
 
 Change directory to where pfx is located. In our case, the pfx file was placed in the following path
 ```powershell
+#Change directory to where pfx is located. In our case, the pfx file was placed in the following path
 cd c:\temp\certs
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/c9a96674-b3f1-4a94-9764-4979500821eb)
 
 Import pfx cert file.
 ```powershell
+#Import pfx cert file.
 certutil -f -p webmailcert -importpfx "webmail.ad.consoto.com.pfx"
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/dea32d20-b2a6-4522-b32c-e4cc8bd8303d)
@@ -1765,14 +1769,15 @@ Go to Windows Admin Center (WAC) view of installed certificates. "My" is the sam
 
 Enable the newly imported .pfx file
 ```powershell
+#Enable the newly imported .pfx file
 Enable-ExchangeCertificate -Thumbprint XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXGAA2 -Services iis,smtp
 ```
 You will be asked if you are sure you want to replace this. Enter (y) for Yes.
 
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/00e89cd2-a1b9-43ec-937e-de59b17ff21a)
 
-Find what cert is currently is in use. Takes some time to refresh.
 ```powershell
+#Find what cert is currently is in use. Takes some time to refresh.
 get-transportservice -identity exchserver3 | fl identity,internaltransport*thumbprint
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/30b9e705-e563-4a09-8cc1-9a1162d6275c)
@@ -2059,17 +2064,16 @@ https://learn.microsoft.com/en-US/stream/streamnew/step-by-step-guide?WT.mc_id=3
 
 Microsoft Doc: https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
-Connect to SharePoint Service
 ```powershell
+#Connect to SharePoint Service
 Connect-SPOService
 ```
 ```powershell
 Supply values for the following parameters:
 Url: https://domainname-admin.sharepoint.com/
 ```
-
-If you know the URL of the OneDrive, run the following command:
 ```powershell
+#If you know the URL of the OneDrive, run the following command:
 Get-SPODeletedSite -Identity <URL>
 ```
 If you don't know the URL of the deleted OneDrive, run the following command:
@@ -2077,18 +2081,18 @@ If the OneDrive appears in the results, it can be restored.
 ```powershell
 Get-SPODeletedSite -IncludeOnlyPersonalSite | sort url | FT url
 ```
-Restore the OneDrive to an active state:
 ```powershell
+#Restore the OneDrive to an active state
 Restore-SPODeletedSite -Identity <URL>
 ```
-Assign an administrator to the OneDrive to access the needed data:
 ```powershell
+#Assign an administrator to the OneDrive to access the needed data
 Set-SPOUser -Site <URL> -LoginName <UPNofDesiredAdmin> -IsSiteCollectionAdmin $True
 ```
 Note: When a OneDrive is restored, it will continue to remain available until it's explicitly deleted.
 
-Permanently delete a OneDrive
 ```powershell
+#Permanently delete a OneDrive
 Remove-SPOSite -Identity <URL>
 Remove-SPODeletedSite -Identity <URL>
 ```
