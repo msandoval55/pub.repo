@@ -67,7 +67,7 @@ This is a collection of cmdlets and scripts I have gathered or written throughou
     - [Active Directory Change Computer Objects Ownership](#Active-Directory-Change-Computer-Objects-Ownership)
     - [Active Directory Search Base](#Active-Directory-Search-Base)
     - [Active Directory Servers List](#Active-Directory-Servers-List)
-  - [Active Directory Federation Services](#Active-Directory-Federation-Services)
+  - [Active Directory Federation Services AD FS](#Active-Directory-Federation-Services-AD-FS)
     - [AD FS Troubleshooting Commands](#AD-FS-Troubleshooting-Commands)
    - [Group Policy Commands](#Group-Policy-Commands)
      - [Group Policy update](#Group-Policy-update)
@@ -1240,7 +1240,7 @@ Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -e
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
 
-# Active Directory Federation Services
+# Active Directory Federation Services AD FS
 ## AD FS Troubleshooting Commands
 
 AD FS will authenticate your cloud or synchronized identities on premises. Many large organizations prefer this federated model because they are authenticating "in-house".
