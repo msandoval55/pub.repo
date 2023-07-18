@@ -1,6 +1,5 @@
 # My Sys Admin Repo
 
-
 This is a collection of commands and scripts I have gathered or written throughout my career in the information technology field. Please keep in mind that not all commands will work with a standard account and may need administrator or domain permissions to execute commands. 
 
 
