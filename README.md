@@ -8,7 +8,7 @@ This is a collection of cmdlets and scripts I have gathered or written throughou
 | Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
 | Microsoft Windows Server| Windows Server Cmdlets </br> Windows Server Core Cmdlets </br> RSAT Tools|
 | Microsoft SCCM| Clearing CCMCache on Remote Servers|
-| Microsoft Active Directory Domain Services| Active Directory Domains and Trusts </br> Active Directory Sites and Services </br> Active Directory Users and Computers </br> Active Directory ADSI Edit |
+| Microsoft Active Directory Domain Services| Active Directory Sites and Services </br> Active Directory Users and Computers </br> |
 | Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
 | Microsoft Azure | (AAD) Entra ID </br> |
 | Microsoft M365 | M365 Defender for Identity </br> M365 Apps |
@@ -53,7 +53,6 @@ This is a collection of cmdlets and scripts I have gathered or written throughou
   - [How to Clear SCCM Cache on Remote Server](#How-to-Clear-SCCM-Cache-on-Remote-Server)
 - [Active Directory Domain Services AD DS](#Active-Directory-Domain-Services-AD-DS)
      - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
-  - [Active Directory Domains and Trusts AD DT](#Active-Directory-Domains-and-Trusts-AD-DT)
   - [Active Directory Sites and Services AD SS](#Active-Directory-Sites-and-Services-AD-SS)
      - [Active Directory Test Replication](#Active-Directory-Test-Replication)
      - [Active Directory Web Services Running](#Active-Directory-Web-Services-Running)
@@ -68,7 +67,6 @@ This is a collection of cmdlets and scripts I have gathered or written throughou
     - [Active Directory Change Computer Objects Ownership](#Active-Directory-Change-Computer-Objects-Ownership)
     - [Active Directory Search Base](#Active-Directory-Search-Base)
     - [Active Directory Servers List](#Active-Directory-Servers-List)
-  - [Active Directory ADSI Edit](#Active-Directory-ADSI-Edit)
   - [Active Directory Federation Services](#Active-Directory-Federation-Services)
     - [AD FS Troubleshooting Commands](#AD-FS-Troubleshooting-Commands)
    - [Group Policy Commands](#Group-Policy-Commands)
@@ -871,7 +869,7 @@ Result example:
 
 
 
-# Active Directory Domain Services 
+# Active Directory Domain Services AD DS
 ## Manually Import PowerShell Module
 ```Powershell
 #Manually import the module into the PowerShell session with the command
