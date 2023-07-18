@@ -758,13 +758,12 @@ Obtain list of servers in AD using PowerShell:
 5. The report will be exported in the given format.
 6. To obtain the report in a different format, modify the script accordingly to the needs of the user.
 
-
-#Obtain list of servers in AD using Powershell
 ```Powershell
+#Obtain list of servers in AD using Powershell
 Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 ```
-#Export cmd that can be added to the windows server list script
 ```Powershell
+#Export cmd that can be added to the windows server list script
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
 
@@ -942,29 +941,31 @@ repadmin /istg * /verbose
 
 Troubleshooting Active Directory Web Services Connectivity in Windows
 
-Use the following commands to check if your computer can access the domain:
 ```powershell
+#Use the following commands to check if your computer can access the domain
 nslookup yourdomain.loc
 ```
 ```powershell
+#Use the following commands to check if your computer can access the domain
 ping yourdomain.loc
 ```
-Check the value of this environment variable on your computer:
 ```powershell
+#Check the value of this environment variable on your computer
 $env:LOGONSERVER
 ```
-Check the availability of port TCP/9389 on the domain controller name (specify the logonserver name) with the command:
 ```powershell
+#Check the availability of port TCP/9389 on the domain controller name (specify the logonserver name) with the command
 Test-NetConnection your_logon_DC -port 9389
 ```
 If the command returns TcpTestSucceeded: False, it means the connection is blocked by the firewall, the ADWS service is not running, or the DC is down.
 
-Run the following command on any domain controller to find the nearest DC with the ADWS role:
+
 ```powershell
+#Run the following command on any domain controller to find the nearest DC with the ADWS role
 Get-ADDomainController -Discover -Service ADWS
 ```
-You can find a DC with the ADWS role in another Active Directory sites and subnets:
 ```powershell
+#You can find a DC with the ADWS role in another Active Directory sites and subnets
 Get-ADDomainController -ForceDiscover -Discover -Service ADWS –NextClosestSite
 ```
 Connect to the desired DC and make sure the ADWS service is running on it. To do this, open the services.msc console, locate Active Directory Web Services, and verify that it is in a Running state.
@@ -972,20 +973,22 @@ Connect to the desired DC and make sure the ADWS service is running on it. To do
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/5c856f98-fd08-48ca-8594-51562125d933)
 
 unable to find a default server with active directory
-Start it if the service is stopped. If the service is running, restart the DC or restart the service with the PS command:
+
 ```powershell
+#Start it if the service is stopped. If the service is running, restart the DC or restart the service with the PS command
 Restart-Service –name ADWS –verbose
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/20fc19cc-c268-4407-9329-902c5dce88e8)
 
-Verify if the ADWS service is configured to start automatically:
+
 ```powershell
+#Verify if the ADWS service is configured to start automatically
 Get-Service ADWS | Select-Object -Property Name, StartType, Status
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/1fd11109-b604-41ea-9419-0da3ca0689cb)
 
-If necessary, change the startup type to automatic:
-```powershell  
+```powershell
+#If necessary, change the startup type to automatic:
 Set-Service -Name ADWS –StartupType AutomaticDelayedStart
 ```
 Open the Event Viewer on the domain controller, expand Windows Logs > System and filter your System log by the event ID 1206 with the description:
@@ -1003,8 +1006,8 @@ Check/Uncheck the Global Catalog option on the General tab. </br>
 Wait a while for AD changes to replicate and then revert back to the previous value;
 Reboot the domain controller.
 
-Retrive the 5 newest Active Directory Wec Services errors
 ```powershell
+#Retrive the 5 newest Active Directory Wec Services errors
 Get-EventLog –Logname ‘Active Directory Web Services’ –EntryType Error –Newest 5 | Select-Object –Property EventID, Message | Format-Table –AutoSize -wrap
 ```
 Result example:
