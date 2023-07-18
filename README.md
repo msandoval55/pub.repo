@@ -370,30 +370,7 @@ This command will analyze the state of your domain controllers, it has over 30 b
 dcdiag /s:DC1
 ```
 
-## PowerShell Commands
 
-#Start transcript log of your powershell session
-```powershell
-Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
-```
-#Export cmd that can be added to the windows server list script
-```powershell
-Export-Csv "C:\Temp\WinSrvlist2023.csv"
-```
-
-## Remote Powershell Commands
-```Powershell
-#Enable Remoting
-Enable-PSRemoting
-```
-```Powershell
-#Check Tasklist for running .dll file
-Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
-```
-```Powershell
-#Retrive Installed Applications
-Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
-```
 
 MISC Commands
 
@@ -1161,7 +1138,101 @@ gpresult /h c:\report.html
 gpresult /r > c:\result.txt
 ```
 
-# Windows Server Remote Commands
+# Windows Server Commands
+
+
+
+## PowerShell Commands
+
+#Start transcript log of your powershell session
+```powershell
+Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
+```
+#Export cmd that can be added to the windows server list script
+```powershell
+Export-Csv "C:\Temp\WinSrvlist2023.csv"
+```
+
+## Remote Powershell Commands
+
+Supported remoting commands. </br>
+```powershell
+Invoke-Command: Temporary ps session </br>
+Enter-PSSession: Persistent ps session</br>
+Exit-PSSession </br>
+Disconnect-PSSession </br>
+Receive-PSSession </br>
+Connect-PSSession </br>
+```
+
+Variables or functions defined within commands are no longer available after you close the connection. </br>
+
+To create a temporary connection, use the Invoke-Command cmdlet with the –ComputerName parameter to specify the remote computers. Then, use the –ScriptBlock parameter to specify the command. 
+
+```powershell
+Invoke-Command –ComputerName SEA-DC1 –ScriptBlock {Get-EventLog –log system}
+```
+
+To create a persistent connection with another computer, use the New-PSSession cmdlet. For example, the following command creates a session on a remote computer, and saves the session in the $s variable:
+```powershell
+$s = New-PSSession –ComputerName SEA-DC1
+```
+Use the Enter-PSSession cmdlet to connect to and start an interactive session. For example, after you open a new session on SEA-DC1, the following command starts an interactive session with the computer:
+```powershell
+Enter-PSSession $s
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/64d7265a-7d85-468b-a3e3-312111fd4448) </br>
+
+The interactive session remains open until you close it. This enables you to run as many commands as needed. To end the interactive session, enter the following command:
+```powershell
+Exit-PSSession </br>
+```
+
+## Run remote commands on multiple computers
+For temporary sessions, the Invoke-Command cmdlet accepts multiple computer names. For persistent connections, the Session parameter accepts multiple Windows PowerShell sessions. To run a remote command on multiple computers, include all computer names in the ComputerName parameter with the Invoke-Command cmdlet, and separate the names with commas as demonstrated in the following example:
+
+```powershell
+Invoke-Command -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2 -ScriptBlock {Get-Culture}
+```
+For persistent sessions, you also can run a command in multiple Windows PowerShell sessions. The following commands create Windows PowerShell sessions on SEA-DC1, SEA-SVR1, and SEA-SVR2, and then run a Get-Culture command in each Windows PowerShell session:
+
+```powershell
+$s = New-PSSession -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2
+Invoke-Command -Session $s -ScriptBlock {Get-Culture}
+```
+
+```Powershell
+#Enable Remoting
+Enable-PSRemoting
+```
+```Powershell
+#Check Tasklist for running .dll file
+Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
+```
+```Powershell
+#Retrive Installed Applications
+Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
+```
+
+## Retrieve running service
+
+```PowerShell
+#The following command displays a list of services that have a name that begins with “win” and that excludes the service called WinRM.
+Get-Service | Where-Object {$_.Status -eq "Running"}
+```
+```PowerShell
+#This next command outputs a list of all services to a text file formatted for HTML output.
+Get-Service -Name "win*" -Exclude "WinRM"
+```
+```PowerShell
+#A variation of the preceding command outputs only selected data about services and then exports the output to a CSV file.
+Get-Service | ConvertTo-Html > File.html
+```
+```PowerShell
+#The following command retrieves the specified information (office phone number and user principal name) about Active Directory users.
+Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
+```
+
 ## Retrieve Folder Size from Remote Server
 
 Invoke folder size from remote server
