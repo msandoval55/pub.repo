@@ -4,7 +4,7 @@
 This is a collection of commands and scripts I have gathered or written throughout my career in the information technology field. Please keep in mind that not all commands will work with a standard account and may need administrator or domain permissions to execute commands. 
 
 
-| Subjects | Commands |
+| Subjects | Cmdlets |
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
 | Microsoft Windows Server| Windows Server Cmdlets </br> Windows Server Core Cmdlets </br> RSAT Tools|
