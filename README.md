@@ -469,7 +469,7 @@ The interactive session remains open until you close it. This enables you to run
 Exit-PSSession 
 ```
 
-## Run remote commands on multiple computers
+### Run remote commands on multiple computers
 For temporary sessions, the Invoke-Command cmdlet accepts multiple computer names. For persistent connections, the Session parameter accepts multiple Windows PowerShell sessions. To run a remote command on multiple computers, include all computer names in the ComputerName parameter with the Invoke-Command cmdlet, and separate the names with commas as demonstrated in the following example:
 
 ```powershell
