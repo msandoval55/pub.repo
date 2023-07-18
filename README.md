@@ -42,6 +42,15 @@ This is a collection of commands and scripts I have gathered or written througho
     - [telnet](#telnet)
     - [Stop and Start Printer Spooler](#Stop-and-Start-Printer-Spooler)
     - [dcdiag](#dcdiag)
+- [Microsoft Windows Server](#Microsoft-Windows-Server)
+   - [Windows Server Commands](#Windows-Server-Commands)
+     - [PowerShell Commands](#PowerShell-Commands)
+     - [Remote Powershell Commands](#Remote-Powershell-Commands)
+     - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
+   - [Windows Server Core Commands](#Windows-Server-Core-Commands)
+   - [RSAT Tools](#RSAT-Tools)
+- [Microsoft SCCM](#Microsoft-SCCM)
+  - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
 - [Active Directory Domain Services AD DS](#Active-Directory-Domain-Services-AD-DS)
      - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
   - [Active Directory Domains and Trusts AD DT](#Active-Directory-Domains-and-Trusts-AD-DT)
@@ -65,14 +74,6 @@ This is a collection of commands and scripts I have gathered or written througho
    - [Group Policy Commands](#Group-Policy-Commands)
      - [Group Policy update](#Group-Policy-update)
      - [Group Policy Results](#Group-Policy-Results)
-- [Microsoft Windows Server](#Microsoft-Windows-Server)
-   - [Windows Server Commands](#Windows-Server-Commands)
-     - [PowerShell Commands](#PowerShell-Commands)
-     - [Remote Powershell Commands](#Remote-Powershell-Commands)
-     - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
-     - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
-   - [Windows Server Core Commands](#Windows-Server-Core-Commands)
-   - [RSAT Tools](#RSAT-Tools)
 - [Microsoft Exchange](#Microsoft-Exchange)
   - [Exchange Patching Servers Windows Server Core](#Exchange-Patching-Servers-Windows-Server-Core)
     - [Updating Server3](#Updating-Server3)
@@ -403,6 +404,238 @@ DISM /online /cleanup /restorehealth
 ```
 
 # Microsoft Windows Server
+
+# Windows Server Commands
+
+## PowerShell Commands
+Supported Cmdlet Verbs
+```
+Get: Retrieves a resource, such as a file or a user.
+Set: Changes the data associated with a resource, such as a file or user property.
+New: Creates a resource, such as a file or user.
+Add: Adds a resource to a container of multiple resources.
+Remove: Deletes a resource from a container of multiple resources.
+```
+```powershell
+#Start transcript log of your powershell session
+Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
+```
+```powershell
+#Export cmd that can be added to the windows server list script
+Export-Csv "C:\Temp\WinSrvlist2023.csv"
+```
+```Powershell
+#Enable Remoting
+Enable-PSRemoting
+```
+```Powershell
+#Check Tasklist for running .dll file
+Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
+```
+Retrieve Installed Applications
+```Powershell
+#Retrieve Installed Applications
+Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
+```
+
+## Remote Powershell Commands
+
+Supported remoting commands. </br>
+```powershell
+Invoke-Command: Temporary ps session
+Enter-PSSession: Persistent ps session
+Exit-PSSession 
+Disconnect-PSSession 
+Receive-PSSession 
+Connect-PSSession 
+```
+
+Variables or functions defined within commands are no longer available after you close the connection. </br>
+
+To create a temporary connection, use the Invoke-Command cmdlet with the –ComputerName parameter to specify the remote computers. Then, use the –ScriptBlock parameter to specify the command. 
+
+```powershell
+Invoke-Command –ComputerName SEA-DC1 –ScriptBlock {Get-EventLog –log system}
+```
+
+To create a persistent connection with another computer, use the New-PSSession cmdlet. For example, the following command creates a session on a remote computer, and saves the session in the $s variable:
+```powershell
+$s = New-PSSession –ComputerName SEA-DC1
+```
+Use the Enter-PSSession cmdlet to connect to and start an interactive session. For example, after you open a new session on SEA-DC1, the following command starts an interactive session with the computer:
+```powershell
+Enter-PSSession $s
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/64d7265a-7d85-468b-a3e3-312111fd4448) </br>
+
+The interactive session remains open until you close it. This enables you to run as many commands as needed. To end the interactive session, enter the following command:
+```powershell
+Exit-PSSession 
+```
+
+## Run remote commands on multiple computers
+For temporary sessions, the Invoke-Command cmdlet accepts multiple computer names. For persistent connections, the Session parameter accepts multiple Windows PowerShell sessions. To run a remote command on multiple computers, include all computer names in the ComputerName parameter with the Invoke-Command cmdlet, and separate the names with commas as demonstrated in the following example:
+
+```powershell
+Invoke-Command -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2 -ScriptBlock {Get-Culture}
+```
+For persistent sessions, you also can run a command in multiple Windows PowerShell sessions. The following commands create Windows PowerShell sessions on SEA-DC1, SEA-SVR1, and SEA-SVR2, and then run a Get-Culture command in each Windows PowerShell session:
+
+```powershell
+$s = New-PSSession -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2
+Invoke-Command -Session $s -ScriptBlock {Get-Culture}
+```
+
+## Retrieve running service
+
+```PowerShell
+#The following command displays a list of services that have a name that begins with “win” and that excludes the service called WinRM.
+Get-Service | Where-Object {$_.Status -eq "Running"}
+```
+```PowerShell
+#This next command outputs a list of all services to a text file formatted for HTML output.
+Get-Service -Name "win*" -Exclude "WinRM"
+```
+```PowerShell
+#A variation of the preceding command outputs only selected data about services and then exports the output to a CSV file.
+Get-Service | ConvertTo-Html > File.html
+```
+```PowerShell
+#The following command retrieves the specified information (office phone number and user principal name) about Active Directory users.
+Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
+```
+
+## Retrieve Folder Size from Remote Server
+
+Get folder size from remote server
+```Powershell
+#Get folder size from remote server
+Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
+```
+Optional: Enter PSSession to the remote server to retrieve folder size
+```Powershell
+#Get folder size from remote server
+Enter-PSSession servername
+Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
+```
+## Remote Commands Restart Services
+
+```Powershell
+#Get all services running from remote server
+Get-Service -ComputerName hybrid3
+```
+```Powershell
+#Get specific service running status from remote server
+Get-Service XymonPSClient -ComputerName hybrid3
+```
+```Powershell
+#Restart specific service running from remote server
+Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
+```
+
+## Remote Commands To Free Up Disk Space
+Enter a remote powershell session with the server
+```Powershell
+#Enter a remote powershell session with the server
+Enter-PSSession -ComputerName servername
+```
+Clear SCCM Cache from old downloaded update packages
+```Powershell
+#Clear up ccmcache from SCCM old update packages
+$resman= New-Object -ComObject "UIResource.UIResourceMgr"
+$cacheInfo=$resman.GetCacheInfo()
+$cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
+```
+View DiskSpace on C: Drive
+```Powershell
+#Verify the disk space has been cleaned up.
+fsutil volume diskfree c:
+```
+Optional
+```Powershell
+#Clear up WinSxS files
+dism.exe /Online /Cleanup-Image /StartComponentCleanup 
+```
+Optional
+```Powershell
+#Clear up WinSxS files with resetbase
+dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+```
+Optional
+
+#Run Windows Clean-up
+```Powershell
+#Run Windows Clean-up
+schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
+```
+
+## Windows Server Core Commands
+
+Uninstalling KB Updates with Server Core
+```Powershell
+#Obtain a list of installed apps
+wmic qfe list
+```
+```Powershell
+#Uninstall listed patch
+wusa /uninstall /kb:<kbnummber>
+```
+Installing Updates with Server Core and Software Center Installed
+```Powershell
+#Open Sofware Center for Updating Updates Manually with GUI
+C:\Windows\CCM\SCClient.exe
+```
+Open IIS with GUI with Server Core
+```Powershell
+#Open IIS GUI
+C:\windows\system32\inetsrv> .\InetMgr.exe
+```
+Open C: Drive Directory 
+```Powershell
+#Open C drive temp dir
+cd C:\temp
+```
+Open System Config with Server Core
+```Powershell
+#Open System Config for Restarting Server
+sconfig
+```
+Open Configuration Manager Properties with Server Core
+```Powershell
+#Open Configuration Manager Properties
+control smscfgrc
+```
+Open Exchange Management Shell with Server Core on Exchange Server
+```Powershell
+#Open Exchange Management Shell
+launchems
+```
+Open Notepad with CMD or Powershell
+```Powershell
+#Open Note Pad
+notepad
+```
+
+## RSAT Tools
+
+You can use the following one line of PowerShell to easily install all of the available Remote Server Administration Tools (RSAT) in one go. I end up running this after every Windows feature update., Saves wasting time with a GUI.
+
+```Powershell
+#Open an admin PowerShell prompt
+#To install all the RSAT tools at once, type the command 
+Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
+```
+```Powershell
+#To install RSAT components individually, execute the command
+Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
+```
+```Powershell
+#Checking the install status
+Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
+```
+
+
+
 
 # Active Directory Domain Services 
 ## Manually Import PowerShell Module
@@ -1148,238 +1381,6 @@ gpresult /h c:\report.html
 #Send command output to a text file
 gpresult /r > c:\result.txt
 ```
-
-# Windows Server Commands
-
-## PowerShell Commands
-Supported Cmdlet Verbs
-```
-Get: Retrieves a resource, such as a file or a user.
-Set: Changes the data associated with a resource, such as a file or user property.
-New: Creates a resource, such as a file or user.
-Add: Adds a resource to a container of multiple resources.
-Remove: Deletes a resource from a container of multiple resources.
-```
-```powershell
-#Start transcript log of your powershell session
-Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
-```
-```powershell
-#Export cmd that can be added to the windows server list script
-Export-Csv "C:\Temp\WinSrvlist2023.csv"
-```
-```Powershell
-#Enable Remoting
-Enable-PSRemoting
-```
-```Powershell
-#Check Tasklist for running .dll file
-Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
-```
-Retrieve Installed Applications
-```Powershell
-#Retrieve Installed Applications
-Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
-```
-
-## Remote Powershell Commands
-
-Supported remoting commands. </br>
-```powershell
-Invoke-Command: Temporary ps session
-Enter-PSSession: Persistent ps session
-Exit-PSSession 
-Disconnect-PSSession 
-Receive-PSSession 
-Connect-PSSession 
-```
-
-Variables or functions defined within commands are no longer available after you close the connection. </br>
-
-To create a temporary connection, use the Invoke-Command cmdlet with the –ComputerName parameter to specify the remote computers. Then, use the –ScriptBlock parameter to specify the command. 
-
-```powershell
-Invoke-Command –ComputerName SEA-DC1 –ScriptBlock {Get-EventLog –log system}
-```
-
-To create a persistent connection with another computer, use the New-PSSession cmdlet. For example, the following command creates a session on a remote computer, and saves the session in the $s variable:
-```powershell
-$s = New-PSSession –ComputerName SEA-DC1
-```
-Use the Enter-PSSession cmdlet to connect to and start an interactive session. For example, after you open a new session on SEA-DC1, the following command starts an interactive session with the computer:
-```powershell
-Enter-PSSession $s
-```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/64d7265a-7d85-468b-a3e3-312111fd4448) </br>
-
-The interactive session remains open until you close it. This enables you to run as many commands as needed. To end the interactive session, enter the following command:
-```powershell
-Exit-PSSession 
-```
-
-## Run remote commands on multiple computers
-For temporary sessions, the Invoke-Command cmdlet accepts multiple computer names. For persistent connections, the Session parameter accepts multiple Windows PowerShell sessions. To run a remote command on multiple computers, include all computer names in the ComputerName parameter with the Invoke-Command cmdlet, and separate the names with commas as demonstrated in the following example:
-
-```powershell
-Invoke-Command -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2 -ScriptBlock {Get-Culture}
-```
-For persistent sessions, you also can run a command in multiple Windows PowerShell sessions. The following commands create Windows PowerShell sessions on SEA-DC1, SEA-SVR1, and SEA-SVR2, and then run a Get-Culture command in each Windows PowerShell session:
-
-```powershell
-$s = New-PSSession -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2
-Invoke-Command -Session $s -ScriptBlock {Get-Culture}
-```
-
-
-
-## Retrieve running service
-
-```PowerShell
-#The following command displays a list of services that have a name that begins with “win” and that excludes the service called WinRM.
-Get-Service | Where-Object {$_.Status -eq "Running"}
-```
-```PowerShell
-#This next command outputs a list of all services to a text file formatted for HTML output.
-Get-Service -Name "win*" -Exclude "WinRM"
-```
-```PowerShell
-#A variation of the preceding command outputs only selected data about services and then exports the output to a CSV file.
-Get-Service | ConvertTo-Html > File.html
-```
-```PowerShell
-#The following command retrieves the specified information (office phone number and user principal name) about Active Directory users.
-Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
-```
-
-## Retrieve Folder Size from Remote Server
-
-Get folder size from remote server
-```Powershell
-#Get folder size from remote server
-Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
-```
-Optional: Enter PSSession to the remote server to retrieve folder size
-```Powershell
-#Get folder size from remote server
-Enter-PSSession servername
-Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
-```
-## Remote Commands Restart Services
-
-```Powershell
-#Get all services running from remote server
-Get-Service -ComputerName hybrid3
-```
-```Powershell
-#Get specific service running status from remote server
-Get-Service XymonPSClient -ComputerName hybrid3
-```
-```Powershell
-#Restart specific service running from remote server
-Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
-```
-
-## Remote Commands To Free Up Disk Space
-Enter a remote powershell session with the server
-```Powershell
-#Enter a remote powershell session with the server
-Enter-PSSession -ComputerName servername
-```
-Clear SCCM Cache from old downloaded update packages
-```Powershell
-#Clear up ccmcache from SCCM old update packages
-$resman= New-Object -ComObject "UIResource.UIResourceMgr"
-$cacheInfo=$resman.GetCacheInfo()
-$cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
-```
-View DiskSpace on C: Drive
-```Powershell
-#Verify the disk space has been cleaned up.
-fsutil volume diskfree c:
-```
-Optional
-```Powershell
-#Clear up WinSxS files
-dism.exe /Online /Cleanup-Image /StartComponentCleanup 
-```
-Optional
-```Powershell
-#Clear up WinSxS files with resetbase
-dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
-```
-Optional
-
-#Run Windows Clean-up
-```Powershell
-#Run Windows Clean-up
-schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
-```
-
-## Windows Server Core Commands
-
-Uninstalling KB Updates with Server Core
-```Powershell
-#Obtain a list of installed apps
-wmic qfe list
-```
-```Powershell
-#Uninstall listed patch
-wusa /uninstall /kb:<kbnummber>
-```
-Installing Updates with Server Core and Software Center Installed
-```Powershell
-#Open Sofware Center for Updating Updates Manually with GUI
-C:\Windows\CCM\SCClient.exe
-```
-Open IIS with GUI with Server Core
-```Powershell
-#Open IIS GUI
-C:\windows\system32\inetsrv> .\InetMgr.exe
-```
-Open C: Drive Directory 
-```Powershell
-#Open C drive temp dir
-cd C:\temp
-```
-Open System Config with Server Core
-```Powershell
-#Open System Config for Restarting Server
-sconfig
-```
-Open Configuration Manager Properties with Server Core
-```Powershell
-#Open Configuration Manager Properties
-control smscfgrc
-```
-Open Exchange Management Shell with Server Core on Exchange Server
-```Powershell
-#Open Exchange Management Shell
-launchems
-```
-Open Notepad with CMD or Powershell
-```Powershell
-#Open Note Pad
-notepad
-```
-
-## RSAT Tools
-
-You can use the following one line of PowerShell to easily install all of the available Remote Server Administration Tools (RSAT) in one go. I end up running this after every Windows feature update., Saves wasting time with a GUI.
-
-```Powershell
-#Open an admin PowerShell prompt
-#To install all the RSAT tools at once, type the command 
-Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
-```
-```Powershell
-#To install RSAT components individually, execute the command
-Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
-```
-```Powershell
-#Checking the install status
-Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
-```
-
 
 # Microsoft Exchange
 ## Exchange Patching Servers Windows Server Core
