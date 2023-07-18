@@ -1140,29 +1140,46 @@ gpresult /r > c:\result.txt
 
 # Windows Server Commands
 
-
-
 ## PowerShell Commands
-
-#Start transcript log of your powershell session
+Supported Cmdlet Verbs
+```powershell
+Get: Retrieves a resource, such as a file or a user.
+Set: Changes the data associated with a resource, such as a file or user property.
+New: Creates a resource, such as a file or user.
+Add: Adds a resource to a container of multiple resources.
+Remove: Deletes a resource from a container of multiple resources.
+```
+Start transcript log of your powershell session
 ```powershell
 Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
 ```
-#Export cmd that can be added to the windows server list script
+Export cmd that can be added to the windows server list script
 ```powershell
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
+```
+Enable Remoting
+```Powershell
+Enable-PSRemoting
+```
+Check Tasklist for running .dll file
+```Powershell
+Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
+```
+Retrieve Installed Applications
+```Powershell
+Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
 ```
 
 ## Remote Powershell Commands
 
 Supported remoting commands. </br>
 ```powershell
-Invoke-Command: Temporary ps session </br>
-Enter-PSSession: Persistent ps session</br>
-Exit-PSSession </br>
-Disconnect-PSSession </br>
-Receive-PSSession </br>
-Connect-PSSession </br>
+Invoke-Command: Temporary ps session
+Enter-PSSession: Persistent ps session
+Exit-PSSession 
+Disconnect-PSSession 
+Receive-PSSession 
+Connect-PSSession 
 ```
 
 Variables or functions defined within commands are no longer available after you close the connection. </br>
@@ -1201,18 +1218,7 @@ $s = New-PSSession -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2
 Invoke-Command -Session $s -ScriptBlock {Get-Culture}
 ```
 
-```Powershell
-#Enable Remoting
-Enable-PSRemoting
-```
-```Powershell
-#Check Tasklist for running .dll file
-Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
-```
-```Powershell
-#Retrive Installed Applications
-Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
-```
+
 
 ## Retrieve running service
 
