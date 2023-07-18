@@ -10,7 +10,8 @@ This is a collection of commands and scripts I have gathered or written througho
 | Microsoft Windows Server| Server Core </br> Remote Servers |
 | Microsoft Active Directory Domain Services| Active Directory Domains and Trusts </br> Active Directory Sites and Services </br> Active Directory Users and Computers </br> Active Directory ADSI Edit |
 | Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
-| Microsoft Azure | (AAD) Entra ID </br> M365 Defender for Identity </br> M365 Apps |
+| Microsoft Azure | (AAD) Entra ID </br> |
+| Microsoft M365 | M365 Defender for Identity </br> M365 Apps |
 | WinDirStat | Free Disk Usage Analyzer |
 | Wireshark | Free and open-source packet analyzer |
 
