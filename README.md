@@ -423,8 +423,8 @@ DISM /online /cleanup /restorehealth
 
 # Active Directory Domain Services 
 ## Manually import the module into the PowerShell
-Manually import the module into the PowerShell session with the command
 ```Powershell
+#Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
 ## Active Directory Domain Password Policy
