@@ -7,7 +7,7 @@ This is a collection of commands and scripts I have gathered or written througho
 | Subjects | Commands |
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows, File Directory, Networking |
-| Microsoft Windows Server| AD, AD FS, Group Policy, Server Core, Remote Servers |
+| Microsoft Windows Server| AD DS, AD FS, Group Policy, Server Core, Remote Servers |
 | Microsoft Exchange Server | Exchange Server |
 | Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
 | WinDirStat | Free Disk Usage Analyzer |
@@ -43,7 +43,7 @@ This is a collection of commands and scripts I have gathered or written througho
   - [PowerShell Commands](#PowerShell-Commands)
   - [Remote Powershell Commands](#Remote-Powershell-Commands)
 - [Microsoft Windows Server](#Microsoft-Windows-Server)
-  - [Active Directory](#Active-Directory)
+  - [Active Directory Domain Services](#Active-Directory-Domain-Services)
      - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
      - [Active Directory Domain Password Policy](#Active-Directory-Domain-Password-Policy)
      - [Active Directory User](#Active-Directory-User)
@@ -60,8 +60,8 @@ This is a collection of commands and scripts I have gathered or written througho
    - [Active Directory Federation Services](#Active-Directory-Federation-Services)
      - [AD FS Troubleshooting Commands](#AD-FS-Troubleshooting-Commands)
    - [Group Policy Commands](#Group-Policy-Commands)
-     - [Group policy update](#Group-policy-update)
-     - [Group policy Results](#Group-policy-Results)
+     - [Group Policy update](#Group-Policy-update)
+     - [Group Policy Results](#Group-Policy-Results)
    - [Windows Server Remote Commands](#Windows-Server-Remote-Commands)
      - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
      - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
@@ -420,9 +420,10 @@ DISM /online /cleanup /restorehealth
 ```
 
 # Microsoft Windows Server
-# Active Directory 
+
+# Active Directory Domain Services 
 ## Manually import the module into the PowerShell
-#Manually import the module into the PowerShell session with the command
+Manually import the module into the PowerShell session with the command
 ```Powershell
 Import-Module activedirectory
 ```
