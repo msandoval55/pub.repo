@@ -920,20 +920,20 @@ SyncAll terminated with no errors.
 ```
 
 More command options
-Find the last time your DC was backed up
 ```powershell
+#Find the last time your DC was backed up
 Repadmin /showbackup *
 ```
-Displays calls that have not yet been answered
 ```powershell
+#Displays calls that have not yet been answered
 repadmin /showoutcalls *
 ```
-List the Topology information
 ```powershell
+#List the Topology information
 repadmin /bridgeheads * /verbose
 ```
-Inter Site Topology Generator Report
 ```powershell
+#Inter Site Topology Generator Report
 repadmin /istg * /verbose
 ```
 
@@ -1087,22 +1087,22 @@ AD FS Performance Diagnostics
 ```
 These comnands can be ran with powershell or ise with admin credentials 
 
-Test Azure AD Connect Health Connectivity 
 ```powershell
+#Test Azure AD Connect Health Connectivity 
 Test-AzureADConnectHealthConnectivity -Role ADFS
 ```
-Get AD FS Relying Party Trusts (AD FS Apps)
 ```powershell
-#Run this cmd on the adfs server or use a remote ps-session. 
+#Run this cmd on the adfs server or use a remote ps-session
 Get-AdfsRelyingPartyTrust | Select-Object enabled, name, Identifier | sort enabled, name
 ```
-Get AD FS Properties
 ```powershell
+#Get AD FS Properties
 Get-AdfsProperties
 ```
 # Group Policy Commands
 
 ## Group policy update
+
 ```Powershell
 #This command will pull down any GPO changes to the computer
 gpupdate
@@ -1206,7 +1206,7 @@ Enter-PSSession $s
 
 The interactive session remains open until you close it. This enables you to run as many commands as needed. To end the interactive session, enter the following command:
 ```powershell
-Exit-PSSession </br>
+Exit-PSSession 
 ```
 
 ## Run remote commands on multiple computers
