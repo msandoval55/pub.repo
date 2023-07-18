@@ -871,16 +871,13 @@ Result example:
 
 
 
-
-
-
 # Active Directory Domain Services 
 ## Manually Import PowerShell Module
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
-
+# Active Directory Users and Computers AD UC
 ## Active Directory User
 ```Powershell
 #Get ADUser
