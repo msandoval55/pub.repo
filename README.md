@@ -7,7 +7,8 @@ This is a collection of commands and scripts I have gathered or written througho
 | Subjects | Commands |
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
-| Microsoft Windows Server| Server Core </br> Remote Servers |
+| Microsoft Windows Server| Windows Server Cmdlets </br> Windows Server Core Cmdlets </br> RSAT Tools|
+| Microsoft SCCM| PS Cmdlets|
 | Microsoft Active Directory Domain Services| Active Directory Domains and Trusts </br> Active Directory Sites and Services </br> Active Directory Users and Computers </br> Active Directory ADSI Edit |
 | Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
 | Microsoft Azure | (AAD) Entra ID </br> |
@@ -46,11 +47,11 @@ This is a collection of commands and scripts I have gathered or written througho
    - [Windows Server Commands](#Windows-Server-Commands)
      - [PowerShell Commands](#PowerShell-Commands)
      - [Remote Powershell Commands](#Remote-Powershell-Commands)
-     - [Retrieve Folder Size from Remote Server](#Retrieve-Folder-Size-from-Remote-Server)
    - [Windows Server Core Commands](#Windows-Server-Core-Commands)
    - [RSAT Tools](#RSAT-Tools)
 - [Microsoft SCCM](#Microsoft-SCCM)
-  - [Remote Commands To Free Up Disk Space](#Remote-Commands-To-Free-Up-Disk-Space)
+  - [How to Retrieve CCMCache Folder Size from Remote Server](#How-to-Retrieve-CCMCache-Folder-Size-from-Remote-Server)
+  - [How to Clear SCCM Cache on Remote Server](#How-to-Clear-SCCM-Cache-on-Remote-Server)
 - [Active Directory Domain Services AD DS](#Active-Directory-Domain-Services-AD-DS)
      - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
   - [Active Directory Domains and Trusts AD DT](#Active-Directory-Domains-and-Trusts-AD-DT)
@@ -377,8 +378,6 @@ This command will analyze the state of your domain controllers, it has over 30 b
 dcdiag /s:DC1
 ```
 
-
-
 MISC Commands
 
 ```Powershell
@@ -405,8 +404,7 @@ DISM /online /cleanup /restorehealth
 
 # Microsoft Windows Server
 
-# Windows Server Commands
-
+## Windows Server Commands
 ## PowerShell Commands
 Supported Cmdlet Verbs
 ```
@@ -432,7 +430,6 @@ Enable-PSRemoting
 #Check Tasklist for running .dll file
 Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
 ```
-Retrieve Installed Applications
 ```Powershell
 #Retrieve Installed Applications
 Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
@@ -505,19 +502,6 @@ Get-Service | ConvertTo-Html > File.html
 Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
 ```
 
-## Retrieve Folder Size from Remote Server
-
-Get folder size from remote server
-```Powershell
-#Get folder size from remote server
-Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
-```
-Optional: Enter PSSession to the remote server to retrieve folder size
-```Powershell
-#Get folder size from remote server
-Enter-PSSession servername
-Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
-```
 ## Remote Commands Restart Services
 
 ```Powershell
@@ -533,7 +517,82 @@ Get-Service XymonPSClient -ComputerName hybrid3
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
-## Remote Commands To Free Up Disk Space
+
+## Windows Server Core Commands
+
+Uninstalling KB Updates with Server Core
+```Powershell
+#Obtain a list of installed apps
+wmic qfe list
+```
+```Powershell
+#Uninstall listed patch
+wusa /uninstall /kb:<kbnummber>
+```
+```Powershell
+#Open Sofware Center for Updating Updates Manually with GUI
+C:\Windows\CCM\SCClient.exe
+```
+```Powershell
+#Open IIS with GUI with Server Core
+C:\windows\system32\inetsrv> .\InetMgr.exe
+```
+```Powershell
+#Open C drive temp dir
+cd C:\temp
+```
+```Powershell
+#Open System Config for Restarting Server
+sconfig
+```
+```Powershell
+#Open Configuration Manager Properties
+control smscfgrc
+```
+```Powershell
+#Open Exchange Management Shell with Server Core on Exchange Server
+launchems
+```
+```Powershell
+#Open Note Pad 
+notepad
+```
+
+## RSAT Tools
+
+You can use the following one line of PowerShell to easily install all of the available Remote Server Administration Tools (RSAT) in one go. I end up running this after every Windows feature update., Saves wasting time with a GUI.
+
+```Powershell
+#Open an admin PowerShell prompt
+#To install all the RSAT tools at once, type the command 
+Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
+```
+```Powershell
+#To install RSAT components individually, execute the command
+Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
+```
+```Powershell
+#Checking the install status
+Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
+```
+
+# Microsoft SCCM
+
+## How to Retrieve CCMCache Folder Size from Remote Server
+
+Get folder size from remote server
+```Powershell
+#Get folder size from remote server
+Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
+```
+Optional: Enter PSSession to the remote server to retrieve folder size
+```Powershell
+#Get folder size from remote server
+Enter-PSSession servername
+Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
+```
+
+## How to Clear SCCM Cache on Remote Server
 Enter a remote powershell session with the server
 ```Powershell
 #Enter a remote powershell session with the server
@@ -562,79 +621,10 @@ Optional
 dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 ```
 Optional
-
-#Run Windows Clean-up
 ```Powershell
 #Run Windows Clean-up
 schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
 ```
-
-## Windows Server Core Commands
-
-Uninstalling KB Updates with Server Core
-```Powershell
-#Obtain a list of installed apps
-wmic qfe list
-```
-```Powershell
-#Uninstall listed patch
-wusa /uninstall /kb:<kbnummber>
-```
-Installing Updates with Server Core and Software Center Installed
-```Powershell
-#Open Sofware Center for Updating Updates Manually with GUI
-C:\Windows\CCM\SCClient.exe
-```
-Open IIS with GUI with Server Core
-```Powershell
-#Open IIS GUI
-C:\windows\system32\inetsrv> .\InetMgr.exe
-```
-Open C: Drive Directory 
-```Powershell
-#Open C drive temp dir
-cd C:\temp
-```
-Open System Config with Server Core
-```Powershell
-#Open System Config for Restarting Server
-sconfig
-```
-Open Configuration Manager Properties with Server Core
-```Powershell
-#Open Configuration Manager Properties
-control smscfgrc
-```
-Open Exchange Management Shell with Server Core on Exchange Server
-```Powershell
-#Open Exchange Management Shell
-launchems
-```
-Open Notepad with CMD or Powershell
-```Powershell
-#Open Note Pad
-notepad
-```
-
-## RSAT Tools
-
-You can use the following one line of PowerShell to easily install all of the available Remote Server Administration Tools (RSAT) in one go. I end up running this after every Windows feature update., Saves wasting time with a GUI.
-
-```Powershell
-#Open an admin PowerShell prompt
-#To install all the RSAT tools at once, type the command 
-Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability –Online
-```
-```Powershell
-#To install RSAT components individually, execute the command
-Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
-```
-```Powershell
-#Checking the install status
-Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
-```
-
-
 
 
 # Active Directory Domain Services 
