@@ -622,6 +622,257 @@ Optional
 schtasks.exe /Run /TN "\Microsoft\Windows\Servicing\StartComponentCleanup"
 ```
 
+# Active Directory Sites and Services AD SS
+
+## Active Directory Test Replication
+
+```Powershell
+#Get replication failure data for a domain controller
+Get-ADReplicationFailure -Target dc01
+```
+```Powershell
+#Get replication failure data for multiple domain controllers
+Get-ADReplicationFailure -target dc01,dc02,dc03,dc04
+```
+```Powershell
+#Get replication failure data for all domain controllers in a domain
+Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Domain
+```
+```Powershell
+#Get replication failure data for all domain controllers in a forest
+Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Forest
+```
+analyzes the state of domain controllers in a forest or enterprise and reports any problems to help in troubleshooting.
+```Powershell
+#dcdiag with log file
+Dcdiag /v >c:\dcdiag1.log
+```
+```Powershell
+#showrepl with exported results
+Repadmin /showrepl >c:\repl.txt
+```
+showrepl results example:
+```powershell
+C:\WINDOWS\system32>repadmin /showrepl dc2
+Default-First-Site-Name\DC2
+DSA Options: IS_GC
+Site Options: (none)
+DSA object GUID: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408
+DSA invocationID: 2eb95693-bfa7-4f3f-b52c-139737aa883f
+
+==== INBOUND NEIGHBORS ======================================
+
+DC=ad,DC=activedirectorypro,DC=com
+    Default-First-Site-Name\DC1 via RPC
+        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
+        Last attempt @ 2018-03-14 04:21:02 was successful.
+
+CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
+    Default-First-Site-Name\DC1 via RPC
+        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
+        Last attempt @ 2018-03-14 03:52:07 was successful.
+
+CN=Schema,CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
+    Default-First-Site-Name\DC1 via RPC
+        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
+        Last attempt @ 2018-03-14 03:52:07 was successful.
+
+DC=DomainDnsZones,DC=ad,DC=activedirectorypro,DC=com
+    Default-First-Site-Name\DC1 via RPC
+        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
+        Last attempt @ 2018-03-14 03:52:07 was successful.
+
+DC=ForestDnsZones,DC=ad,DC=activedirectorypro,DC=com
+    Default-First-Site-Name\DC1 via RPC
+        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
+        Last attempt @ 2018-03-14 03:52:07 was successful.
+```
+
+```Powershell
+#replsummary with eported results
+repadmin /replsummary >c:\showrepl.txt
+```
+replsummary results example:
+```powershell
+:\WINDOWS\system32>repadmin /replsummary
+Replication Summary Start Time: 2018-03-13 04:44:54
+
+Beginning data collection for replication summary, this may take awhile:
+  .....
+
+
+Source DSA          largest delta    fails/total %%   error
+ DC1                       52m:48s    0 /   5    0
+ DC2                       52m:46s    0 /   5    0
+
+
+Destination DSA     largest delta    fails/total %%   error
+ DC1                       52m:46s    0 /   5    0
+ DC2                       52m:48s    0 /   5    0
+```
+
+Use the following command if you want to force replication between domain controllers. You will want to run this on the DC that you wish to update. For example, if DC1 is out of sync I would run this on DC1.
+
+This will do a pull replication, which means it will pull updates from DC2 to DC1.
+```powershell
+repadmin /syncall dc1 /Aed
+```
+If you want to push replication you will use the /P switch. For example if you make changes on DC1 and want to replicate those to other DCs use this command.
+```powershell
+repadmin /syncall dc1 /APed
+```
+syncall /aped results example:
+```powershell
+C:\WINDOWS\system32>repadmin /syncall dc1 /Aed
+Syncing all NC's held on dc1.
+Syncing partition: DC=ForestDnsZones,DC=ad,DC=activedirectorypro,DC=com
+CALLBACK MESSAGE: The following replication is in progress:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: The following replication completed successfully:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: SyncAll Finished.
+SyncAll terminated with no errors.
+
+Syncing partition: DC=DomainDnsZones,DC=ad,DC=activedirectorypro,DC=com
+CALLBACK MESSAGE: The following replication is in progress:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: The following replication completed successfully:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: SyncAll Finished.
+SyncAll terminated with no errors.
+
+Syncing partition: CN=Schema,CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
+CALLBACK MESSAGE: The following replication is in progress:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: The following replication completed successfully:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: SyncAll Finished.
+SyncAll terminated with no errors.
+
+Syncing partition: CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
+CALLBACK MESSAGE: The following replication is in progress:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: The following replication completed successfully:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: SyncAll Finished.
+SyncAll terminated with no errors.
+
+Syncing partition: DC=ad,DC=activedirectorypro,DC=com
+CALLBACK MESSAGE: The following replication is in progress:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: The following replication completed successfully:
+    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
+    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
+CALLBACK MESSAGE: SyncAll Finished.
+SyncAll terminated with no errors.
+```
+
+More command options
+```powershell
+#Find the last time your DC was backed up
+Repadmin /showbackup *
+```
+```powershell
+#Displays calls that have not yet been answered
+repadmin /showoutcalls *
+```
+```powershell
+#List the Topology information
+repadmin /bridgeheads * /verbose
+```
+```powershell
+#Inter Site Topology Generator Report
+repadmin /istg * /verbose
+```
+
+## Active Directory Web Services Running
+
+Troubleshooting Active Directory Web Services Connectivity in Windows
+
+```powershell
+#Use the following commands to check if your computer can access the domain
+nslookup yourdomain.loc
+```
+```powershell
+#Use the following commands to check if your computer can access the domain
+ping yourdomain.loc
+```
+```powershell
+#Check the value of this environment variable on your computer
+$env:LOGONSERVER
+```
+```powershell
+#Check the availability of port TCP/9389 on the domain controller name (specify the logonserver name) with the command
+Test-NetConnection your_logon_DC -port 9389
+```
+If the command returns TcpTestSucceeded: False, it means the connection is blocked by the firewall, the ADWS service is not running, or the DC is down.
+
+```powershell
+#Run the following command on any domain controller to find the nearest DC with the ADWS role
+Get-ADDomainController -Discover -Service ADWS
+```
+```powershell
+#You can find a DC with the ADWS role in another Active Directory sites and subnets
+Get-ADDomainController -ForceDiscover -Discover -Service ADWS –NextClosestSite
+```
+Connect to the desired DC and make sure the ADWS service is running on it. To do this, open the services.msc console, locate Active Directory Web Services, and verify that it is in a Running state.
+
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/5c856f98-fd08-48ca-8594-51562125d933)
+
+unable to find a default server with active directory
+
+```powershell
+#Start it if the service is stopped. If the service is running, restart the DC or restart the service with the PS command
+Restart-Service –name ADWS –verbose
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/20fc19cc-c268-4407-9329-902c5dce88e8)
+
+
+```powershell
+#Verify if the ADWS service is configured to start automatically
+Get-Service ADWS | Select-Object -Property Name, StartType, Status
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/1fd11109-b604-41ea-9419-0da3ca0689cb)
+
+```powershell
+#If necessary, change the startup type to automatic:
+Set-Service -Name ADWS –StartupType AutomaticDelayedStart
+```
+Open the Event Viewer on the domain controller, expand Windows Logs > System and filter your System log by the event ID 1206 with the description:
+
+Active Directory Web Services was unable to determine if the computer is a global catalog server.
+
+If you found this error in the DC’s Event log, you need to enable and then disable the Global Catalog FSMO role on this DC.
+
+Open the Active Directory Sites and Services console (dssite.msc) and find this domain controller in one of the AD sites;
+Right-click on NTDS Settings and then click Properties;
+Check/Uncheck the Global Catalog option on the General tab. </br>
+
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/9195d4b2-73c7-4a96-9e5e-bb2444f5a27f) </br>
+
+Wait a while for AD changes to replicate and then revert back to the previous value;
+Reboot the domain controller.
+
+```powershell
+#Retrive the 5 newest Active Directory Wec Services errors
+Get-EventLog –Logname ‘Active Directory Web Services’ –EntryType Error –Newest 5 | Select-Object –Property EventID, Message | Format-Table –AutoSize -wrap
+```
+Result example:
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/c818fb58-e77b-4500-aad6-6a98230c636b)
+
+
+
+
+
 
 # Active Directory Domain Services 
 ## Manually Import PowerShell Module
@@ -993,253 +1244,6 @@ Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -e
 #Export cmd that can be added to the windows server list script
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
-
-## Active Directory Test Replication
-
-```Powershell
-#Get replication failure data for a domain controller
-Get-ADReplicationFailure -Target dc01
-```
-```Powershell
-#Get replication failure data for multiple domain controllers
-Get-ADReplicationFailure -target dc01,dc02,dc03,dc04
-```
-```Powershell
-#Get replication failure data for all domain controllers in a domain
-Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Domain
-```
-```Powershell
-#Get replication failure data for all domain controllers in a forest
-Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Forest
-```
-analyzes the state of domain controllers in a forest or enterprise and reports any problems to help in troubleshooting.
-```Powershell
-#dcdiag with log file
-Dcdiag /v >c:\dcdiag1.log
-```
-```Powershell
-#showrepl with exported results
-Repadmin /showrepl >c:\repl.txt
-```
-showrepl results example:
-```powershell
-C:\WINDOWS\system32>repadmin /showrepl dc2
-Default-First-Site-Name\DC2
-DSA Options: IS_GC
-Site Options: (none)
-DSA object GUID: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408
-DSA invocationID: 2eb95693-bfa7-4f3f-b52c-139737aa883f
-
-==== INBOUND NEIGHBORS ======================================
-
-DC=ad,DC=activedirectorypro,DC=com
-    Default-First-Site-Name\DC1 via RPC
-        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
-        Last attempt @ 2018-03-14 04:21:02 was successful.
-
-CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
-    Default-First-Site-Name\DC1 via RPC
-        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
-        Last attempt @ 2018-03-14 03:52:07 was successful.
-
-CN=Schema,CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
-    Default-First-Site-Name\DC1 via RPC
-        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
-        Last attempt @ 2018-03-14 03:52:07 was successful.
-
-DC=DomainDnsZones,DC=ad,DC=activedirectorypro,DC=com
-    Default-First-Site-Name\DC1 via RPC
-        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
-        Last attempt @ 2018-03-14 03:52:07 was successful.
-
-DC=ForestDnsZones,DC=ad,DC=activedirectorypro,DC=com
-    Default-First-Site-Name\DC1 via RPC
-        DSA object GUID: a4d22a63-1918-492a-bcd6-7fe286941e72
-        Last attempt @ 2018-03-14 03:52:07 was successful.
-```
-
-```Powershell
-#replsummary with eported results
-repadmin /replsummary >c:\showrepl.txt
-```
-replsummary results example:
-```powershell
-:\WINDOWS\system32>repadmin /replsummary
-Replication Summary Start Time: 2018-03-13 04:44:54
-
-Beginning data collection for replication summary, this may take awhile:
-  .....
-
-
-Source DSA          largest delta    fails/total %%   error
- DC1                       52m:48s    0 /   5    0
- DC2                       52m:46s    0 /   5    0
-
-
-Destination DSA     largest delta    fails/total %%   error
- DC1                       52m:46s    0 /   5    0
- DC2                       52m:48s    0 /   5    0
-```
-
-Use the following command if you want to force replication between domain controllers. You will want to run this on the DC that you wish to update. For example, if DC1 is out of sync I would run this on DC1.
-
-This will do a pull replication, which means it will pull updates from DC2 to DC1.
-```powershell
-repadmin /syncall dc1 /Aed
-```
-If you want to push replication you will use the /P switch. For example if you make changes on DC1 and want to replicate those to other DCs use this command.
-```powershell
-repadmin /syncall dc1 /APed
-```
-syncall /aped results example:
-```powershell
-C:\WINDOWS\system32>repadmin /syncall dc1 /Aed
-Syncing all NC's held on dc1.
-Syncing partition: DC=ForestDnsZones,DC=ad,DC=activedirectorypro,DC=com
-CALLBACK MESSAGE: The following replication is in progress:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: The following replication completed successfully:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: SyncAll Finished.
-SyncAll terminated with no errors.
-
-Syncing partition: DC=DomainDnsZones,DC=ad,DC=activedirectorypro,DC=com
-CALLBACK MESSAGE: The following replication is in progress:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: The following replication completed successfully:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: SyncAll Finished.
-SyncAll terminated with no errors.
-
-Syncing partition: CN=Schema,CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
-CALLBACK MESSAGE: The following replication is in progress:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: The following replication completed successfully:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: SyncAll Finished.
-SyncAll terminated with no errors.
-
-Syncing partition: CN=Configuration,DC=ad,DC=activedirectorypro,DC=com
-CALLBACK MESSAGE: The following replication is in progress:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: The following replication completed successfully:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: SyncAll Finished.
-SyncAll terminated with no errors.
-
-Syncing partition: DC=ad,DC=activedirectorypro,DC=com
-CALLBACK MESSAGE: The following replication is in progress:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: The following replication completed successfully:
-    From: 57a1cfbc-88bb-41da-a1a6-f14f5c9df408._msdcs.ad.activedirectorypro.com
-    To  : a4d22a63-1918-492a-bcd6-7fe286941e72._msdcs.ad.activedirectorypro.com
-CALLBACK MESSAGE: SyncAll Finished.
-SyncAll terminated with no errors.
-```
-
-More command options
-```powershell
-#Find the last time your DC was backed up
-Repadmin /showbackup *
-```
-```powershell
-#Displays calls that have not yet been answered
-repadmin /showoutcalls *
-```
-```powershell
-#List the Topology information
-repadmin /bridgeheads * /verbose
-```
-```powershell
-#Inter Site Topology Generator Report
-repadmin /istg * /verbose
-```
-
-## Active Directory Web Services Running
-
-Troubleshooting Active Directory Web Services Connectivity in Windows
-
-```powershell
-#Use the following commands to check if your computer can access the domain
-nslookup yourdomain.loc
-```
-```powershell
-#Use the following commands to check if your computer can access the domain
-ping yourdomain.loc
-```
-```powershell
-#Check the value of this environment variable on your computer
-$env:LOGONSERVER
-```
-```powershell
-#Check the availability of port TCP/9389 on the domain controller name (specify the logonserver name) with the command
-Test-NetConnection your_logon_DC -port 9389
-```
-If the command returns TcpTestSucceeded: False, it means the connection is blocked by the firewall, the ADWS service is not running, or the DC is down.
-
-
-```powershell
-#Run the following command on any domain controller to find the nearest DC with the ADWS role
-Get-ADDomainController -Discover -Service ADWS
-```
-```powershell
-#You can find a DC with the ADWS role in another Active Directory sites and subnets
-Get-ADDomainController -ForceDiscover -Discover -Service ADWS –NextClosestSite
-```
-Connect to the desired DC and make sure the ADWS service is running on it. To do this, open the services.msc console, locate Active Directory Web Services, and verify that it is in a Running state.
-
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/5c856f98-fd08-48ca-8594-51562125d933)
-
-unable to find a default server with active directory
-
-```powershell
-#Start it if the service is stopped. If the service is running, restart the DC or restart the service with the PS command
-Restart-Service –name ADWS –verbose
-```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/20fc19cc-c268-4407-9329-902c5dce88e8)
-
-
-```powershell
-#Verify if the ADWS service is configured to start automatically
-Get-Service ADWS | Select-Object -Property Name, StartType, Status
-```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/1fd11109-b604-41ea-9419-0da3ca0689cb)
-
-```powershell
-#If necessary, change the startup type to automatic:
-Set-Service -Name ADWS –StartupType AutomaticDelayedStart
-```
-Open the Event Viewer on the domain controller, expand Windows Logs > System and filter your System log by the event ID 1206 with the description:
-
-Active Directory Web Services was unable to determine if the computer is a global catalog server.
-
-If you found this error in the DC’s Event log, you need to enable and then disable the Global Catalog FSMO role on this DC.
-
-Open the Active Directory Sites and Services console (dssite.msc) and find this domain controller in one of the AD sites;
-Right-click on NTDS Settings and then click Properties;
-Check/Uncheck the Global Catalog option on the General tab. </br>
-
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/9195d4b2-73c7-4a96-9e5e-bb2444f5a27f) </br>
-
-Wait a while for AD changes to replicate and then revert back to the previous value;
-Reboot the domain controller.
-
-```powershell
-#Retrive the 5 newest Active Directory Wec Services errors
-Get-EventLog –Logname ‘Active Directory Web Services’ –EntryType Error –Newest 5 | Select-Object –Property EventID, Message | Format-Table –AutoSize -wrap
-```
-Result example:
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/c818fb58-e77b-4500-aad6-6a98230c636b)
-
 
 # Active Directory Federation Services
 ## AD FS Troubleshooting Commands
