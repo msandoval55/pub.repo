@@ -7,7 +7,7 @@ This is a collection of commands and scripts I have gathered or written througho
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
 | Microsoft Windows Server| Windows Server Cmdlets </br> Windows Server Core Cmdlets </br> RSAT Tools|
-| Microsoft SCCM| PS Cmdlets|
+| Microsoft SCCM| Clearing CCMCache on Remote Servers|
 | Microsoft Active Directory Domain Services| Active Directory Domains and Trusts </br> Active Directory Sites and Services </br> Active Directory Users and Computers </br> Active Directory ADSI Edit |
 | Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
 | Microsoft Azure | (AAD) Entra ID </br> |
