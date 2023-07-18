@@ -41,7 +41,7 @@ This is a collection of commands and scripts I have gathered or written througho
     - [Stop and Start Printer Spooler](#Stop-and-Start-Printer-Spooler)
     - [dcdiag](#dcdiag)
 - [Active Directory Domain Services](#Active-Directory-Domain-Services)
-     - [Manually import the module into the PowerShell](#Manually-import-the-module-into-the-PowerShell)
+     - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
   - [Active Directory Domains and Trusts](#Active-Directory-Domains-and-Trusts)
   - [Active Directory Sites and Services](#Active-Directory-Sites-and-Services)
      - [Active Directory Test Replication](#Active-Directory-Test-Replication)
@@ -403,7 +403,7 @@ DISM /online /cleanup /restorehealth
 # Microsoft Windows Server
 
 # Active Directory Domain Services 
-## Manually import the module into the PowerShell
+## Manually Import PowerShell Module
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
