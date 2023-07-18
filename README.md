@@ -6,10 +6,11 @@ This is a collection of commands and scripts I have gathered or written througho
 
 | Subjects | Commands |
 | ------------- | ------------- |
-| Microsoft Windows 10, 11 | Windows, File Directory, Networking |
-| Microsoft Windows Server| AD DS, AD FS, Group Policy, Server Core, Remote Servers |
-| Microsoft Exchange Server | Exchange Server |
-| Microsoft Azure | AAD, M365 Defender for Identity, M365 Apps |
+| Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
+| Microsoft Windows Server| Server Core </br> Remote Servers |
+| Microsoft Active Directory Domain Services| Active Directory Domains and Trusts </br> Active Directory Sites and Services </br> Active Directory Users and Computers </br> Active Directory ADSI Edit |
+| Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
+| Microsoft Azure | (AAD) Entra ID </br> M365 Defender for Identity </br> M365 Apps |
 | WinDirStat | Free Disk Usage Analyzer |
 | Wireshark | Free and open-source packet analyzer |
 
