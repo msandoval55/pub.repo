@@ -1142,7 +1142,7 @@ gpresult /r > c:\result.txt
 
 ## PowerShell Commands
 Supported Cmdlet Verbs
-```powershell
+```
 Get: Retrieves a resource, such as a file or a user.
 Set: Changes the data associated with a resource, such as a file or user property.
 New: Creates a resource, such as a file or user.
