@@ -770,20 +770,20 @@ Export-Csv "C:\Temp\WinSrvlist2023.csv"
 
 ## Active Directory Test Replication
 
-Get replication failure data for a domain controller
 ```Powershell
+#Get replication failure data for a domain controller
 Get-ADReplicationFailure -Target dc01
 ```
-Get replication failure data for multiple domain controllers
 ```Powershell
+#Get replication failure data for multiple domain controllers
 Get-ADReplicationFailure -target dc01,dc02,dc03,dc04
 ```
-Get replication failure data for all domain controllers in a domain
 ```Powershell
+#Get replication failure data for all domain controllers in a domain
 Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Domain
 ```
-Get replication failure data for all domain controllers in a forest
 ```Powershell
+#Get replication failure data for all domain controllers in a forest
 Get-ADReplicationFailure -Target "corp.contoso.com" -Scope Forest
 ```
 analyzes the state of domain controllers in a forest or enterprise and reports any problems to help in troubleshooting.
@@ -1149,24 +1149,25 @@ New: Creates a resource, such as a file or user.
 Add: Adds a resource to a container of multiple resources.
 Remove: Deletes a resource from a container of multiple resources.
 ```
-Start transcript log of your powershell session
 ```powershell
+#Start transcript log of your powershell session
 Start-Transcript -Path 'C:\My_PowerShell_Transcripts\Get-Date-Transcript.txt'
 ```
-Export cmd that can be added to the windows server list script
 ```powershell
+#Export cmd that can be added to the windows server list script
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
 ```
-Enable Remoting
 ```Powershell
+#Enable Remoting
 Enable-PSRemoting
 ```
-Check Tasklist for running .dll file
 ```Powershell
+#Check Tasklist for running .dll file
 Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dll}
 ```
 Retrieve Installed Applications
 ```Powershell
+#Retrieve Installed Applications
 Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
 ```
 
@@ -1241,7 +1242,7 @@ Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
 
 ## Retrieve Folder Size from Remote Server
 
-Invoke folder size from remote server
+Get folder size from remote server
 ```Powershell
 #Get folder size from remote server
 Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
@@ -1254,17 +1255,14 @@ Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | 
 ```
 ## Remote Commands Restart Services
 
-Get all services running from remote server
 ```Powershell
 #Get all services running from remote server
 Get-Service -ComputerName hybrid3
 ```
-Get specific service running status from remote server
 ```Powershell
 #Get specific service running status from remote server
 Get-Service XymonPSClient -ComputerName hybrid3
 ```
-Restart specific service running from remote server
 ```Powershell
 #Restart specific service running from remote server
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
