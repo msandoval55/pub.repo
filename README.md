@@ -454,7 +454,6 @@ To create a temporary connection, use the Invoke-Command cmdlet with the –Comp
 ```powershell
 Invoke-Command –ComputerName SEA-DC1 –ScriptBlock {Get-EventLog –log system}
 ```
-
 To create a persistent connection with another computer, use the New-PSSession cmdlet. For example, the following command creates a session on a remote computer, and saves the session in the $s variable:
 ```powershell
 $s = New-PSSession –ComputerName SEA-DC1
@@ -483,7 +482,7 @@ $s = New-PSSession -ComputerName SEA-DC1, SEA-SVR1, SEA-SVR2
 Invoke-Command -Session $s -ScriptBlock {Get-Culture}
 ```
 
-## Retrieve running service
+### Retrieve running service
 
 ```PowerShell
 #The following command displays a list of services that have a name that begins with “win” and that excludes the service called WinRM.
@@ -502,7 +501,7 @@ Get-Service | ConvertTo-Html > File.html
 Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
 ```
 
-## Remote Commands Restart Services
+### Remote Commands Restart Services
 
 ```Powershell
 #Get all services running from remote server
@@ -517,10 +516,8 @@ Get-Service XymonPSClient -ComputerName hybrid3
 Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
-
 ## Windows Server Core Commands
 
-Uninstalling KB Updates with Server Core
 ```Powershell
 #Obtain a list of installed apps
 wmic qfe list
