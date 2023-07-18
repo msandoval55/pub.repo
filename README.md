@@ -9,6 +9,7 @@ This is a collection of cmdlets and scripts I have gathered or written throughou
 | Microsoft Windows Server| Windows Server Cmdlets </br> Windows Server Core Cmdlets </br> RSAT Tools|
 | Microsoft SCCM| Clearing CCMCache on Remote Servers|
 | Microsoft Active Directory Domain Services| Active Directory Sites and Services </br> Active Directory Users and Computers </br> |
+| Microsoft Active Directory Federation Services| AD FS Troubleshooting Cmdlets |
 | Microsoft Exchange Server | Exchange Server Patching </br> Exchange Server SSL Certificate Renewal </br> Exchange Server CU Updates |
 | Microsoft Azure | (AAD) Entra ID </br> |
 | Microsoft M365 | M365 Defender for Identity </br> M365 Apps |
