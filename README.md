@@ -49,9 +49,9 @@ commands.
      - [Remote Powershell Commands](#Remote-Powershell-Commands)
    - [Windows Server Core Commands](#Windows-Server-Core-Commands)
    - [RSAT Tools](#RSAT-Tools)
-- [Microsoft SCCM](#Microsoft-SCCM)
+- [Microsoft ](#Microsoft-)
   - [How to Retrieve CCMCache Folder Size from Remote Server](#How-to-Retrieve-CCMCache-Folder-Size-from-Remote-Server)
-  - [How to Clear SCCM Cache on Remote Server](#How-to-Clear-SCCM-Cache-on-Remote-Server)
+  - [How to Clear  Cache on Remote Server](#How-to-Clear--Cache-on-Remote-Server)
 - [Active Directory Domain Services AD DS](#Active-Directory-Domain-Services-AD-DS)
      - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
   - [Active Directory Sites and Services AD SS](#Active-Directory-Sites-and-Services-AD-SS)
@@ -571,7 +571,7 @@ Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
 Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
 ```
 
-# Microsoft SCCM
+# Microsoft 
 
 ## How to Retrieve CCMCache Folder Size from Remote Server
 
@@ -612,7 +612,7 @@ Invoke-Command -ComputerName "servername" -ScriptBlock {$disk = Get-WmiObject Wi
 Write-Host ("{0}GB total" -f [math]::truncate($disk.Size / 1GB))
 Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
 ```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/43023166-1df9-42ed-9407-134aaf68fbf4)
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/4fc13376-eb4d-4904-be12-ee45d767f833)
 
 Optional
 ```Powershell
