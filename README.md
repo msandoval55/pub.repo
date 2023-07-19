@@ -50,7 +50,7 @@ commands.
      - [Remote Powershell Commands](#Remote-Powershell-Commands)
    - [Windows Server Core Commands](#Windows-Server-Core-Commands)
    - [RSAT Tools](#RSAT-Tools)
-- [Microsoft ](#Microsoft-)
+- [Microsoft SCCM ](#Microsoft-SCCM)
   - [How to Retrieve CCMCache Folder Size from Remote Server](#How-to-Retrieve-CCMCache-Folder-Size-from-Remote-Server)
   - [View DiskSpace on C Drive](#View-DiskSpace-on-C-Drive)
   - [How to Clear  Cache on Remote Server](#How-to-Clear--Cache-on-Remote-Server)
@@ -573,7 +573,7 @@ Add-WindowsCapability -Online -Name "Rsat.<tool name>.Tools"
 Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName, State
 ```
 
-# Microsoft 
+# Microsoft SCCM
 
 ## How to Retrieve CCMCache Folder Size from Remote Server
 
