@@ -589,10 +589,6 @@ Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | 
 
 ## View DiskSpace on C Drive
 ```Powershell
-#Verify the disk space with this cmdlet if you are in a pssession
-fsutil volume diskfree c:
-```
-```Powershell
 #Verify the disk space using the invoke cmdlet
 Invoke-Command -ComputerName "servername" -ScriptBlock {fsutil volume diskfree c:}
 ```
@@ -609,6 +605,10 @@ Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
 ## How to Clear  Cache on Remote Server
 Enter a remote powershell session with the server
 ```Powershell
+#Verify the disk space brfore
+fsutil volume diskfree c:
+```
+```Powershell
 #Enter a remote powershell session with the server
 Enter-PSSession -ComputerName servername
 ```
@@ -619,7 +619,10 @@ $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}
 ```
-![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
+```Powershell
+#Verify the disk space after
+fsutil volume diskfree c:
+```
 
 Optional
 ```Powershell
