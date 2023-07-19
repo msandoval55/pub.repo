@@ -619,7 +619,8 @@ $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}
 ```
-[image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
+![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
+
 Optional
 ```Powershell
 #Clear up WinSxS files
