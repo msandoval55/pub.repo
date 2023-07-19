@@ -588,7 +588,7 @@ Enter-PSSession servername
 Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
 ```
 
-## How to Clear SCCM Cache on Remote Server
+## How to Clear  Cache on Remote Server
 Enter a remote powershell session with the server
 ```Powershell
 #Enter a remote powershell session with the server
@@ -609,7 +609,6 @@ fsutil volume diskfree c:
 ```Powershell
 #Get total and free disk space of the C: drive in GB 
 Invoke-Command -ComputerName "servername" -ScriptBlock {$disk = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object Size, FreeSpace
-
 Write-Host ("{0}GB total" -f [math]::truncate($disk.Size / 1GB))
 Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
 ```
