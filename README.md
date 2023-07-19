@@ -598,7 +598,7 @@ fsutil volume diskfree c:
 #Verify the disk space using the invoke cmdlet
 Invoke-Command -ComputerName "servername" -ScriptBlock {fsutil volume diskfree c:}
 ```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/90e91725-60c3-4fb8-97c6-85bf8148c6f0)
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/c489b438-6898-492c-ac34-373ccb7e3fa3)
 
 ```Powershell
 #Get total and free disk space of the C: drive in GB 
