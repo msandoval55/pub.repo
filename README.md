@@ -17,7 +17,6 @@ commands.
 | Wireshark | Free and open-source packet analyzer |
 
 ## Summary
-
 - [Microsoft Windows 10 and 11 Commands](#Microsoft-Windows-10-and-11-Commands)
   - [Windows Commands](#Windows-Commands)
     - [Get System Info](#Get-System-Info)
