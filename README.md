@@ -602,9 +602,18 @@ $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.Cache
 ```
 View DiskSpace on C: Drive
 ```Powershell
-#Verify the disk space has been cleaned up.
+#Verify the disk space
 fsutil volume diskfree c:
 ```
+```Powershell
+#Get total and free disk space of the C: drive in GB 
+Invoke-Command -ComputerName "servername" -ScriptBlock {$disk = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object Size, FreeSpace
+
+Write-Host ("{0}GB total" -f [math]::truncate($disk.Size / 1GB))
+Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/43023166-1df9-42ed-9407-134aaf68fbf4)
+
 Optional
 ```Powershell
 #Clear up WinSxS files
