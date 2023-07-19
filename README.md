@@ -52,6 +52,7 @@ commands.
    - [RSAT Tools](#RSAT-Tools)
 - [Microsoft ](#Microsoft-)
   - [How to Retrieve CCMCache Folder Size from Remote Server](#How-to-Retrieve-CCMCache-Folder-Size-from-Remote-Server)
+  - [View DiskSpace on C Drive](#View-DiskSpace-on-C-Drive)
   - [How to Clear  Cache on Remote Server](#How-to-Clear--Cache-on-Remote-Server)
 - [Active Directory Domain Services AD DS](#Active-Directory-Domain-Services-AD-DS)
      - [Manually Import PowerShell Module](#Manually-Import-PowerShell-Module)
@@ -588,6 +589,25 @@ Enter-PSSession servername
 Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}
 ```
 
+## View DiskSpace on C Drive
+```Powershell
+#Verify the disk space with this cmdlet if you are in a pssession
+fsutil volume diskfree c:
+```
+```Powershell
+#Verify the disk space using the invoke cmdlet
+Invoke-Command -ComputerName "servername" -ScriptBlock {fsutil volume diskfree c:}
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/a032b2bf-c197-4b21-b4e2-38f96b7d7ca6)
+
+```Powershell
+#Get total and free disk space of the C: drive in GB 
+Invoke-Command -ComputerName "servername" -ScriptBlock {$disk = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object Size, FreeSpace
+Write-Host ("{0}GB total" -f [math]::truncate($disk.Size / 1GB))
+Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
+```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/4fc13376-eb4d-4904-be12-ee45d767f833)
+
 ## How to Clear  Cache on Remote Server
 Enter a remote powershell session with the server
 ```Powershell
@@ -601,19 +621,6 @@ $resman= New-Object -ComObject "UIResource.UIResourceMgr"
 $cacheInfo=$resman.GetCacheInfo()
 $cacheinfo.GetCacheElements()  | foreach {$cacheInfo.DeleteCacheElement($_.CacheElementID)}![image](https://user-images.githubusercontent.com/116230991/225392060-3782de06-b2f5-45e1-a75d-769f80a4cc08.png)
 ```
-View DiskSpace on C: Drive
-```Powershell
-#Verify the disk space
-fsutil volume diskfree c:
-```
-```Powershell
-#Get total and free disk space of the C: drive in GB 
-Invoke-Command -ComputerName "servername" -ScriptBlock {$disk = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object Size, FreeSpace
-Write-Host ("{0}GB total" -f [math]::truncate($disk.Size / 1GB))
-Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
-```
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/4fc13376-eb4d-4904-be12-ee45d767f833)
-
 Optional
 ```Powershell
 #Clear up WinSxS files
