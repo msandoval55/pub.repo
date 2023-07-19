@@ -575,7 +575,7 @@ Get-WindowsCapability -Name RSAT* -Online | Select-Object -Property DisplayName,
 
 ## How to Retrieve CCMCache Folder Size from Remote Server
 
-Get folder size from remote server
+Get folder size from remote server using invoke cmdlets
 ```Powershell
 #Get folder size from remote server
 Invoke-Command -ComputerName "servername" -ScriptBlock {Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | Select-Object @{name='folder size (Gb)';expression={$_.Sum/1gb}}}
