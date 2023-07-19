@@ -588,6 +588,7 @@ Get-ChildItem -Path C:\windows\ccmcache -Recurse | Measure-Object -Sum Length | 
 ```
 
 ## View DiskSpace on C Drive
+Invoke remote commands with the server | Using Invoke Cmdlets
 ```Powershell
 #Verify the disk space using the invoke cmdlet
 Invoke-Command -ComputerName "servername" -ScriptBlock {fsutil volume diskfree c:}
@@ -603,7 +604,7 @@ Write-Host ("{0}GB free" -f [math]::truncate($disk.FreeSpace / 1GB))}
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/4fc13376-eb4d-4904-be12-ee45d767f833)
 
 ## How to Clear  Cache on Remote Server
-Enter a remote powershell session with the server
+Enter a remote powershell session with the server | Using PSSession
 ```Powershell
 #Verify the disk space brfore
 fsutil volume diskfree c:
