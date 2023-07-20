@@ -1063,6 +1063,11 @@ Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.nam
 #Find Groups in a OU with Name Only
 Get-ADOrganizationalUnit -Filter * -SearchBase "OU=OU.Folder.Name, OU=Domain.name, DC=Domain.name, DC=edu.or.com" | Get-ADObject -Properties Name | Format Table Name
 ```
+```Powershell
+$OUsearchbase='OU=server admins,DC=ad,DC=consoto,DC=com'
+
+    Get-ADUser -Filter * -SearchBase $OUsearchbase | ft givenname,surname,name,samaccountname,objectguid
+```
 
 ## Active Directory Group Audit Script
 
