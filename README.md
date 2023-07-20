@@ -432,6 +432,14 @@ Invoke-Command -ComputerName "server name" -ScriptBlock {tasklist /m sqlsrv32.dl
 #Retrieve Installed Applications
 Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber}
 ```
+```Powershell
+#Show last patch/update time and date single server
+Invoke-Command -computername dc01 -scriptblock {Get-HotFix | sort InstalledOn}
+```
+```Powershell
+#Show last patch/update time and date multiple servers
+Invoke-Command -computername dc01,dc02,dc03 -scriptblock {Get-HotFix | sort InstalledOn}
+```
 
 ## Remote Powershell Commands
 
