@@ -1,0 +1,2 @@
+#Get-ADUser manager name in an active directory, run the following command
+Get-aduser -Identity username -Properties * | select SAMAccountname, @{Name='Manager';Expression={(Get-ADUser ($_.Manager)).SAMAccountname}}

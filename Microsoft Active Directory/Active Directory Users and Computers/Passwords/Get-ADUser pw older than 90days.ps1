@@ -1,0 +1,2 @@
+#Get-ADUsers passwords last set older than 90 days
+Get-ADUser -Filter 'Enabled -eq $True' -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).adddays(-90)} | select Name,SamAccountName,PasswordLastSet
