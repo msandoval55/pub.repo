@@ -3,17 +3,22 @@
 
 1. Make sure you logon to powershell ISE as an administrator
 2. Make sure you have unrestriced access
+
 ```Powershell
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 3. Create a temp folder on the c: drive.
 4. Download and store the stream classic report script in the c:\temp folder you made. 
 5. Create a token.txt file with the token from the stream site using f-12 dev tools and save in the the temp folder.
+
 ![image](https://user-images.githubusercontent.com/116230991/218159215-15f0dc85-64fe-47b8-bd63-91f9a6aefe5a.png)
+
 6. Run the ps cmds below.
+
 ```Powershell
 #Change directory to where you have the stream report script
 cd C:\temp\StreamClassicVideoReport
+
 #Enter the the following ps cmd. Provide the tenantid and token location. Remember to refresh your token if the script fails.
 .\StreamClassicVideoReportGenerator.ps1 -AadTenantId "00000000-0000-0000-0000-00000000000" -InputFile "C:\temp\StreamClassicVideoReport\token.txt" -OutDir "C:\temp\StreamClassicVideoReport"
 ```
