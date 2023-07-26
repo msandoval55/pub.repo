@@ -1,0 +1,2 @@
+#Get-ADUser search by first name (givenname), sort and formated table added
+Get-ADUser -Filter "Givenname -eq 'Martin'" | sort givenname,surname,SamAccountName,UserPrincipalName | ft givenname,surname,SamAccountName,UserPrincipalName

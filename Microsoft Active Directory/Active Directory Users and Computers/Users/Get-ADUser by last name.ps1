@@ -1,0 +1,2 @@
+#Get-ADUser search by last name (surname), sort and formated table added
+Get-ADUser -Filter "Surname -eq 'Sandoval'" | sort givenname,surname,SamAccountName,UserPrincipalName | ft givenname,surname,SamAccountName,UserPrincipalName
