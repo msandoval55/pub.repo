@@ -7,7 +7,7 @@ Microsoft Doc: https://learn.microsoft.com/en-us/sharepoint/restore-deleted-oned
 Connect-SPOService
 ```
 ```powershell
-Supply values for the following parameters:
+#Supply values for the following parameters:
 Url: https://domainname-admin.sharepoint.com/
 ```
 ```powershell
