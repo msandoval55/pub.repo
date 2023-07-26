@@ -3,7 +3,6 @@
 This is a collection of cmdlets and scripts I have gathered or written throughout my career in IT. Please keep in mind that not all commands will work with standard accounts and may need administrator or domain permissions to execute 
 commands. 
 
-
 | Subjects | Cmdlets |
 | ------------- | ------------- |
 | Microsoft Windows 10, 11 | Windows OS Tools </br> Windows File Directory </br> Windows Networking |
@@ -377,7 +376,6 @@ dcdiag /s:DC1
 ```
 
 MISC Commands
-
 ```Powershell
 #Power issues for pc
 powercfg /energy
@@ -508,7 +506,6 @@ Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
 ```
 
 ### Remote Commands Restart Services
-
 ```Powershell
 #Get all services running from remote server
 Get-Service -ComputerName hybrid3
@@ -523,7 +520,6 @@ Get-Service XymonPSClient -ComputerName hybrid3 | Restart-Service
 ```
 
 ## Windows Server Core Commands
-
 ```Powershell
 #Obtain a list of installed apps
 wmic qfe list
@@ -897,13 +893,13 @@ Result example:
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/c818fb58-e77b-4500-aad6-6a98230c636b)
 
 
-
 # Active Directory Domain Services AD DS
 ## Manually Import PowerShell Module
 ```Powershell
 #Manually import the module into the PowerShell session with the command
 Import-Module activedirectory
 ```
+
 # Active Directory Users and Computers AD UC
 ## Active Directory User
 ```Powershell
@@ -1042,8 +1038,6 @@ You can now use the gMSA for a service, a group of IIS applications, or schedule
 ![image](https://user-images.githubusercontent.com/116230991/217018739-f3b22286-7c74-4580-b7cd-7e62c7551740.png)
 
 ![image](https://user-images.githubusercontent.com/116230991/217018939-24c741df-4b74-463f-a334-63d4033d5f5c.png)
-
-
 
 
 ## Active Directory Group Memberships
@@ -1241,9 +1235,7 @@ Get-AdfsRelyingPartyTrust | Select-Object enabled, name, Identifier | sort enabl
 Get-AdfsProperties
 ```
 # Group Policy Commands
-
 ## Group policy update
-
 ```Powershell
 #This command will pull down any GPO changes to the computer
 gpupdate
@@ -1357,7 +1349,6 @@ Get-DAGDatabaseInformation
 
 
 ### Updating Server2
-
 ```Powershell
 #Connect to Server2
 Connect-ExchangeServer -Computer Server2
@@ -1426,7 +1417,6 @@ Get-DAGDatabaseInformation
 ```
 
 ### Updating Server1
-
 ```Powershell
 #Connect to Server2
 Connect-ExchangeServer -Computer Server2
@@ -1651,7 +1641,6 @@ get-transportservice -identity exchserver3 | fl identity,internaltransport*thumb
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/1b04ccfe-399a-4114-aecf-a0b9948aa378)
 
-
 Change directory to where pfx is located. In our case, the pfx file was placed in the following path
 ```powershell
 #Change directory to where pfx is located. In our case, the pfx file was placed in the following path
@@ -1832,7 +1821,6 @@ Move Database Back and Skip Suppression Checks
 #Move Database back to Hybrid1 | Select Yes to all
 Move-ActiveMailboxDatabase DB1 -SkipMoveSuppressionChecks -ActivateOnServer Server1
 ```
-
 
 # Microsoft Azure
 # Microsoft Azure Active Directory
@@ -2061,19 +2049,16 @@ Wireshark Capturing Modes
 
 
 ## Promiscuous mode
-
 ```ruby
 Sets interface to capture all packets on a network segment to which it is associated to
 ```
 
 ## Monitor mode
-
 ```ruby
 setup the Wireless interface to capture all traffic it can receive (Unix/Linux only)
 ```
 
 ## Filter Types
-
 ```ruby
 Capture filter = Filter packets during capture
 ```
