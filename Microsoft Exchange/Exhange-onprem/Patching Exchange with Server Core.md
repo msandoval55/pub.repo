@@ -1,7 +1,6 @@
-# Microsoft Exchange
-## Exchange Patching Servers Windows Server Core
+# Microsoft Exchange Patching with Server Core
 
-### Updating Server3
+### Updating Server3 
 
 ```Powershell
 #Connect to Server3
