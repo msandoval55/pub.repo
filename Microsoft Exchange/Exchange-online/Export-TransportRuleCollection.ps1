@@ -1,0 +1,39 @@
+#
+#export exchangeonline transport rules via xml
+$file = Export-TransportRuleCollection
+
+[System.IO.File]::WriteAllBytes('C:\temp\ETRRules.xml', $file.FileData)
+
+#get transport rules
+Get-TransportRule
+
+#Example
+Name                                                            State    Mode    Priority IsRuleConfigurationSupported Comments
+----                                                            -----    ----    -------- ---------------------------- --------              ...
+U.S. SSN Laws: Allow override                                   Enabled  Audit   44       True
+U.S. SSN Laws: Scan email sent outside - low count              Enabled  Audit   45       True
+U.S. SSN Laws: Scan email sent outside - high count             Enabled  Audit   46       True                         ...
+U.S. SSN Laws: Scan text limit exceeded                         Enabled  Audit   47       True
+U.S. SSN Laws: Attachment not supported                         Enabled  Audit   48       True
+PCI DSS: Allow override                                         Enabled  Audit   49       True
+PCI DSS: Scan email sent outside - low count                    Enabled  Audit   50       True
+PCI DSS: Scan email sent outside - high count                   Enabled  Audit   51       True                         ...
+PCI DSS: Scan text limit exceeded                               Enabled  Audit   52       True
+PCI DSS: Attachment not supported                               Enabled  Audit   53       True
+U.S. HIPAA: Allow override                                      Enabled  Audit   54       True
+U.S. HIPAA: Scan email sent outside - low count                 Enabled  Audit   55       True
+U.S. HIPAA: Scan email sent outside - high count                Enabled  Audit   56       True                         ...
+U.S. HIPAA: Scan text limit exceeded                            Enabled  Audit   57       True
+U.S. HIPAA: Attachment not supported                            Enabled  Audit   58       True
+I send email                                                    Disabled Enforce 59       True                         ...
+Received from me                                                Disabled Enforce 60       True                         ...
+Subject or body contains - block?                               Disabled Enforce 61       True                         ...
+Test 0                                                          Disabled Enforce 62       True                         ...
+Test 1                                                          Disabled Enforce 63       True                         ...
+Test 2                                                          Enabled  Enforce 64       True                         ...
+Test 3                                                          Disabled Enforce 65       True                         ...
+PIR Survey '22                                                  Enabled  Enforce 66       True                         ...
+
+
+
+#https://statics.teams.cdn.office.net/evergreen-assets/safelinks/1/atp-safelinks.html
