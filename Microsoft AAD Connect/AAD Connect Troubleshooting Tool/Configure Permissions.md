@@ -63,7 +63,7 @@ operation.
 Grant permissions on AD object: Setting permissions on AD object 'OU=Server Admins,DC=ad,DC=consoto,DC=com'...
 Owner: CONSOTO\Domain Admins
 Group: CONSOTO\Domain Admins
-```
+
 Access list:
 Deny  Everyone                        SPECIAL ACCESS
                                       DELETE
