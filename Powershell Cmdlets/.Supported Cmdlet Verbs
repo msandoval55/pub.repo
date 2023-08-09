@@ -1,0 +1,5 @@
+Get: Retrieves a resource, such as a file or a user.
+Set: Changes the data associated with a resource, such as a file or user property.
+New: Creates a resource, such as a file or user.
+Add: Adds a resource to a container of multiple resources.
+Remove: Deletes a resource from a container of multiple resources.
