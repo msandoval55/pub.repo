@@ -6,12 +6,11 @@
 #Show the required GUID value of the mailbox database that holds the disconnected mailbox:
 Get-MailboxDatabase | Format-List Identity,GUID
 
-#permanently delete a user mailbox from azure ad
+#User Azure AD to permanently delete a user mailbox
 Remove-MsolUser -UserPrincipalName <Walter Harp> -RemoveFromRecycleBin
 
 #Use Exchange Online PowerShell to restore a user account
 Undo-SoftDeletedMailbox allieb@contoso.com -WindowsLiveID allieb@contoso.com -Password (ConvertTo-SecureString -String 'Pa$$word1' -AsPlainText -Force)
-
 #Use Exchange Online PowerShell to delete a mailbox
 Remove-Mailbox -Identity "Walter Harp"
 
