@@ -1,0 +1,2 @@
+#PS build number
+$PSVersionTable
