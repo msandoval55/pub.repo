@@ -1,0 +1,1 @@
+https://learn.microsoft.com/en-us/windows-server/administration/server-core/server-core-administer
