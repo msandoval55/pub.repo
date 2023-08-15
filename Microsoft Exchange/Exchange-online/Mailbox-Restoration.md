@@ -32,7 +32,11 @@ $inactiveMailbox.LegacyExchangeDN
 
 ```powershell
 # Copy this LegacyExchangeDN to the proxyaddress starting with X500: LegacyExchangeDN
-# Start AADSync : start-adsyncsynccycle
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/4d18d434-6378-46d1-808b-a21476effb72)
+
+```powershell
+#Run a AAD sync so the added changes go through
+Start AADSync : start-adsyncsynccycle
 ```
 ```powershell
 # Do the MailboxRestore
