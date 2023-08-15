@@ -15,14 +15,20 @@ $InactiveMailbox = Get-Mailbox -Identity <email address> -SoftDeletedMailbox -In
 ```powershell
 $InactiveMailbox | fl DisplayName,UserPrincipalName,Guid (old Guid)
 ```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/8994e696-eaf6-4f49-a016-a85eafb0ec3f)
+
 ```powershell
 # Check the current and new Guid
 Get-Mailbox <email address> | fl DisplayName,UserPrincipalName,Guid (New Guid)
 ```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/06aa1166-89ca-44fd-9259-84cb7b8cf102)
+
 ```powershell
 # Get the LegencyExchangeDN of the inactive mailbox
 $inactiveMailbox.LegacyExchangeDN
 ```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/56c50017-1fd1-47d6-b4c9-05525a7e235b)
+
 ```powershell
 # Copy this LegacyExchangeDN to the proxyaddress starting with X500: LegacyExchangeDN
 # Start AADSync : start-adsyncsynccycle
@@ -31,11 +37,9 @@ $inactiveMailbox.LegacyExchangeDN
 # Do the MailboxRestore
 New-MailboxRestoreRequest -SourceMailbox $inactiveMailbox.DistinguishedName -TargetMailbox <New Guid>
 ```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/079535f4-7adf-4995-ad11-6ca9c30318ed)
 ```powershell
 #Check the Restore Statistics
 Get-MailboxRestoreRequest | Get-MailboxRestoreRequestStatistics
 ```
 
-Next Actions:
-We have finished the four accounts and next 16 acounts would be finished by yourself
-Drop this ticket to Sev B and keep monitoring
