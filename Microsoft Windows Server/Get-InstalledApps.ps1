@@ -1,2 +1,2 @@
 #Retrieve Installed Applications
-Invoke-Command -ComputerName "server name" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,IdentifyingNumber |ft }
+Invoke-Command -ComputerName "servername" -ScriptBlock {Get-WmiObject -Class Win32_Product | Select-Object Name,version,IdentifyingNumber | sort name | ft }
