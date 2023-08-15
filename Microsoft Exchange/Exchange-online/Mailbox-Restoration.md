@@ -8,27 +8,27 @@ Mailbox is in the soft-delete mailbox
  
 Resolution:
 ==========
-```ps
+```powershell
 # Get the inactive mailbox and check the old Guid
 $InactiveMailbox = Get-Mailbox -Identity <email address> -SoftDeletedMailbox -IncludeInactiveMailbox
 $InactiveMailbox | fl DisplayName,UserPrincipalName,Guid (old Guid)
 ```
-```ps
+```powershell
 # Check the current and new Guid
 Get-Mailbox <email address> | fl DisplayName,UserPrincipalName,Guid (New Guid)
- ```ps
+ ```powershell
 # Get the LegencyExchangeDN of the inactive mailbox
 $inactiveMailbox.LegacyExchangeDN
 ```
-```ps
+```powershell
 # Copy this LegacyExchangeDN to the proxyaddress starting with X500: LegacyExchangeDN
 # Start AADSync : start-adsyncsynccycle
 ```
-```ps
+```powershell
 # Do the MailboxRestore
 New-MailboxRestoreRequest -SourceMailbox $inactiveMailbox.DistinguishedName -TargetMailbox <New Guid>
 ```
-```ps
+```powershell
 #Check the Restore Statistics
 Get-MailboxRestoreRequest | Get-MailboxRestoreRequestStatistics
  
