@@ -9,10 +9,11 @@ Mailbox is in the soft-delete mailbox
 Resolution:
 ==========
 ```powershell
-# Get the inactive mailbox and check the old Guid
+# Get the inactive mailbox
 $InactiveMailbox = Get-Mailbox -Identity <email address> -SoftDeletedMailbox -IncludeInactiveMailbox
 ```
 ```powershell
+#check the old Guid
 $InactiveMailbox | fl DisplayName,UserPrincipalName,Guid (old Guid)
 ```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/8994e696-eaf6-4f49-a016-a85eafb0ec3f)
@@ -42,4 +43,6 @@ New-MailboxRestoreRequest -SourceMailbox $inactiveMailbox.DistinguishedName -Tar
 #Check the Restore Statistics
 Get-MailboxRestoreRequest | Get-MailboxRestoreRequestStatistics
 ```
+
+
 
