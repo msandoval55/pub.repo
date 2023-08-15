@@ -31,7 +31,8 @@ $inactiveMailbox.LegacyExchangeDN
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/56c50017-1fd1-47d6-b4c9-05525a7e235b)
 
 ```powershell
-# Copy this LegacyExchangeDN to the proxyaddress starting with X500: LegacyExchangeDN
+#Copy this LegacyExchangeDN to the proxyaddress starting with X500: LegacyExchangeDN
+```
 ![image](https://github.com/msandoval55/pub.repo/assets/116230991/4d18d434-6378-46d1-808b-a21476effb72)
 
 ```powershell
