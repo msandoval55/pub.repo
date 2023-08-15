@@ -1,16 +1,16 @@
 #https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-hotfix?view=powershell-7.3
 #Show last patch/update time and date single server
-Invoke-Command -computername Server3 -scriptblock {Get-HotFix | sort InstalledOn}
+Invoke-Command -computername Server03 -scriptblock {Get-HotFix | sort InstalledOn}
 
 #Show last patch/update time and date multiple servers
 Invoke-Command -computername server01,server02,server03 -scriptblock {Get-HotFix | sort InstalledOn}
 
-#Obtain a list of installed Updates
+#optional I perfer the cmds above
+#Obtain a list of installed Updates using wmic
 wmic qfe list
 #or
-Invoke-Command -ComputerName "server3" -ScriptBlock {wmic qfe list}
-#or
-Invoke-Command -computername "server2" -scriptblock {Get-HotFix | sort InstalledOn}
+Invoke-Command -ComputerName "server03" -ScriptBlock {wmic qfe list}
+
 
 
 #Example
