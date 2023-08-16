@@ -1,2 +1,2 @@
 #log user from server
-Invoke-Command -ComputerName lsmssql -ScriptBlock {logoff '#' /server:$SERVER}
+Invoke-Command -ComputerName server01 -ScriptBlock {logoff '#' /server:$SERVER}
