@@ -14,7 +14,6 @@ Undo-SoftDeletedMailbox allieb@contoso.com -WindowsLiveID allieb@contoso.com -Pa
 #Use Exchange Online PowerShell to delete a mailbox
 Remove-Mailbox -Identity "Walter Harp"
 
-
 #Restoring a user in a hybrid deployment
 #For user mailboxes in a hybrid scenario, if the mailbox has been soft-deleted and the Azure AD user that was associated with the mailbox has been hard-deleted from Azure AD, you can use New-MailboxRestoreRequest to recover the mailbox. 
 #Read Configure Microsoft 365 Groups with on-premises Exchange hybrid for more info. The procedures in this section explain how to restore the mailbox for a soft-deleted user.
@@ -38,7 +37,6 @@ Get-MailboxDatabase | Get-MailboxStatistics | where {$_.DisconnectReason -eq "Di
 Get-Mailbox -Identity "<MailboxIdentity>" | Format-List Name,ExchangeGuid,LegacyExchangeDN
 #Restore to Exchange Online archive mailbox:
 Get-Mailbox -Identity "<MailboxIdentity>" -TargetIsArchive | Format-List Name,LegacyExchangeDn,ExchangeGuid,ArchiveGuid
-
 
 #run one of the following commands to start the restore request.
 #RemoteHostName is the FQDN of the Exchange server (for example, mail.contoso.com)
