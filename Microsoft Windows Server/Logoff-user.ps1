@@ -1,5 +1,4 @@
 #log user from server
-<<<<<<< HEAD
 Invoke-Command -ComputerName server01 -ScriptBlock {logoff '#' /server:$SERVER}
 
 =============================================================================================
@@ -10,5 +9,4 @@ Invoke-Command -ComputerName server01 -ScriptBlock {taskkill /FI "SESSION eq ID#
 SUCCESS: The process with PID 18880 has been terminated.
 SUCCESS: The process with PID 11368 has been terminated.
 SUCCESS: The process with PID 26932 has been terminated.
-=======
-Invoke-Command -ComputerName server01 -ScriptBlock {logoff '#' /server:$SERVER}
+
