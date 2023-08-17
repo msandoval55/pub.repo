@@ -5,13 +5,14 @@ gpresult /r
 #Display GPOs applied to the user
 gpresult /r /scope:user
 
+#Administrator account needed to run
 #Display GPOs applied to the computer
 gpresult /r /scope:computer
 
 #Display GPOs for a remote computer
-gpresult /s computername
-gpresult /S 10.0.49.42 /SCOPE COMPUTER /X output.xml
+#Administrator account needed to run
 Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:user}
+#Administrator account needed to run
 Invoke-Command -ComputerName 'computername' -ScriptBlock {gpresult /r /scope:computer}
 
 #Generate an HTML report
