@@ -13,6 +13,8 @@ Obtain list of servers in AD using PowerShell:
 #Obtain list of servers in AD using Powershell
 Get-ADComputer -Filter 'operatingsystem -like "*windows server*" -and enabled -eq "true"' ` -Properties Name,Operatingsystem,OperatingSystemVersion,IPv4Address | Sort-Object -Property Operatingsystem | Select-Object -Property Name,Operatingsystem,OperatingSystemVersion,IPv4Address
 
+#Add out grid view
+| Out-GridView
 
 #Export cmd that can be added to the windows server list script
 Export-Csv "C:\Temp\WinSrvlist2023.csv"
