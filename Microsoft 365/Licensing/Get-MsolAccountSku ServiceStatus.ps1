@@ -1,0 +1,1 @@
+Get-MsolAccountSku | select -ExpandProperty ServiceStatus
