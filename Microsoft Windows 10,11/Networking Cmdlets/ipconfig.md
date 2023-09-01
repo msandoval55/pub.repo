@@ -1,4 +1,4 @@
-## ipconfig
+# ipconfig
 The ipconfig command is used to display a computers TCP/IP configuration. You can display the IP info for a single or all network cards installed on a computer.
 This command can also display the DNS cache on the local machine, flush DNS, release and renew the DHCP address on all network cards.
 

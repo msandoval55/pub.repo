@@ -1,4 +1,4 @@
-## telnet
+# telnet
 Use the windows telnet client to test if a remote host is allowing connection on a specific port. I typically use this when someone says your firewall is blocking a program from working.
 <br />
 

@@ -1,4 +1,4 @@
-## netstat
+# netstat
 The netstat command displays TCP/IP connection information, ethernet stats, and the computer’s routing table. As a sysadmin I use this command on Windows servers and clients when troubleshooting connection issues. I can verify application servers are working correctly by checking that the service is running and listening for connections on the port.
 
 ```Powershell
