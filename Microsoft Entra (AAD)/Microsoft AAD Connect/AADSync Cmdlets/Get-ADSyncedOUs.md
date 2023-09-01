@@ -1,4 +1,4 @@
-Let’s get this same information from PowerShell. Remember you will need to be logged in to the active AAD Connect server since that’s what is actually being synced to Azure AD.
+Remember you will need to be logged in to the active AAD Connect server since that’s what is actually being synced to Azure AD.
 
 #Get Connect information for your on-premises domain.
 $SyncConnector = Get-ADSyncConnector | Where-Object {$_.Name -notmatch ' - aad'}
