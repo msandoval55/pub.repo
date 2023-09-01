@@ -9,4 +9,4 @@ $SyncConnector.Partitions.ConnectorPartitionScope.ContainerInclusionList
 #Get OU exclusion list
 $SyncConnector.Partitions.ConnectorPartitionScope.ContainerExclusionList
 
-https://thesysadminchannel.com/wp-content/uploads/2023/05/Get-Synced-OU-Configuration-in-Azure-AD-Connect-PowerShell.png
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/f448ee1c-eede-4520-94a7-445573e556d1)
