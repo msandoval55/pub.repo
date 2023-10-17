@@ -1,6 +1,7 @@
 #get users logged on to server
+```powershell
 Invoke-Command -ComputerName Server1 -ScriptBlock {query user /server:$SERVER}
-
+```
 #Example
  USERNAME        SESSIONNAME        ID STATE   IDLE TIME  LOGON TIME
  logan2          rdp-tcp#39         2  Active       1:10  8/3/2023 1:18 PM
@@ -11,8 +12,9 @@ Invoke-Command -ComputerName Server1 -ScriptBlock {query user /server:$SERVER}
 
 =============================================================================================
 #get users and sessions logged on to server
+```powershell
 Invoke-Command -ComputerName hybrid1 -ScriptBlock {qwinsta}
-
+```
 #Example
 SESSIONNAME       USERNAME                 ID  STATE   TYPE        DEVICE
 >services                                    0  Disc
@@ -20,12 +22,14 @@ SESSIONNAME       USERNAME                 ID  STATE   TYPE        DEVICE
  rdp-tcp                                 65536  Listen
 
 #log user from server
+```powershell
 Invoke-Command -ComputerName server01 -ScriptBlock {logoff '#' /server:$SERVER}
-
+```
 =============================================================================================
 #kill tasks of user id to log user off
+```powershell
 Invoke-Command -ComputerName server01 -ScriptBlock {taskkill /FI "SESSION eq ID#" /F}
-
+```
 #Example
 SUCCESS: The process with PID 18880 has been terminated.
 SUCCESS: The process with PID 11368 has been terminated.
