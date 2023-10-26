@@ -14,7 +14,7 @@ Success
 or 
 
 #invoke aad sync cycle
-Invoke-Command -ComputerName aadsync -ScriptBlock{start-adsyncsynccycle}
+Invoke-Command -ComputerName hostname -ScriptBlock{start-adsyncsynccycle}
 
 #example
 PSComputerName RunspaceId                           Result 
