@@ -1,5 +1,5 @@
 #get-service invoke cmdlet
-Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service sqlserveragent}
+Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service 'sqlserveragent'}
 
 #output example
 Status   Name               DisplayName                            PSComputerName
@@ -7,4 +7,4 @@ Status   Name               DisplayName                            PSComputerNam
 Stopped  sqlserveragent     SQL Server Agent (MSSQLSERVER)         lsmssql
 
 #Restart-service invoke cmdlet
-Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service sqlserveragent | Restart-Service}
+Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service 'sqlserveragent' | Restart-Service}
