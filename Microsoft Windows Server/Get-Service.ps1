@@ -15,5 +15,5 @@ Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
 
 #Invoke Commands
 #Get all services running from remote server
-Invoke-Command -ComputerName Server1 -ScriptBlock {Get-Service | sort displayname}
+Invoke-Command -ComputerName Server1 -ScriptBlock {Get-Service | sort displayname | ft -autosize}
 
