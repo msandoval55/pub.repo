@@ -2,6 +2,7 @@
 
 Microsoft Doc: https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
+*Make sure to activate your sharpoint admin role or global admin role.
 
 Connect to SharePoint Service
 ```powershell
