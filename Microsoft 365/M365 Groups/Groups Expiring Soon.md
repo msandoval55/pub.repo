@@ -1,17 +1,27 @@
-## Report Microsoft 365 Groups Expiration Policy
+# Report Microsoft 365 Groups Expiration Policy
 
 From https://office365itpros.com/2022/02/09/microsoft-groups-expiration-policy/
 
+
+Pre reqs
+
+You may need to install modules if they are not already installed.
 ```Powershell
-#Pre reqs
 Install-Module AzureAD 
 Install-Module ExchangeOnline
+```
+You may need to import the following PowerShell modules if not already done.
+```Powershell
 Import-Module AzureAD 
 Import-Module ExchangeOnline
+```
+Connect to AAD and Exchange Online before running the script.
+```Powershell
 Connect-AzureAD
 Connect-ExchangeOnline
 ```
 
+Script below, with added export-csv line.
 ```Powershell
 Write-Host "Finding Microsoft 365 Groups to check…"
 [array]$ExpirationPolicyGroups  = (Get-UnifiedGroup -ResultSize Unlimited | ? {$_.ExpirationTime -ne $Null} | Select DisplayName, ExternalDirectoryObjectId, WhenCreated, ExpirationTime )
@@ -36,29 +46,26 @@ Write-Host “”
 $Report | Sort DaysLeft | Select Group, @{n="Last Renewed"; e= {$_.LastRenewed}}, @{n="Next Renewal Due"; e={$_.NextRenewal}}, @{n="Days before Expiration"; e={$_.DaysLeft}}
 ```
 
-## Restore a deleted Microsoft 365 group in Azure Active Directory
+# Example of the report viewed in notepad. 
 
-[Restore a deleted Microsoft 365 group in Azure Active Directory](https://learn.microsoft.com/en-us/azure/active-directory/enterprise-users/groups-restore-deleted)
+```Powershell
 
-View the deleted Microsoft 365 groups that are available to restore using PowerShell
-```Powershell
-#Connect to Azure AD with your admin account
-Connect-AzureAD
-```
-```Powershell
-#Run the following cmdlet to display all deleted Microsoft 365 groups in your Azure AD organization that are still available to restore
-Get-AzureADMSDeletedGroup
-```
-```Powershell
-#Alternately, if you know the objectID of a specific group (and you can get it from the cmdlet in step 1), run the following cmdlet to verify that the specific deleted group has not yet been permanently purged
-Get-AzureADMSDeletedGroup –Id <objectId>
-```
-How to restore your deleted Microsoft 365 group
-```Powershell
-#Run the following cmdlet to restore the group and its contents
-Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
-```
-```Powershell
-#Alternatively, the following cmdlet can be run to permanently remove the deleted group
-Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
+Total Microsoft 365 Groups covered by expiration policy: 412
+
+
+Group                                                      Last Renewed        Next Renewal Due   Days before Expiration
+-----                                                      ------------        ----------------   ----------------------
+RI Student-group                                           9/5/2022 5:16 AM    3/3/2023 11:16 PM                      16
+CLA-POLS Faculty-group                                     8/7/2022 11:45 AM   3/6/2023 11:04 AM                      18
+CLA-Small Group Decision Making-group                      9/6/2022 5:19 AM    3/6/2023 11:04 AM                      18
+CLSE-Bahr Marine Ecology Lab-group                         9/5/2022 5:16 AM    3/6/2023 11:05 AM                      18
+PIR-RI-group                                               9/7/2022 5:21 AM    3/6/2023 11:01 AM                      18
+HPO Admins                                                 9/22/2017 2:04 PM   3/6/2023 10:48 AM                      18
+ITAppSvcs-TaylorHucker                                     1/24/2019 10:17 PM  3/6/2023 10:48 AM                      18
+HRI-Senior Leadership-group                                9/16/2022 6:06 AM   3/15/2023 1:06 AM                      27
+HRI-Furgason Fellowship-group                              9/16/2022 6:05 AM   3/15/2023 1:05 AM                      27
+HRI-Measure our Impact-group                               9/16/2022 6:05 AM   3/15/2023 1:05 AM                      27
+CLA-CRIJ Faculty-group                                     9/8/2022 5:24 AM    3/15/2023 12:06 PM                     28
+CSE-UTM Capstone Project-group                             9/19/2022 2:19 PM   3/18/2023 9:19 AM                      30
+
 ```
