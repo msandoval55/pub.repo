@@ -49,7 +49,6 @@ $Report | Sort DaysLeft | Select Group, @{n="Last Renewed"; e= {$_.LastRenewed}}
 # Example of the report viewed in notepad. 
 
 ```Powershell
-
 Total Microsoft 365 Groups covered by expiration policy: 412
 
 
@@ -67,5 +66,4 @@ HRI-Furgason Fellowship-group                              9/16/2022 6:05 AM   3
 HRI-Measure our Impact-group                               9/16/2022 6:05 AM   3/15/2023 1:05 AM                      27
 CLA-CRIJ Faculty-group                                     9/8/2022 5:24 AM    3/15/2023 12:06 PM                     28
 CSE-UTM Capstone Project-group                             9/19/2022 2:19 PM   3/18/2023 9:19 AM                      30
-
 ```
