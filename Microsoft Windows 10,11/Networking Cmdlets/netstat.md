@@ -7,7 +7,7 @@ netstat -a
 ```
 ```Powershell
 #Display specific active and listening port number
-netstat -an |find "443"
+netstat -an | findstr "443"
 ```
 ```Powershell
 #Test connection with port number on local server
