@@ -1,5 +1,21 @@
 # Microsoft Exchange Patching with Server Core
 
+
+> [!IMPORTANT]
+> Time window for updates is 8:30PM - 12:00PM. Starting a week after patch Tuesday. Wednesday - Thursday.
+
+> [!IMPORTANT]
+> Always check the if there is a .NET version upgrade that is trying to install. If there is one, you will need to log into the server manually and exclude the update or you will need to block it in the registry on the exchange servers. We patch and update .NET but we do not push out new upgrade versions. We do not upgrade new .NET versions due to incompatibilities and dependencies issues.
+
+> [!IMPORTANT]
+> When you have both security updates and windows updates it is recommended that you log into the server and update the security patches first manually with the installer on a file directory, reboot the server, then run the windows updates manually. In the past installing all updates from the windows admin center has run caused problems with not installing correctly. 
+
+> [!WARNING]
+> *Update* 19 Oct 2022: Per incident on Oct 19, 2022, and Microsoft's best practices they recommend that you "always install security updates manually with the update installer".
+
+> [!TIP]
+> When you have both security updates and windows updates you can plan a Wednesday night for security updates and Thursday night for windows updates. 
+
 ### Updating Server3 
 
 ```Powershell
