@@ -114,7 +114,8 @@ Get-DatabaseAvailabilityGroup DAG01 -status |fl name, Primaryactivemanager
 #Get Health status for all servers
 Get-DAGDatabaseInformation
 ```
-> **Note:** Run Server Updates When you have finished, follow the next cmds
+> [!Note]
+> Run Server Updates When you have finished, follow the next cmds
 
 Move Exchange Server Out of Maintenance Mode
 
@@ -201,7 +202,8 @@ Get-Databaseavailabilitygroup -status | fl name, ServersInMaintenance
 Get-DAGDatabaseInformation
 ```
 
-> **Note:** Run Server Updates When you have finished, follow the next cmds
+> [!Note]
+> Run Server Updates When you have finished, follow the next cmds
 
 Move Exchange Server out of Maintenance Mode
 
