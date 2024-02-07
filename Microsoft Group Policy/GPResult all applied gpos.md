@@ -44,6 +44,13 @@ Generate an HTML report from remote computer. *Does not work with server core*
 ```powershell
 Invoke-Command -ComputerName 'remotecompuntername' -ScriptBlock {GPResult /h c:\temp\gpreport.html}
 ```
+Generate a TXT report from directly on a server with windows server core installed. 
+
+> [!NOTE]
+> /z Displays all available information about Group Policy. This includes detailed settings that were applied with a precedence of 1 and higher.
+```powershell
+GPResult /z >>c:\temp\gp-results.txt
+```
 
 https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/agpm-gpresult-not-working
 
