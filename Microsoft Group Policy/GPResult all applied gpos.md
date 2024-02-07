@@ -25,6 +25,13 @@ Generate an HTML report
 ```powershell
 gpresult /h c:\report.html
 ```
+Generate an HTML report from remote computer. *Does not work with server core*
+```powershell
+Invoke-Command -ComputerName 'remotecompuntername' -ScriptBlock {GPResult /h c:\temp\gpreport.html}
+```
+
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/agpm-gpresult-not-working
+
 Send command output to a text file
 ```powershell
 gpresult /r > c:\result.txt
