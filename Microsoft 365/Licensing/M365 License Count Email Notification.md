@@ -167,5 +167,5 @@ if (($A5LicAvailable -lt 200) -or ($A5sbLicAvailable -lt 84000)) {
     Send-MailMessage -SmtpServer $smtpServer -To $smtpTo -From $smtpFrom -Subject "Microsoft 365 A5 License Count Daily Report" -BodyAsHtml -Body $htmlOutput
 }
 ```
+![image](https://github.com/msandoval55/pub.repo/assets/116230991/fd4aa7bd-0d2f-4aa6-a1ba-96acf368842f)
 
-![image](https://github.com/msandoval55/pub.repo/assets/116230991/d74d0a65-93e7-4246-ada0-bf1b5610cc63)
