@@ -189,12 +189,15 @@ Validate the new cert is being used:
 ```powershell
 Send-MailMessage -SmtpServer 127.0.0.1 -From 'martin.sandoval@consoto.com' -To 'martin.sandoval@consoto.com' -Subject 'Test email' -Port 25 
 ```
-Notes
-```powershell  
-#Make sure you have a back-up the existing .pfx before removing it.
-#If the cert if diff use On-prem EAC remove the old certificate. Remove the old cert from all 3 exchange servers. 
-#If cert is the same subject use WAC to remove.
-```
+> [!NOTE]
+> Make sure you have a back-up the existing .pfx before removing it.
+
+> [!NOTE] 
+> If the cert if diff use On-prem EAC remove the old certificate. Remove the old cert from all 3 exchange servers.
+
+> [!NOTE] 
+> If cert is the same subject use WAC to remove.
+
 Check logs to see if server is active
 ```powershell
 C:\Program Files\Microsoft\Exchange Server\V15\TransportRoles\Logs\Hub\ProtocolLog\SmtpSend
