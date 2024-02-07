@@ -45,7 +45,8 @@ Get-DatabaseAvailabilityGroup DAG01 -status |fl name, Primaryactivemanager
 Get-DAGDatabaseInformation
 ```
 
-> **Note:** Run Server Updates When you have finished, follow the next cmds
+> [!Note]
+> Run Server Updates When you have finished, follow the next cmds
 
 Move Exchange Server Out of Maintenance Mode
 
