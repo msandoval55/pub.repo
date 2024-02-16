@@ -30,7 +30,9 @@ Yes, It can be recovered within 30 days after being deleted.
 How long is a onedrive retained for?
 
 > [!note]
-The default is 30 days. During this time, shared content can still be accessed by other users. At the end of the time, the OneDrive will be in a deleted state for 93 days and can only be restored by a global or SharePoint admin.
+The default is 30 days.
+>
+> During this time, shared content can still be accessed by other users. At the end of the time, the OneDrive will be in a deleted state for 93 days and can only be restored by a global or SharePoint admin.
 >
 > https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
