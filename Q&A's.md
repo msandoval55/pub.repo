@@ -8,7 +8,7 @@ How long does AD Connect take to sync? Every 30 Minutes
 How long is a mailbox retained for?
 
 > [!note]
-> It can be recovered within 30 days after being deleted.
+> 30 days after being deleted.
 > 
 > When you delete a user account, the corresponding Exchange Online mailbox is deleted and removed from the list of mailboxes in the EAC. After the user account is deleted, it's listed on the Deleted Users page in the Microsoft 365 admin center. It can be recovered within 30 days after being deleted. After 30 days, the user account and mailbox are permanently deleted and not recoverable.
 
