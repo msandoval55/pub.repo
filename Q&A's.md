@@ -55,4 +55,6 @@ How long does active directory take to sync?
 
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/determining-the-interval
 
+https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/replication/active-directory-replication-concepts
+
 https://theitbros.com/check-active-directory-replication/
