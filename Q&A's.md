@@ -18,6 +18,9 @@ https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/delete-
 Can I restore a mailbox?
 
 > [!note]
+Yes, It can be recovered within 30 days after being deleted.
+
+> [!note]
 When you delete a mailbox, Exchange Online retains the mailbox and all its contents until the deleted mailbox retention period expires, which is 30 days. After 30 days, the mailbox is permanently deleted and can't be recovered. The method for restoring a mailbox depends on whether the mailbox was deleted by deleting the user account or removing the Exchange Online license.
 
 > [!note]
