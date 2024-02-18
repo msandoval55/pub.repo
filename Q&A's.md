@@ -18,6 +18,8 @@ What are the max mailbox sizes for A1 and A5 EDU licensing?
 >
 > https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-education
 
+How long are mailboxes retained?
+
 > [!note]
 > 30 days after being deleted.
 > 
