@@ -5,7 +5,16 @@ How long does AD Connect take to sync? Every 30 Minutes
 
 # Exchange Mailboxes
 
-How long is a mailbox retained for?
+What are the max mailbox sizes for A1 and A5 EDU licensing?
+
+> [!note]
+> A5 Licenses use Exchange Online Plan 2 which only allows 100GB of mailbox storage.
+> 
+> A1 Licenses use Exchange Online Plan 1 which only allows 50GB of mailbox storage.
+> 
+> ![image](https://github.com/msandoval55/pub.repo/assets/116230991/421421a2-f761-45e3-9234-7587b70c84e4)
+>
+> https://learn.microsoft.com/en-us/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
 
 > [!note]
 > 30 days after being deleted.
