@@ -58,27 +58,27 @@ What are they and what's the difference?
 >
 > ![image](https://github.com/msandoval55/pub.repo/assets/116230991/dc115172-f418-40d9-8e47-5b0cbeb305e5)
 >
-> 1. Microsoft 365 Groups
+> **1. Microsoft 365 Groups**
 >
 > Microsoft 365 Groups are used for collaboration between users, both inside and outside your company. With each Microsoft 365 group, members get a group email and shared workspace for conversations, files, and calendar events, Stream, and a Planner. Microsoft 365 Groups can also be connected to Teams or Viva Engage.
 >
-> 2. Distribution groups
+> **2. Distribution groups**
 >
 > Distribution groups are used for sending notifications to a group of people. They can receive external email if enabled by the administrator.
 >
-> 3. Dynamic distribution groups
+> **3. Dynamic distribution groups**
 > 
 > Dynamic distribution groups are mail-enabled groups that are used to send mail to people with specific attributes, such as department or location. These attributes are defined in the Exchange admin center rather than Microsoft Entra ID.
 >
-> 4. Security groups
+> **4. Security groups**
 >
 > Security groups are used for granting access to Microsoft 365 resources, such as SharePoint sites. They can make administration easier because you need only administer the group rather than adding users to each resource individually.
 >
-> 5. Mail-enabled security groups
+> **5. Mail-enabled security groups**
 >
 > Mail-enabled security groups function the same as regular security groups, except that they cannot be dynamically managed through Microsoft Entra ID and cannot contain devices.
 >
-> 6. Shared mailboxes
+> **6. Shared mailboxes**
 >
 > Shared mailboxes are used when multiple people need access to the same mailbox, such as a company information or support email address, reception desk, or other function that might be shared by multiple people.
 >
