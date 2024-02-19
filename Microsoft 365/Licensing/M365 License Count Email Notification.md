@@ -88,9 +88,9 @@ $htmlOutput = @"
 
 
 
-$smtpServer = "smtp.tamucc.edu"
-$smtpFrom = "2022admin@ad.tamucc.edu"
-$smtpTo = "martin.sandoval@tamucc.edu"
+$smtpServer = "smtp-address"
+$smtpFrom = "email-address"
+$smtpTo = "email-address"
 $messageBody = "Microsoft 365 License Count Daily Report"
 
 # Rest of your PowerShell code goes here
