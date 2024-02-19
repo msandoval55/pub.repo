@@ -49,9 +49,21 @@ The default is 30 days.
 >
 > https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
+# Microsoft 365 User Name Rules
+
+Can I use special characters when creating user accounts?
+
+> [!note]
+When you create a user name that contains a special character in Microsoft 365, you will receive error messages.
+>
+>![image](https://github.com/msandoval55/pub.repo/assets/116230991/0442ada5-fa76-44d7-b549-4e86d5b7f4e5)
+>
+> https://learn.microsoft.com/en-us/office/troubleshoot/office-suite-issues/username-contains-special-character
+
+
 # Microsoft 365 Groups
 
-What are they and what's the difference?
+M365 groups what are they? and what's the difference?
 
 > [!note]
 > Some are email groups and others are security access groups. There are 6 total groups.
