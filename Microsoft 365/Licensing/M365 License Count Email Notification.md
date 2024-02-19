@@ -83,13 +83,15 @@ $htmlOutput = @"
     </style>
 </head>
 <body>
-    <h1>Microsoft 365 A5 License Count Daily Report</h1>
+    <h1>Microsoft 365 License Count Daily Report</h1>
 "@
+
+
 
 $smtpServer = "smtp.tamucc.edu"
 $smtpFrom = "2022admin@ad.tamucc.edu"
 $smtpTo = "martin.sandoval@tamucc.edu"
-$messageBody = "Microsoft 365 A5 License Count Daily Report"
+$messageBody = "Microsoft 365 License Count Daily Report"
 
 # Rest of your PowerShell code goes here
 # ...
@@ -107,6 +109,8 @@ $A5LicAvailable = $A5Lic.ActiveUnits – $A5Lic.ConsumedUnits
 # Get account SKUs
 $Skus = Get-MsolAccountSku
 
+# Sort the $Skus array by AccountSkuId
+$Skus = $Skus | Sort-Object -Property AccountSkuId
 
 # Update the HTML output with the relevant information
 $htmlOutput += @"
@@ -135,7 +139,7 @@ $htmlOutput += @"
 
     </table>
 
-        <h2>MsolAccountSku</h2>
+        <h2>All Microsoft License Account Skus</h2>
     <table>
         <tr>
             <th>AccountSkuId</th>
@@ -158,8 +162,9 @@ foreach ($Sku in $Skus) {
 
 # Close the HTML table
 $htmlOutput += @"
+ </table>
+ <p>This is an automated email notification. Please review the Microsoft 365 license counts.</p> <p>For further details, contact the Systems Administration Team.</p>
 "@
-
 
 
 # Send the email if needed
