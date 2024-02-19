@@ -49,6 +49,14 @@ The default is 30 days.
 >
 > https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
+# Microsoft 365 License Features
+
+To compare licenses use this feature matrix sheet from microsoft
+
+> [!note]
+>
+> https://m365maps.com/matrix.htm#000000000000000100001
+
 # Microsoft 365 User Name Rules
 
 Can I use special characters when creating user accounts?
