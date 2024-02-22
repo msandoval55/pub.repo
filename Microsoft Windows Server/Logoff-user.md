@@ -1,6 +1,6 @@
 Get users logged on server
 ```powershell
-Invoke-Command -ComputerName Server1 -ScriptBlock {query user /server:$SERVER}
+Invoke-Command -ComputerName Server01 -ScriptBlock {query user /server:$SERVER}
 ```
 ```powershell
 #Example
@@ -15,7 +15,7 @@ Invoke-Command -ComputerName Server1 -ScriptBlock {query user /server:$SERVER}
 
 Get users and sessions logged on server
 ```powershell
-Invoke-Command -ComputerName Server1 -ScriptBlock {qwinsta}
+Invoke-Command -ComputerName Server01 -ScriptBlock {qwinsta}
 ```
 ```powershell
 #Example
