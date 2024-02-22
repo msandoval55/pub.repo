@@ -26,7 +26,7 @@ SESSIONNAME       USERNAME                 ID  STATE   TYPE        DEVICE
 ```
 Log user from server
 ```powershell
-Invoke-Command -ComputerName server01 -ScriptBlock {logoff '#' /server:$SERVER}
+Invoke-Command -ComputerName server01 -ScriptBlock {logoff 'ID#' /server:$SERVER}
 ```
 
 Kill tasks of user id to log user off
