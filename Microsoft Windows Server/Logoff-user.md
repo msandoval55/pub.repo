@@ -15,7 +15,7 @@ Invoke-Command -ComputerName Server1 -ScriptBlock {query user /server:$SERVER}
 
 Get users and sessions logged on server
 ```powershell
-Invoke-Command -ComputerName hybrid1 -ScriptBlock {qwinsta}
+Invoke-Command -ComputerName Server1 -ScriptBlock {qwinsta}
 ```
 ```powershell
 #Example
