@@ -23,7 +23,7 @@ How long are mailboxes retained?
 > [!note]
 > 30 days after being deleted.
 > 
-> When you delete a user in the Microsoft 365 admin center (or when a user is removed through Active Directory synchronization), the user's OneDrive will be retained for the number of days you specify in the SharePoint admin center. (For info, see Set the default file retention for deleted OneDrive users.) The default is 30 days. During this time, shared content can still be accessed by other users. At the end of the time, the OneDrive will be in a deleted state for 93 days and can only be restored by a global or SharePoint admin.
+> When you delete a user account, the corresponding Exchange Online mailbox is deleted and removed from the list of mailboxes in the EAC. After the user account is deleted, it's listed on the Deleted Users page in the Microsoft 365 admin center. It can be recovered within 30 days after being deleted. After 30 days, the user account and mailbox are permanently deleted and not recoverable.
 >
 > https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/delete-or-restore-mailboxes
 
@@ -45,7 +45,7 @@ How long is a onedrive retained for?
 > [!note]
 The default is 30 days.
 >
-> During this time, shared content can still be accessed by other users. At the end of the time, the OneDrive will be in a deleted state for 93 days and can only be restored by a global or SharePoint admin.
+> When you delete a user in the Microsoft 365 admin center (or when a user is removed through Active Directory synchronization), the user's OneDrive will be retained for the number of days you specify in the SharePoint admin center. (For info, see Set the default file retention for deleted OneDrive users.) The default is 30 days. During this time, shared content can still be accessed by other users. At the end of the time, the OneDrive will be in a deleted state for 93 days and can only be restored by a global or SharePoint admin.
 >
 > https://learn.microsoft.com/en-us/sharepoint/restore-deleted-onedrive
 
