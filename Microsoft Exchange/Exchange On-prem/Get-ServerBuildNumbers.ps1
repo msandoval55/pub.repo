@@ -1,7 +1,7 @@
 ========
 #Get product and file version from remote on-prem exchange server. 
 Invoke-Command -computername servername -scriptblock {Get-Command Exsetup.exe | ForEach {$_.FileVersionInfo}}
-Invoke-Command -computername Hybrid1,Hybrid2,Hybrid3 -scriptblock {Get-Command Exsetup.exe | ForEach {$_.FileVersionInfo}}
+Invoke-Command -computername Server1,Server2,Server3 -scriptblock {Get-Command Exsetup.exe | ForEach {$_.FileVersionInfo}}
 ========
 
 Exchange Server build numbers and release dates
