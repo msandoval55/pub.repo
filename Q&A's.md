@@ -112,6 +112,8 @@ https://learn.microsoft.com/en-us/microsoftteams/limits-specifications-teams
 
 # Active Directory
 
+How long does AD Connect take to sync? Every 30 Minutes
+
 How long does active directory take to sync?
 
 > [!note]
@@ -134,5 +136,3 @@ How long does EntraID Connect take to sync?
 >
 > https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-feature-scheduler
 
-How long does active directory take to sync? 15 Minutes
-How long does AD Connect take to sync? Every 30 Minutes
