@@ -1,10 +1,8 @@
-#get-service invoke cmdlet
-Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service 'sqlserveragent' | ft -autosize}
+#Get-Service all services invoke cmdlet
+Invoke-Command -ComputerName servername -ScriptBlock {Get-Service | ft -autosize}
 
-#output example
-Status   Name               DisplayName                            PSComputerName
-------   ----               -----------                            --------------
-Stopped  sqlserveragent     SQL Server Agent (MSSQLSERVER)         lsmssql
+#Get-Service targeted service invoke cmdlet
+Invoke-Command -ComputerName servername -ScriptBlock {Get-Service 'servicename' | ft -autosize}
 
-#Restart-service invoke cmdlet
-Invoke-Command -ComputerName lsmssql -ScriptBlock {Get-Service 'sqlserveragent' | Restart-Service}
+#Restart-Service invoke cmdlet
+Invoke-Command -ComputerName servername -ScriptBlock {Get-Service 'servicename' | Restart-Service}
