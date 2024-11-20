@@ -112,8 +112,6 @@ https://learn.microsoft.com/en-us/microsoftteams/limits-specifications-teams
 
 # Active Directory
 
-How long does AD Connect take to sync? Every 30 Minutes
-
 How long does active directory take to sync?
 
 > [!note]
