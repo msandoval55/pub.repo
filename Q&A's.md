@@ -1,8 +1,5 @@
 # Q&A's
 
-How long does active directory take to sync? 15 Minutes
-How long does AD Connect take to sync? Every 30 Minutes
-
 # Exchange Mailboxes
 
 What are the max mailbox sizes for A1 and A5 EDU licensing?
@@ -136,3 +133,6 @@ How long does EntraID Connect take to sync?
 > By default every 30 minutes a synchronization cycle is run.
 >
 > https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-feature-scheduler
+
+How long does active directory take to sync? 15 Minutes
+How long does AD Connect take to sync? Every 30 Minutes
