@@ -6,3 +6,12 @@ Invoke-Command -ComputerName servername -ScriptBlock {Get-Service 'servicename' 
 
 #Restart-Service invoke cmdlet
 Invoke-Command -ComputerName servername -ScriptBlock {Get-Service 'servicename' | Restart-Service}
+
+
+
+#Example Script for restarting a service remotely
+#Restart-Service invoke cmdlet
+Invoke-Command -ComputerName dangbot-sd -ScriptBlock {Get-Service 'dangbot-sd' | Restart-Service}
+
+#Restart-Service invoke cmdlet
+Invoke-Command -ComputerName dangbot-sd -ScriptBlock {Get-Service 'XymonPSClient' | Restart-Service}
