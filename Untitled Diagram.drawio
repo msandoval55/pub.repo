@@ -1,9 +1,72 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0" version="26.0.12">
   <diagram name="Page-1" id="sswRCJnIogE7Ao3riDSD">
-    <mxGraphModel>
+    <mxGraphModel dx="881" dy="813" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="hBnLPVlpthCKCK6IliJf-1" value="TAMUCC Users" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.users.users;fillColor=#2072B8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="210" width="46" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hBnLPVlpthCKCK6IliJf-2" target="hBnLPVlpthCKCK6IliJf-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-2" value="TAMUCC Users" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.users.users;fillColor=#2072B8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="647.0000000000001" width="46" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-3" value="Microsoft 365 Products" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;outlineConnect=0;verticalAlign=top;align=center;shape=mxgraph.office.clouds.office_365;" vertex="1" parent="1">
+          <mxGeometry x="170" y="204.5" width="101" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-4" value="Microsoft 365 Products" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;outlineConnect=0;verticalAlign=top;align=center;shape=mxgraph.office.clouds.office_365;" vertex="1" parent="1">
+          <mxGeometry x="732.22" y="547" width="65.5" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-5" value="Active Directory&amp;nbsp;&lt;div&gt;Federated Services&lt;/div&gt;" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.servers.active_directory_federation_services_server_blue;" vertex="1" parent="1">
+          <mxGeometry x="370.5" y="207" width="45" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-6" value="Azure Enterprise Application" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/Enterprise_Applications.svg;" vertex="1" parent="1">
+          <mxGeometry x="745" y="623" width="39.95" height="39.95" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-7" value="Azure App Registration" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/App_Registrations.svg;" vertex="1" parent="1">
+          <mxGeometry x="746.5699999999999" y="704" width="38.38" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;endFill=0;endSize=100;" edge="1" parent="1" source="hBnLPVlpthCKCK6IliJf-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="693" y="662" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-8" value="Conditional Access&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Conditional_Access.svg;" vertex="1" parent="1">
+          <mxGeometry x="535" y="628.0500000000001" width="56.00000000000001" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hBnLPVlpthCKCK6IliJf-10" target="hBnLPVlpthCKCK6IliJf-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="502" y="671" />
+              <mxPoint x="502" y="671" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-10" value="Azure MFA" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Multifactor_Authentication.svg;" vertex="1" parent="1">
+          <mxGeometry x="420" y="628.0500000000001" width="55.400000000000006" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-14" value="DUO Security" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://tesrex.com/wp-content/uploads/2019/05/Duo-Security-Logo-1024x1024.png;" vertex="1" parent="1">
+          <mxGeometry x="485" y="198.89999999999998" width="72.2" height="72.2" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-15" value="EntraID" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/Entra_Identity.svg;" vertex="1" parent="1">
+          <mxGeometry x="294" y="630.05" width="72" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-16" value="Login" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.login;" vertex="1" parent="1">
+          <mxGeometry x="129" y="637" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.032;entryY=0.66;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hBnLPVlpthCKCK6IliJf-16" target="hBnLPVlpthCKCK6IliJf-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hBnLPVlpthCKCK6IliJf-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.004;entryY=0.604;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hBnLPVlpthCKCK6IliJf-15" target="hBnLPVlpthCKCK6IliJf-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="378" y="669" />
+              <mxPoint x="378" y="669" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
