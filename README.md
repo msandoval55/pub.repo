@@ -1,4 +1,3 @@
 # My Sys Admin Repo
 
-This is a collection of cmdlets and scripts I have gathered or written throughout my career in IT. Please keep in mind that not all commands will work with standard accounts and may need administrator or domain permissions to execute 
-commands. 
+This repository contains a curated collection of cmdlets and scripts that I have written or gathered throughout my career in IT. Please note that some commands may require administrative or domain-level permissions to execute and may not work with standard user accounts.
