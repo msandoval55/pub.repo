@@ -11,16 +11,16 @@ ipconfig /all
 ipconfig /flushdns
 ```
 ```Powershell
-#/registerdns to trigger dynamic registration of the DNS names and IP addresses that are configured on the computer.
-ipconfig /registerdns
-```
-```Powershell
 #/release to release DHCP addresses. This will release DCHP address on the network cards that are configured for DHCP.
 ipconfig /release
 ```
 ```Powershell
 #/renew switch will renew DHCP address for all network cards.
 ipconfig /renew
+```
+```Powershell
+#/registerdns to trigger dynamic registration of the DNS names and IP addresses that are configured on the computer.
+ipconfig /registerdns
 ```
 ```Powershell
 #/displaydns switch will display the DNS client cache.
