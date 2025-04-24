@@ -1,0 +1,1 @@
+Get-ClusterNode -Cluster "clustername"
