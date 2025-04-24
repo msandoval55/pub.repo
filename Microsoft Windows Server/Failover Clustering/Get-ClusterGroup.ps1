@@ -1,0 +1,1 @@
+Get-ClusterGroup -Cluster "clustername"
