@@ -8,7 +8,7 @@ Run the following pscmd. This may take a while.
 Get-WsusServer -Name Server-name -PortNumber 8530 | Invoke-WsusServerCleanup –CleanupObsoleteUpdates -CleanupUnneededContentFiles -CompressUpdates -DeclineExpiredUpdates -DeclineSupersededUpdates
 ```
 
-<img width="880" height="266" alt="image" src="https://github.com/user-attachments/assets/15629e0c-6a93-4423-8209-270edec1e7d3" />
+<img width="1093" height="330" alt="image" src="https://github.com/user-attachments/assets/e3c7af35-d178-40b7-ba16-0a4932a60db1" />
 
 The end result may vary on the space claimed.
 
