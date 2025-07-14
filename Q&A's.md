@@ -134,3 +134,13 @@ How long does EntraID Connect take to sync?
 >
 > https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-feature-scheduler
 
+# SharePoint Site Creation
+
+Can users create their own SharePoint sites?
+
+> [!note]
+> Microsoft 365 Group creation is open to all users in this tenant.
+>
+> <img width="1582" height="513" alt="image" src="https://github.com/user-attachments/assets/2e2f9797-9284-49d5-87ad-bed89e458549" />
+
+
