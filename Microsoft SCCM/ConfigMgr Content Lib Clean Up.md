@@ -1,11 +1,11 @@
-### Config Mgr CM02 E:\ContentLibary Clean-up
+### Config Mgr "Server-name" E:\ContentLibary Clean-up
 
 Log on to the SCCM server and open PowerShell as an administrator.
 
-Run the following pscmd this may take a while. 
+Run the following pscmd. This may take a while. 
 
 ```powershell
-Get-WsusServer -Name cm02 -PortNumber 8530 | Invoke-WsusServerCleanup –CleanupObsoleteUpdates -CleanupUnneededContentFiles -CompressUpdates -DeclineExpiredUpdates -DeclineSupersededUpdates
+Get-WsusServer -Name Server-name -PortNumber 8530 | Invoke-WsusServerCleanup –CleanupObsoleteUpdates -CleanupUnneededContentFiles -CompressUpdates -DeclineExpiredUpdates -DeclineSupersededUpdates
 ```
 
 <img width="880" height="266" alt="image" src="https://github.com/user-attachments/assets/15629e0c-6a93-4423-8209-270edec1e7d3" />
