@@ -12,7 +12,8 @@ Get-WsusServer -Name Server-name -PortNumber 8530 | Invoke-WsusServerCleanup –
 
 The end result may vary on the space claimed.
 
-<img width="1348" height="437" alt="image" src="https://github.com/user-attachments/assets/17e99391-c7e6-49bc-8e01-3cf6c8db1858" />
+<img width="1683" height="537" alt="image" src="https://github.com/user-attachments/assets/f8ebade3-ac78-427a-b3e6-2c779e2c4d73" />
 
-<img width="1668" height="295" alt="image" src="https://github.com/user-attachments/assets/289c32ae-de6f-4502-ac06-b5b6c3e1c22a" />
+<img width="1705" height="300" alt="image" src="https://github.com/user-attachments/assets/2a8a71e4-79b6-46da-b518-60f8954dde6b" />
+
 
