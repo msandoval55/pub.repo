@@ -17,7 +17,8 @@ Resume-ClusterNode ServerName
 Get-ClusterNode
 ```
 Example:
-<img width="1257" height="665" alt="image" src="https://github.com/user-attachments/assets/439faaa5-8bf2-4d52-85aa-bacf2255d60f" />
+<img width="1257" height="665" alt="image" src="https://github.com/user-attachments/assets/44cfa27c-75ef-43ef-868d-7b34c3cd6f7e" />
+
 
 
 
