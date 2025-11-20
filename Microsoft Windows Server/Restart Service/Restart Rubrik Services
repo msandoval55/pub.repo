@@ -1,0 +1,6 @@
+Invoke-Command -ComputerName "RemoteServerName" -ScriptBlock {
+
+    Restart-Service -Name "Rubrik Backup Service"
+    Restart-Service -Name "XymonPSClient"
+
+}
