@@ -1,6 +1,20 @@
-# Directory Admin
-
 # LDAP Queries for Users, Computers, Groups and Service Connection Points v2
+
+Lightweight Directory Access Protocol. It is an open, vendor-neutral, industry-standard application protocol used for accessing and maintaining distributed directory information services over an Internet Protocol (IP) network.
+
+In simple terms, LDAP acts like a phonebook for IT resources, allowing users, applications, and network devices to quickly look up information about users, groups, shared resources, and network services within an organization's network.
+
+# 🛠️ How LDAP is Used
+
+LDAP's primary function is centralized identity and access management (IAM).
+
+Authentication: LDAP allows users to log into various applications, VPNs, and services using a single username and password. The application submits the credentials to the LDAP server for validation.
+
+Authorization: Applications query the directory to check a user's group membership before granting access to specific resources (e.g., "Is John Smith a member of the 'HR_Admins' group?").
+
+Centralized Lookups: Devices (like network printers) use LDAP to look up a user's email address when sending a scanned document.
+
+User Management: Administrators use tools that talk to the directory service via LDAP to create, modify, or delete user accounts and groups.
 
 ## Computer accounts
 
